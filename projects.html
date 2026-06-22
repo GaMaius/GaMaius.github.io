@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ko" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>GaMaius | Projects (Game • Web • AI)</title>
+  <meta name="description" content="게임 개발, 웹 풀스택, AI 개발에 깊은 관심과 역량을 지닌 소프트웨어 엔지니어 GaMaius의 개발 프로젝트 포트폴리오입니다.">
+  <meta name="keywords" content="GaMaius, 포트폴리오, 게임 개발, 웹 개발, AI 개발, Unity, React, PyTorch, Developer">
+  <meta name="author" content="GaMaius">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="GaMaius | Projects (Game • Web • AI)">
+  <meta property="og:description" content="게임 개발, 웹 풀스택, 인공지능 엔지니어링을 아우르는 GaMaius의 개발 프로젝트 포트폴리오입니다.">
+  <meta property="og:url" content="https://gamaius.github.io/projects.html">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
+
+  <!-- Core Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER & NAVIGATION
+       ========================================== -->
+  <header class="header scrolled" id="header">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" id="logo-link">
+        GAMAiUS<span class="logo-dot"></span>
+      </a>
+
+      <!-- Desktop Nav Menu -->
+      <nav class="nav-links" id="desktop-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="profile.html" class="nav-link">Profile</a>
+        <a href="specs.html" class="nav-link">Specs</a>
+        <a href="projects.html" class="nav-link active">Projects</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+
+      <!-- Nav Action Tools -->
+      <div class="nav-actions">
+        <!-- 3-State Theme Selector -->
+        <div class="theme-selector" id="theme-selector">
+          <!-- Light Mode Button (White) -->
+          <button id="theme-opt-light" class="theme-opt-btn" title="화이트 모드">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <span>Light</span>
+          </button>
+          
+          <!-- Dark Mode Button (Black) -->
+          <button id="theme-opt-dark" class="theme-opt-btn" title="블랙 모드">
+            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            <span>Dark</span>
+          </button>
+          
+          <!-- System Settings Auto Theme -->
+          <button id="theme-opt-system" class="theme-opt-btn" title="시스템 기준">
+            <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            <span>Auto</span>
+          </button>
+        </div>
+
+        <!-- Mobile burger button -->
+        <button id="burger-menu-btn" class="burger-menu" aria-label="메뉴 열기/닫기" aria-expanded="false">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay -->
+  <div class="mobile-nav" id="mobile-nav-overlay">
+    <nav style="display: flex; flex-direction: column; gap: 2rem;">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="profile.html" class="nav-link">Profile</a>
+      <a href="specs.html" class="nav-link">Specs</a>
+      <a href="projects.html" class="nav-link">Projects</a>
+      <a href="contact.html" class="nav-link">Contact</a>
+    </nav>
+  </div>
+
+  <!-- ==========================================
+       PROJECTS SECTION
+       ========================================== -->
+  <section class="projects subpage-section" id="projects">
+    <div class="container">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">각 도메인의 성격에 맞게 설계 및 완성한 주요 성과물들입니다.</p>
+      
+      <!-- Filter Button Tabs -->
+      <div class="project-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="game">Game Dev</button>
+        <button class="filter-btn" data-filter="web">Web</button>
+        <button class="filter-btn" data-filter="ai">AI Dev</button>
+      </div>
+
+      <!-- Project Showcase Grid -->
+      <div class="grid grid-3 projects-grid">
+        
+        <!-- Project 1: Drilling (Game) -->
+        <div class="project-card-wrapper reveal" data-category="game">
+          <div class="project-card glass-card">
+            <div class="project-img-wrapper">
+              <div class="project-img-placeholder">
+                <span class="project-placeholder-icon">⛏️</span>
+                <span class="project-placeholder-platform">Unity / Mobile</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">Unity</span>
+                <span class="project-tag">C#</span>
+                <span class="project-tag">Game Launch</span>
+              </div>
+              <h3 class="project-title">Drilling 게임 출시</h3>
+              
+              <!-- Project Metadata Table -->
+              <div class="project-meta-grid">
+                <div class="project-meta-label">개발 기간</div>
+                <div class="project-meta-value">2025.11 - 2026.02 (4개월)</div>
+                <div class="project-meta-label">인원 구성</div>
+                <div class="project-meta-value">3인 개발 (클라이언트 2, 그래픽 1)</div>
+                <div class="project-meta-label">본인 역할</div>
+                <div class="project-meta-value">메인 게임 프로그래머 (물리 엔진 기반 장애물 타격 충돌 처리, 코어 채굴 루프 및 업그레이드 수치 밸런싱 데이터 영속화 처리)</div>
+              </div>
+              
+              <p class="project-desc">
+                지하 깊은 곳으로 드릴을 하강시키며 희귀 광물을 수집하고 위협적인 지하 생명체와 장애물을 회피하는 모바일 아케이드 게임입니다. 터치 드래그에 반응하는 최적화된 물리 가속 조작감을 완성하고 빌드를 구글 플레이에 출시하여 배포 주기를 경험했습니다.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/GaMaius" class="project-link" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Smart Mirror (Web) -->
+        <div class="project-card-wrapper reveal reveal-delay-1" data-category="web">
+          <div class="project-card glass-card">
+            <div class="project-img-wrapper">
+              <div class="project-img-placeholder">
+                <span class="project-placeholder-icon">🪞</span>
+                <span class="project-placeholder-platform">Web / LLM</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">React</span>
+                <span class="project-tag">Node.js</span>
+                <span class="project-tag">OpenAI API</span>
+              </div>
+              <h3 class="project-title">LLM 기반 스마트 미러 웹앱</h3>
+              
+              <!-- Project Metadata Table -->
+              <div class="project-meta-grid">
+                <div class="project-meta-label">개발 기간</div>
+                <div class="project-meta-value">2025.07 (3일, 라이프 스타일 해커톤)</div>
+                <div class="project-meta-label">인원 구성</div>
+                <div class="project-meta-value">4인 개발 (프론트 2, 백엔드 1, 디자인 1)</div>
+                <div class="project-meta-label">본인 역할</div>
+                <div class="project-meta-value">백엔드 아키텍처 설계, OpenAI GPT-4 대화 인터페이스 통합, 음성 인식(STT) 라이브러리 연동 API 개발</div>
+              </div>
+              
+              <p class="project-desc">
+                거울 디스플레이 배후 스크린에 탑재하는 스마트 미러 대시보드 웹앱입니다. 사용자의 아침 음성 질문을 수신하여 날씨 정보 분석 및 캘린더 일정을 조회하고, 맞춤화된 요약 일과 및 의상 제안을 생성형 AI를 거쳐 화면에 출력합니다. 우수상을 수상했습니다.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/GaMaius" class="project-link" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: CNN Sign Language (AI) -->
+        <div class="project-card-wrapper reveal reveal-delay-2" data-category="ai">
+          <div class="project-card glass-card">
+            <div class="project-img-wrapper">
+              <div class="project-img-placeholder">
+                <span class="project-placeholder-icon">🤟</span>
+                <span class="project-placeholder-platform">Python / PyTorch</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">Python</span>
+                <span class="project-tag">PyTorch</span>
+                <span class="project-tag">OpenCV (CNN)</span>
+              </div>
+              <h3 class="project-title">CNN을 통한 수화 인식 프로그램</h3>
+              
+              <!-- Project Metadata Table -->
+              <div class="project-meta-grid">
+                <div class="project-meta-label">개발 기간</div>
+                <div class="project-meta-value">2025.04 - 2025.06 (2개월)</div>
+                <div class="project-meta-label">인원 구성</div>
+                <div class="project-meta-value">2인 개발 (모델 1, 데이터 가공 1)</div>
+                <div class="project-meta-label">본인 역할</div>
+                <div class="project-meta-value">CNN 모델 아키텍처 설계, PyTorch 학습 파이프라인 개발, OpenCV 웹캠 인터페이스 실시간 프레임 예측 구현</div>
+              </div>
+              
+              <p class="project-desc">
+                컴퓨터 비전 기술을 접목하여 카메라로 캡처한 손짓 동작을 분석하고 실시간으로 지문자 수화(A-Z) 문자로 분류해 주는 프로그램입니다. 데이터 전처리, 경량화된 CNN 레이어 최적화 설계를 거쳐 저사양 PC 환경에서도 프레임 손실 없는 높은 정확도의 인식을 완성했습니다.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/GaMaius" class="project-link" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: 3D Viewer & AI Helper (Web/AI) -->
+        <div class="project-card-wrapper reveal" data-category="web">
+          <div class="project-card glass-card">
+            <div class="project-img-wrapper">
+              <div class="project-img-placeholder">
+                <span class="project-placeholder-icon">⚙️</span>
+                <span class="project-placeholder-platform">WebGL / React / FastAPI</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">Three.js</span>
+                <span class="project-tag">React</span>
+                <span class="project-tag">FastAPI (LLM)</span>
+              </div>
+              <h3 class="project-title">기계 부품 3D 뷰어 및 AI 공부 보조 사이트</h3>
+              
+              <!-- Project Metadata Table -->
+              <div class="project-meta-grid">
+                <div class="project-meta-label">개발 기간</div>
+                <div class="project-meta-value">2025.10 (3일, 블레이버스 MVP 해커톤)</div>
+                <div class="project-meta-label">인원 구성</div>
+                <div class="project-meta-value">4인 개발 (프론트 2, 백엔드 1, 3D 모델러 1)</div>
+                <div class="project-meta-label">본인 역할</div>
+                <div class="project-meta-value">Three.js 기반 OBJ/GLTF 3D 기계 메쉬 렌더러 컴포넌트 구현, FastAPI 공부 보조 챗봇 어시스턴트 구조 설계</div>
+              </div>
+              
+              <p class="project-desc">
+                웹 브라우저 내에서 CAD 기계 설계 파일을 WebGL을 이용해 3D 렌더링하고 분해도를 볼 수 있는 플랫폼입니다. 업로드된 기계 부품의 원리와 작동 방식을 학습할 수 있도록 우측 뷰에 LLM 챗봇을 연결해 학습 보조 사이트를 설계했습니다. 최우수상을 받았습니다.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/GaMaius" class="project-link" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 5: push --force (Game) -->
+        <div class="project-card-wrapper reveal reveal-delay-1" data-category="game">
+          <div class="project-card glass-card">
+            <div class="project-img-wrapper">
+              <div class="project-img-placeholder">
+                <span class="project-placeholder-icon">💥</span>
+                <span class="project-placeholder-platform">Unity / PC</span>
+              </div>
+            </div>
+            <div class="project-content">
+              <div class="project-tags">
+                <span class="project-tag">Unity</span>
+                <span class="project-tag">C#</span>
+                <span class="project-tag">Game Jam</span>
+              </div>
+              <h3 class="project-title">push --force 게임</h3>
+              
+              <!-- Project Metadata Table -->
+              <div class="project-meta-grid">
+                <div class="project-meta-label">개발 기간</div>
+                <div class="project-meta-value">2025.09 (24시간, 테크위크 해커톤)</div>
+                <div class="project-meta-label">인원 구성</div>
+                <div class="project-meta-value">2인 개발 (클라이언트 1, 기획/아트 1)</div>
+                <div class="project-meta-label">본인 역할</div>
+                <div class="project-meta-value">단독 1인 프로그래밍 (플레이어 탑다운 이동 물리 반발력 구현, 키보드 대전 맵 낙사 기믹 및 승리 판정 루프 완성)</div>
+              </div>
+              
+              <p class="project-desc">
+                Git 강제 푸시 명령어 'push --force' 컨셉을 탑다운 격투 메카닉으로 승화시킨 로컬 멀티플레이어 밀치기 난투 게임입니다. 24시간 해커톤 동안 충돌 가속도 반발 공식과 스피디한 이동 컨트롤러를 단독 구현하여 기획성을 입증받고 우승을 차지했습니다.
+              </p>
+              <div class="project-links">
+                <a href="https://github.com/GaMaius" class="project-link" target="_blank" rel="noopener noreferrer">
+                  <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                  GitHub
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="footer">
+    <div class="container footer-content">
+      <div class="footer-logo">
+        GAMAiUS<span class="logo-dot"></span>
+      </div>
+      
+      <div class="footer-socials">
+        <a href="https://github.com/GaMaius" class="social-icon" target="_blank" rel="noopener noreferrer" aria-label="Github 링크">
+          <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </a>
+      </div>
+      
+      <p class="footer-copy">&copy; 2026 GaMaius. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Submission Toast Notifications -->
+  <div id="toast" class="toast">
+    <span class="toast-icon">✓</span>
+    <span id="toast-msg" class="toast-msg">메시지가 정상적으로 발송되었습니다.</span>
+  </div>
+
+  <!-- Core Interactions Script -->
+  <script src="script.js"></script>
+</body>
+</html>
