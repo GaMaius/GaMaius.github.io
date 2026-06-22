@@ -195,6 +195,18 @@ h1, h2, h3, h4, h5, h6 {
   color: transparent;
 }
 
+.typing-cursor {
+  display: inline-block;
+  color: var(--accent-secondary);
+  font-weight: 300;
+  animation: blink-cursor 0.85s step-end infinite;
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
 .section-title-wrap {
   margin-bottom: 4.5rem;
 }
