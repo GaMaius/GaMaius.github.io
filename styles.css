@@ -1317,6 +1317,8 @@ h1, h2, h3, h4, h5, h6 {
 /* Make project cards clickable previews */
 .project-card-wrapper {
   cursor: pointer;
+  overflow: hidden;
+  height: 100%;
 }
 
 /* ==========================================

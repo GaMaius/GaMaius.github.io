@@ -421,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     displayProjects.forEach((project) => {
       const projCard = document.createElement('div');
-      projCard.className = 'project-card-wrapper reveal';
+      projCard.className = 'project-card-wrapper glass-card reveal';
       projCard.dataset.category = project.category;
       
       const tagsMarkup = project.tags
@@ -510,7 +510,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  const savedMode = localStorage.getItem('portfolio-theme-mode') || 'system';
+  const savedMode = localStorage.getItem('portfolio-theme-mode') || 'light';
   setThemeMode(savedMode);
 
   // ==========================================
