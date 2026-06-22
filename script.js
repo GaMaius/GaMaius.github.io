@@ -31,11 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
       { name: "React.js / Frontend", level: "Beginner", percentage: 30, category: "frontend" },
       { name: "FastAPI & Node.js / Backend", level: "Beginner", percentage: 30, category: "backend" },
       { name: "Git & GitHub", level: "Intermediate", percentage: 70, category: "devops" },
-      { name: "Mediapipe", level: "Advanced", percentage: 85, category: "aitools" },
-      { name: "PyTorch & CNN Architecture", level: "Intermediate", percentage: 75, category: "aitools" },
-      { name: "OpenCV", level: "Intermediate", percentage: 65, category: "aitools" },
-      { name: "Notion", level: "Intermediate", percentage: 75, category: "aitools" },
-      { name: "Aseprite", level: "Intermediate", percentage: 70, category: "aitools" }
+      { name: "Vercel", level: "Intermediate", percentage: 75, category: "devops" },
+      { name: "Render", level: "Intermediate", percentage: 70, category: "devops" },
+      { name: "Mediapipe", level: "Advanced", percentage: 85, category: "others" },
+      { name: "PyTorch & CNN Architecture", level: "Intermediate", percentage: 75, category: "others" },
+      { name: "OpenCV", level: "Intermediate", percentage: 65, category: "others" },
+      { name: "Notion", level: "Intermediate", percentage: 75, category: "others" },
+      { name: "Aseprite", level: "Intermediate", percentage: 70, category: "others" }
     ],
     specs: [
       {
@@ -219,10 +221,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const categories = [
       { id: 'language', name: 'Language', icon: '📝' },
       { id: 'frontend', name: 'Frontend', icon: '🎨' },
-      { id: 'backend', name: 'Backend', icon: '⚙️' },
+      { id: 'backend', name: 'Backend', icon: '🗄️' },
       { id: 'devtools', name: 'DevTools', icon: '🛠️' },
       { id: 'devops', name: 'DevOps', icon: '🚀' },
-      { id: 'aitools', name: 'AI • Design • Tools', icon: '🤖' }
+      { id: 'others', name: 'Others', icon: '⚙️' }
     ];
 
     categories.forEach(cat => {

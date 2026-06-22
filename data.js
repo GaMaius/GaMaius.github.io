@@ -23,7 +23,7 @@ window.PORTFOLIO_DATA = {
 
   // 2. 기술 스택 숙련도 (Skills & Levels)
   // 수준(level)은 "Advanced" (숙련), "Intermediate" (중급), "Beginner" (초급) 중 하나로 기입하며,
-  // 카테고리(category)는 "language", "frontend", "backend", "devtools", "devops", "aitools" 중 하나로 지정합니다.
+  // 카테고리(category)는 "language", "frontend", "backend", "devtools", "devops", "others" 중 하나로 지정합니다.
   skills: [
     { name: "Python", level: "Advanced", percentage: 95, category: "language" },
     { name: "Unity Engine", level: "Advanced", percentage: 95, category: "devtools" },
@@ -34,11 +34,13 @@ window.PORTFOLIO_DATA = {
     { name: "React.js / Frontend", level: "Beginner", percentage: 30, category: "frontend" },
     { name: "FastAPI & Node.js / Backend", level: "Beginner", percentage: 30, category: "backend" },
     { name: "Git & GitHub", level: "Intermediate", percentage: 70, category: "devops" },
-    { name: "Mediapipe", level: "Advanced", percentage: 85, category: "aitools" },
-    { name: "PyTorch & CNN Architecture", level: "Intermediate", percentage: 75, category: "aitools" },
-    { name: "OpenCV", level: "Intermediate", percentage: 65, category: "aitools" },
-    { name: "Notion", level: "Intermediate", percentage: 75, category: "aitools" },
-    { name: "Aseprite", level: "Intermediate", percentage: 70, category: "aitools" }
+    { name: "Vercel", level: "Intermediate", percentage: 75, category: "devops" },
+    { name: "Render", level: "Intermediate", percentage: 70, category: "devops" },
+    { name: "Mediapipe", level: "Advanced", percentage: 85, category: "others" },
+    { name: "PyTorch & CNN Architecture", level: "Intermediate", percentage: 75, category: "others" },
+    { name: "OpenCV", level: "Intermediate", percentage: 65, category: "others" },
+    { name: "Notion", level: "Intermediate", percentage: 75, category: "others" },
+    { name: "Aseprite", level: "Intermediate", percentage: 70, category: "others" }
   ],
 
   // 3. 스펙 이력 목록 (Specifications)
