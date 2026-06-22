@@ -22,8 +22,8 @@
   --radius-full: 9999px;
 
   /* Theme Tokens (Dark Mode - Default) */
-  --bg-primary: #080b13;          /* Darker, richer space background */
-  --bg-secondary: #0d111d;        /* Sleek dark slate */
+  --bg-primary: #05070f;          /* Darker cosmic background */
+  --bg-secondary: #0c0e1a;        /* Sleek dark slate/indigo background */
   --bg-card: rgba(17, 24, 39, 0.22); /* Higher translucency for deep glass effect */
   --bg-card-hover: rgba(24, 34, 54, 0.35);
   --border-color: rgba(255, 255, 255, 0.08); /* More defined white borders */
@@ -48,25 +48,25 @@
 
 /* Light Theme Overrides */
 [data-theme="light"] {
-  --bg-primary: #f1f5f9;          /* Slightly warmer light background */
-  --bg-secondary: #e2e8f0;
-  --bg-card: rgba(255, 255, 255, 0.35); /* Elegant light glass */
-  --bg-card-hover: rgba(255, 255, 255, 0.5);
-  --border-color: rgba(15, 23, 42, 0.08);
-  --border-hover: rgba(99, 102, 241, 0.45);
+  --bg-primary: #e0f2fe;          /* Warm pastel sky-blue */
+  --bg-secondary: #f3e8ff;        /* Warm pastel lavender */
+  --bg-card: rgba(255, 255, 255, 0.28); /* Highly translucent white frosted glass */
+  --bg-card-hover: rgba(255, 255, 255, 0.42);
+  --border-color: rgba(255, 255, 255, 0.45); /* Soft white rim border */
+  --border-hover: rgba(99, 102, 241, 0.35);
   
   --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
+  --text-secondary: #334155;
+  --text-muted: #64748b;
   
   --accent-primary: #4f46e5;      /* Tech Indigo */
   --accent-secondary: #8b5cf6;    /* Tech Violet */
   --accent-rgb: 79, 70, 229;
   --accent-sec-rgb: 139, 92, 246;
   
-  --shadow-color: rgba(15, 23, 42, 0.08);
-  --shadow-card: 0 20px 40px -10px var(--shadow-color);
-  --glow-strength: 0 0 25px rgba(79, 70, 229, 0.15);
+  --shadow-color: rgba(31, 38, 135, 0.05);
+  --shadow-card: 0 15px 35px var(--shadow-color);
+  --glow-strength: 0 0 25px rgba(79, 70, 229, 0.1);
   
   --gradient-accent: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
   --gradient-text: linear-gradient(135deg, #0f172a 20%, #8b5cf6 100%);
@@ -88,11 +88,12 @@ html {
 
 body {
   font-family: var(--font-sans);
-  background-color: var(--bg-primary);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 50%, var(--bg-primary) 100%);
+  background-attachment: fixed;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
-  transition: background-color var(--transition-normal), color var(--transition-normal);
+  transition: background var(--transition-normal), color var(--transition-normal);
 }
 
 a {
@@ -226,11 +227,11 @@ h1, h2, h3, h4, h5, h6 {
    ========================================== */
 .glass-card {
   background: var(--bg-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), var(--shadow-card);
   transition: border-color var(--transition-normal), background-color var(--transition-normal), transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
@@ -780,8 +781,9 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: var(--radius-md);
   border: 1px solid var(--border-color);
   background: var(--bg-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), var(--shadow-card);
   transition: all var(--transition-normal);
   cursor: pointer;
 }
@@ -1222,12 +1224,12 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   width: 100%;
   max-width: 680px;
-  background: rgba(17, 24, 39, 0.55);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(17, 24, 39, 0.45);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-color);
-  box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.8);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.15), 0 30px 60px -15px rgba(0, 0, 0, 0.8);
   transform: translateY(20px);
   transition: transform var(--transition-normal);
   z-index: 2;
@@ -1238,10 +1240,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 [data-theme="light"] .project-modal-content {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 30px 60px -15px rgba(15, 23, 42, 0.2);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.65), 0 30px 60px -15px rgba(15, 23, 42, 0.15);
 }
 
 .project-modal.open .project-modal-content {
@@ -1398,9 +1400,9 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   background: var(--bg-card);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), var(--shadow-card);
 }
 
 .archive-table {
@@ -1601,4 +1603,180 @@ h1, h2, h3, h4, h5, h6 {
 @keyframes blink {
   0%, 100% { opacity: 0; }
   50% { opacity: 1; }
+}
+
+/* ==========================================
+   COSMIC PORTAL EFFECT (HERO BACKDROP)
+   ========================================== */
+.hero-portal-wrap {
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 580px;
+  height: 290px; /* Semi-circle bounds */
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+
+.hero-portal-glow {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 300px;
+  border-radius: 300px 300px 0 0;
+  background: radial-gradient(circle at bottom, rgba(168, 85, 247, 0.45) 0%, rgba(0, 240, 255, 0.18) 50%, transparent 80%);
+  filter: blur(50px);
+  z-index: 1;
+}
+
+.hero-portal-ring {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 440px;
+  height: 220px;
+  border-radius: 220px 220px 0 0;
+  border: 10px solid #a855f7;
+  border-bottom: none;
+  background: transparent;
+  box-shadow: 
+    0 -15px 40px rgba(168, 85, 247, 0.95),
+    0 -30px 80px rgba(0, 240, 255, 0.8),
+    inset 0 15px 40px rgba(168, 85, 247, 0.8),
+    inset 0 30px 80px rgba(0, 240, 255, 0.7);
+  filter: blur(5px);
+  z-index: 2;
+  animation: portalPulse 4s ease-in-out infinite alternate;
+}
+
+.hero-portal-core {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 410px;
+  height: 205px;
+  border-radius: 205px 205px 0 0;
+  background: transparent;
+  border: 4px solid #ffffff;
+  border-bottom: none;
+  box-shadow: 
+    0 -10px 30px #ffffff,
+    0 -20px 60px rgba(0, 240, 255, 0.9);
+  filter: blur(2px);
+  z-index: 3;
+  opacity: 0.95;
+}
+
+[data-theme="light"] .hero-portal-ring {
+  border-color: rgba(139, 92, 246, 0.6);
+  box-shadow: 
+    0 -15px 40px rgba(139, 92, 246, 0.4),
+    0 -30px 60px rgba(14, 165, 233, 0.35);
+  filter: blur(6px);
+}
+[data-theme="light"] .hero-portal-core {
+  border-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 -10px 20px rgba(255, 255, 255, 0.9),
+    0 -20px 40px rgba(14, 165, 233, 0.5);
+}
+[data-theme="light"] .hero-portal-glow {
+  background: radial-gradient(circle at bottom, rgba(139, 92, 246, 0.25) 0%, rgba(14, 165, 233, 0.12) 50%, transparent 80%);
+  filter: blur(40px);
+}
+
+@keyframes portalPulse {
+  0% {
+    transform: translateX(-50%) scale(0.98);
+    opacity: 0.85;
+  }
+  100% {
+    transform: translateX(-50%) scale(1.02);
+    opacity: 1;
+  }
+}
+
+/* ==========================================
+   FLOATING REFRACTION BACKDROP SHAPES
+   ========================================== */
+.floating-shapes-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1; /* Behind everything */
+}
+
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.08) 0%, rgba(0, 240, 255, 0.08) 100%);
+  filter: blur(10px);
+  mix-blend-mode: screen;
+  animation: floatMovement 25s ease-in-out infinite alternate;
+}
+
+[data-theme="light"] .floating-shape {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.12) 0%, rgba(14, 165, 233, 0.12) 100%);
+  filter: blur(12px);
+  mix-blend-mode: multiply;
+}
+
+.shape-1 {
+  width: 320px;
+  height: 320px;
+  top: 10%;
+  left: -5%;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.12) 0%, rgba(0, 240, 255, 0.1) 100%);
+  animation-duration: 22s;
+}
+
+.shape-2 {
+  width: 420px;
+  height: 420px;
+  bottom: 15%;
+  right: -8%;
+  border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%; /* Squircle blob */
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.09) 0%, rgba(0, 240, 255, 0.12) 100%);
+  animation-duration: 32s;
+  animation-delay: -6s;
+}
+
+.shape-3 {
+  width: 260px;
+  height: 260px;
+  top: 45%;
+  left: 70%;
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.1) 0%, rgba(236, 72, 153, 0.08) 100%);
+  animation-duration: 26s;
+  animation-delay: -12s;
+}
+
+.shape-4 {
+  width: 220px;
+  height: 220px;
+  bottom: 5%;
+  left: 25%;
+  background: linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+  animation-duration: 20s;
+  animation-delay: -3s;
+}
+
+@keyframes floatMovement {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(40px, -60px) rotate(180deg) scale(1.08);
+  }
+  100% {
+    transform: translate(-30px, 40px) rotate(360deg) scale(0.95);
+  }
 }
