@@ -1142,10 +1142,10 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: 0 0 12px rgba(0, 240, 255, 0.08);
 }
 [data-theme="light"] .skill-badge.advanced {
-  background: rgba(79, 70, 229, 0.08);
-  border-color: rgba(79, 70, 229, 0.25);
-  color: #4f46e5;
-  box-shadow: 0 0 12px rgba(79, 70, 229, 0.05);
+  background: rgba(2, 132, 199, 0.08);
+  border-color: rgba(2, 132, 199, 0.3);
+  color: #0284c7;
+  box-shadow: 0 0 12px rgba(2, 132, 199, 0.05);
 }
 
 .skill-badge.intermediate {
@@ -1154,9 +1154,9 @@ h1, h2, h3, h4, h5, h6 {
   color: #c084fc;
 }
 [data-theme="light"] .skill-badge.intermediate {
-  background: rgba(139, 92, 246, 0.08);
-  border-color: rgba(139, 92, 246, 0.25);
-  color: #8b5cf6;
+  background: rgba(124, 58, 237, 0.08);
+  border-color: rgba(124, 58, 237, 0.3);
+  color: #7c3aed;
 }
 
 .skill-badge.beginner {
@@ -1166,8 +1166,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 [data-theme="light"] .skill-badge.beginner {
   background: rgba(100, 116, 139, 0.06);
-  border-color: rgba(100, 116, 139, 0.15);
-  color: var(--text-secondary);
+  border-color: rgba(100, 116, 139, 0.2);
+  color: #475569;
 }
 
 .skills-legend .legend-item {
