@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   const PORTFOLIO_DATA_FALLBACK = {
     profile: {
-      name: "GaMaius",
+      name: "지우가람",
       title: "Game • Web • AI Developer",
       typingWords: [
         "Game Developer",
@@ -26,13 +26,16 @@ document.addEventListener('DOMContentLoaded', () => {
       { name: "Unity Engine", level: "Advanced", percentage: 95, category: "devtools" },
       { name: "C++", level: "Intermediate", percentage: 75, category: "language" },
       { name: "C# Core", level: "Intermediate", percentage: 75, category: "language" },
-      { name: "PyTorch & CNN Architecture", level: "Intermediate", percentage: 75, category: "devtools" },
-      { name: "OpenCV", level: "Intermediate", percentage: 65, category: "devtools" },
       { name: "JavaScript", level: "Beginner", percentage: 50, category: "language" },
       { name: "HTML5 / CSS3", level: "Intermediate", percentage: 55, category: "frontend" },
       { name: "React.js / Frontend", level: "Beginner", percentage: 30, category: "frontend" },
       { name: "FastAPI & Node.js / Backend", level: "Beginner", percentage: 30, category: "backend" },
-      { name: "Git & GitHub", level: "Intermediate", percentage: 70, category: "devops" }
+      { name: "Git & GitHub", level: "Intermediate", percentage: 70, category: "devops" },
+      { name: "Mediapipe", level: "Advanced", percentage: 85, category: "aitools" },
+      { name: "PyTorch & CNN Architecture", level: "Intermediate", percentage: 75, category: "aitools" },
+      { name: "OpenCV", level: "Intermediate", percentage: 65, category: "aitools" },
+      { name: "Notion", level: "Intermediate", percentage: 75, category: "aitools" },
+      { name: "Aseprite", level: "Intermediate", percentage: 70, category: "aitools" }
     ],
     specs: [
       {
@@ -218,7 +221,8 @@ document.addEventListener('DOMContentLoaded', () => {
       { id: 'frontend', name: 'Frontend', icon: '🎨' },
       { id: 'backend', name: 'Backend', icon: '⚙️' },
       { id: 'devtools', name: 'DevTools', icon: '🛠️' },
-      { id: 'devops', name: 'DevOps', icon: '🚀' }
+      { id: 'devops', name: 'DevOps', icon: '🚀' },
+      { id: 'aitools', name: 'AI • Design • Tools', icon: '🤖' }
     ];
 
     categories.forEach(cat => {

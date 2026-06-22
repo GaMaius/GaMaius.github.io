@@ -1,7 +1,7 @@
 window.PORTFOLIO_DATA = {
   // 1. 프로필 정보 (Profile Info)
   profile: {
-    name: "GaMaius",
+    name: "지우가람",
     title: "Game • Web • AI Developer",
     // Hero 영역의 타자 애니메이션 키워드 목록
     typingWords: [
@@ -23,19 +23,22 @@ window.PORTFOLIO_DATA = {
 
   // 2. 기술 스택 숙련도 (Skills & Levels)
   // 수준(level)은 "Advanced" (숙련), "Intermediate" (중급), "Beginner" (초급) 중 하나로 기입하며,
-  // 카테고리(category)는 "language", "frontend", "backend", "devtools", "devops" 중 하나로 지정합니다.
+  // 카테고리(category)는 "language", "frontend", "backend", "devtools", "devops", "aitools" 중 하나로 지정합니다.
   skills: [
     { name: "Python", level: "Advanced", percentage: 95, category: "language" },
     { name: "Unity Engine", level: "Advanced", percentage: 95, category: "devtools" },
     { name: "C++", level: "Intermediate", percentage: 75, category: "language" },
     { name: "C# Core", level: "Intermediate", percentage: 75, category: "language" },
-    { name: "PyTorch & CNN Architecture", level: "Intermediate", percentage: 75, category: "devtools" },
-    { name: "OpenCV", level: "Intermediate", percentage: 65, category: "devtools" },
     { name: "JavaScript", level: "Beginner", percentage: 50, category: "language" },
     { name: "HTML5 / CSS3", level: "Intermediate", percentage: 55, category: "frontend" },
     { name: "React.js / Frontend", level: "Beginner", percentage: 30, category: "frontend" },
     { name: "FastAPI & Node.js / Backend", level: "Beginner", percentage: 30, category: "backend" },
-    { name: "Git & GitHub", level: "Intermediate", percentage: 70, category: "devops" }
+    { name: "Git & GitHub", level: "Intermediate", percentage: 70, category: "devops" },
+    { name: "Mediapipe", level: "Advanced", percentage: 85, category: "aitools" },
+    { name: "PyTorch & CNN Architecture", level: "Intermediate", percentage: 75, category: "aitools" },
+    { name: "OpenCV", level: "Intermediate", percentage: 65, category: "aitools" },
+    { name: "Notion", level: "Intermediate", percentage: 75, category: "aitools" },
+    { name: "Aseprite", level: "Intermediate", percentage: 70, category: "aitools" }
   ],
 
   // 3. 스펙 이력 목록 (Specifications)
