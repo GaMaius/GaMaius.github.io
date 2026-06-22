@@ -1606,101 +1606,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* ==========================================
-   COSMIC PORTAL EFFECT (HERO BACKDROP)
+   INTERACTIVE CANVAS BACKDROP
    ========================================== */
-.hero-portal-wrap {
-  position: absolute;
-  bottom: 0px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 580px;
-  height: 290px; /* Semi-circle bounds */
-  overflow: hidden;
+#bg-canvas {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2; /* Behind floating shapes and content */
   pointer-events: none;
-  z-index: 0;
-  opacity: 0.9;
-}
-
-.hero-portal-glow {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
-  height: 300px;
-  border-radius: 300px 300px 0 0;
-  background: radial-gradient(circle at bottom, rgba(168, 85, 247, 0.45) 0%, rgba(0, 240, 255, 0.18) 50%, transparent 80%);
-  filter: blur(50px);
-  z-index: 1;
-}
-
-.hero-portal-ring {
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 440px;
-  height: 220px;
-  border-radius: 220px 220px 0 0;
-  border: 10px solid #a855f7;
-  border-bottom: none;
-  background: transparent;
-  box-shadow: 
-    0 -15px 40px rgba(168, 85, 247, 0.95),
-    0 -30px 80px rgba(0, 240, 255, 0.8),
-    inset 0 15px 40px rgba(168, 85, 247, 0.8),
-    inset 0 30px 80px rgba(0, 240, 255, 0.7);
-  filter: blur(5px);
-  z-index: 2;
-  animation: portalPulse 4s ease-in-out infinite alternate;
-}
-
-.hero-portal-core {
-  position: absolute;
-  bottom: -5px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 410px;
-  height: 205px;
-  border-radius: 205px 205px 0 0;
-  background: transparent;
-  border: 4px solid #ffffff;
-  border-bottom: none;
-  box-shadow: 
-    0 -10px 30px #ffffff,
-    0 -20px 60px rgba(0, 240, 255, 0.9);
-  filter: blur(2px);
-  z-index: 3;
-  opacity: 0.95;
-}
-
-[data-theme="light"] .hero-portal-ring {
-  border-color: rgba(139, 92, 246, 0.6);
-  box-shadow: 
-    0 -15px 40px rgba(139, 92, 246, 0.4),
-    0 -30px 60px rgba(14, 165, 233, 0.35);
-  filter: blur(6px);
-}
-[data-theme="light"] .hero-portal-core {
-  border-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 
-    0 -10px 20px rgba(255, 255, 255, 0.9),
-    0 -20px 40px rgba(14, 165, 233, 0.5);
-}
-[data-theme="light"] .hero-portal-glow {
-  background: radial-gradient(circle at bottom, rgba(139, 92, 246, 0.25) 0%, rgba(14, 165, 233, 0.12) 50%, transparent 80%);
-  filter: blur(40px);
-}
-
-@keyframes portalPulse {
-  0% {
-    transform: translateX(-50%) scale(0.98);
-    opacity: 0.85;
-  }
-  100% {
-    transform: translateX(-50%) scale(1.02);
-    opacity: 1;
-  }
 }
 
 /* ==========================================
