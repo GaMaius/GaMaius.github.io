@@ -82,15 +82,15 @@ window.PORTFOLIO_DATA = {
     {
       type: "education",
       badgeText: "수료",
-      institution: "블레이버스 (Blaver)",
-      title: "블레이버스 MVP 해커톤 최우수상 수상",
+      institution: "블레이버스 (Blaybus)",
+      title: "블레이버스 MVP 개발 해커톤 수료",
       date: "2025.10",
       desc: "Three.js 기반 3D CAD 부품 웹 뷰어 및 LLM 피드백 공부 보조 사이트 기획/개발로 MVP 경쟁 우수 평가 획득.",
       details: "Three.js 라이브러리를 활용한 3D CAD 부품 객체 로드 및 조작 기능 구현, OpenAI API 기반 학습 보조 챗봇 프롬프트 튜닝 및 실시간 챗 인터페이스 연동.",
       tags: ["Three.js", "React.js", "FastAPI", "OpenAI API"],
       result: "블레이버스 MVP 해커톤 최우수상 수상 (1등)",
       link: "https://github.com/GaMaius",
-      image: ""
+      image: "./Blaybus.png"
     },
     {
       type: "education",
