@@ -138,7 +138,8 @@
       const tableBody = document.getElementById('archive-table-body');
       if (tableBody) {
         tableBody.innerHTML = '';
-        data.projects.forEach(project => {
+        const sortedProjects = [...data.projects].sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99));
+        sortedProjects.forEach(project => {
           const row = document.createElement('tr');
           row.className = 'archive-row';
           

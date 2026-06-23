@@ -11,13 +11,13 @@ window.PORTFOLIO_DATA = {
       "Creative Problem Solver"
     ],
     // Hero 영역 하단 소개글
-    heroDescription: "몰입감 있는 경험을 제공하는 게임 개발, 효율적이고 직관적인 웹 인프라 설계, 실효성 높은 인공지능(AI) 모델과 LLM 기술의 실무 융합에 깊은 관심을 둔 개발자입니다.",
+    heroDescription: "몰입감 있는 게임 개발, 인공지능 모델과 LLM 기술의 실무 융합에 관심이 많은 개발자입니다.",
     // Profile 섹션 좌측 자기소개 문단
-    bioTitle: "기술 융합을 지향하는 하이브리드 엔지니어",
+    bioTitle: "학습한 다양한 기술의 융합을 시도하는 개발자",
     bioParagraphs: [
-      "단일 분야에 머무르지 않고, <strong>게임 개발</strong>, <strong>웹 풀스택</strong>, <strong>인공지능(AI)</strong> 도메인을 상호 보완하며 유기적인 구조를 갖춘 프로젝트를 만듭니다.",
-      "게임 개발과 3D WebGL 뷰어 렌더링 최적화 로직에서 쌓은 리소스 핸들링 감각을 웹 인터랙션에 응용하고, 클라우드 환경 위에 AI 모델이나 OpenAI GPT API 등의 생성형 지능형 서비스를 안전하게 접목하는 아키텍처 구축을 지향합니다.",
-      "프로토타이핑을 통해 아이디어를 린(Lean)하게 검증하는 해커톤 협업과, 복잡한 실무 문제를 본질적인 코드 최적화 및 논리적 설계를 통해 해결하는 과정 자체를 즐깁니다."
+      "단일 분야에 머무르지 않고, <strong>게임 개발</strong>, <strong>웹 풀스택</strong>, <strong>인공지능(AI)</strong> 등 다양한 분야에서 공부하고, 그 경험들을 활용해 새로운 기술을 공부해나가는 개발자입니다.",
+      "게임 개발에서 배운 Unity의 사용법과 Python에서 학습한 Mediapipe를 융합해 카메라 2대를 활용한 모션캡쳐 프로그램을 제작한 경험이 이 예시입니다.",
+      "해커톤에 참여하여 웹 프로그래밍과 AI 기술을 융합해 <strong>웹 기반의 3D 모델 뷰어와 AI 피드백 시스템</strong>을 갖춘 웹 사이트를 제작하는 등 협업 경험을 쌓았습니다."
     ]
   },
 
@@ -31,13 +31,13 @@ window.PORTFOLIO_DATA = {
     { name: "C# Core", level: "Intermediate", percentage: 75, category: "language" },
     { name: "JavaScript", level: "Beginner", percentage: 50, category: "language" },
     { name: "HTML5 / CSS3", level: "Intermediate", percentage: 55, category: "frontend" },
-    { name: "React.js / Frontend", level: "Beginner", percentage: 30, category: "frontend" },
-    { name: "FastAPI & Node.js / Backend", level: "Beginner", percentage: 30, category: "backend" },
+    { name: "React.js", level: "Beginner", percentage: 30, category: "frontend" },
+    { name: "FastAPI & Node.js", level: "Beginner", percentage: 30, category: "backend" },
     { name: "Git & GitHub", level: "Intermediate", percentage: 70, category: "devops" },
     { name: "Vercel", level: "Intermediate", percentage: 75, category: "devops" },
     { name: "Render", level: "Intermediate", percentage: 70, category: "devops" },
     { name: "Mediapipe", level: "Advanced", percentage: 85, category: "others" },
-    { name: "PyTorch & CNN Architecture", level: "Intermediate", percentage: 75, category: "others" },
+    { name: "PyTorch & CNN", level: "Intermediate", percentage: 75, category: "others" },
     { name: "OpenCV", level: "Intermediate", percentage: 65, category: "others" },
     { name: "Notion", level: "Intermediate", percentage: 75, category: "others" },
     { name: "Aseprite", level: "Intermediate", percentage: 70, category: "others" }
@@ -129,8 +129,10 @@ window.PORTFOLIO_DATA = {
 
   // 4. 프로젝트 상세 정보 (Featured Projects)
   // category는 필터링 기준입니다: "game", "web", "ai"
+  // priority: 중요도로 0부터 시작하여 작을수록 중요도가 높으며 상단에 정렬됩니다.
   projects: [
     {
+      priority: 0,
       category: "game",
       title: "Drilling 게임 출시",
       tags: ["Unity", "C#", "Game Launch"],
@@ -143,6 +145,7 @@ window.PORTFOLIO_DATA = {
       platformLabel: "Unity / Mobile"
     },
     {
+      priority: 2,
       category: "web",
       title: "LLM 기반 스마트 미러 웹앱",
       tags: ["React", "Node.js", "OpenAI API"],
@@ -155,6 +158,7 @@ window.PORTFOLIO_DATA = {
       platformLabel: "Web / LLM"
     },
     {
+      priority: 4,
       category: "ai",
       title: "CNN을 통한 수화 인식 프로그램",
       tags: ["Python", "PyTorch", "OpenCV (CNN)"],
@@ -167,6 +171,7 @@ window.PORTFOLIO_DATA = {
       platformLabel: "Python / PyTorch"
     },
     {
+      priority: 1,
       category: "web",
       title: "기계 부품 3D 뷰어 및 AI 공부 보조 사이트",
       tags: ["Three.js", "React", "FastAPI (LLM)"],
@@ -179,6 +184,7 @@ window.PORTFOLIO_DATA = {
       platformLabel: "WebGL / React / FastAPI"
     },
     {
+      priority: 3,
       category: "game",
       title: "push --force 게임",
       tags: ["Unity", "C#", "Game Jam"],

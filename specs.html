@@ -257,7 +257,8 @@
       const specsBody = document.getElementById('specs-archive-body');
       if (specsBody) {
         specsBody.innerHTML = '';
-        data.specs.forEach(spec => {
+        const sortedSpecs = [...data.specs].sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99));
+        sortedSpecs.forEach(spec => {
           const row = document.createElement('tr');
           row.className = 'archive-row';
           row.style.cursor = 'pointer';

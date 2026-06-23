@@ -41,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     specs: [
       {
+        priority: 0,
         type: "launch",
         badgeText: "출시",
         institution: "Google Play Store",
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: ""
       },
       {
+        priority: 1,
         type: "award",
         badgeText: "수상",
         institution: "블레이버스 (Blaver)",
@@ -67,6 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: ""
       },
       {
+        priority: 2,
         type: "award",
         badgeText: "수상",
         institution: "테크위크 (Techweek)",
@@ -80,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: ""
       },
       {
+        priority: 3,
         type: "award",
         badgeText: "수상",
         institution: "라이프 스타일 해커톤 위원회",
@@ -93,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: ""
       },
       {
+        priority: 4,
         type: "education",
         badgeText: "교육 수료",
         institution: "C++ 프로그래밍 교육센터",
@@ -106,6 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         image: ""
       },
       {
+        priority: 5,
         type: "internship",
         badgeText: "인턴십",
         institution: "실무 연계 매칭 프로그램",
@@ -121,6 +127,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ],
     projects: [
       {
+        priority: 0,
         category: "game",
         title: "Drilling 게임 출시",
         tags: ["Unity", "C#", "Game Launch"],
@@ -133,6 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
         platformLabel: "Unity / Mobile"
       },
       {
+        priority: 2,
         category: "web",
         title: "LLM 기반 스마트 미러 웹앱",
         tags: ["React", "Node.js", "OpenAI API"],
@@ -145,6 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
         platformLabel: "Web / LLM"
       },
       {
+        priority: 4,
         category: "ai",
         title: "CNN을 통한 수화 인식 프로그램",
         tags: ["Python", "PyTorch", "OpenCV (CNN)"],
@@ -157,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         platformLabel: "Python / PyTorch"
       },
       {
+        priority: 1,
         category: "web",
         title: "기계 부품 3D 뷰어 및 AI 공부 보조 사이트",
         tags: ["Three.js", "React", "FastAPI (LLM)"],
@@ -169,6 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         platformLabel: "WebGL / React / FastAPI"
       },
       {
+        priority: 3,
         category: "game",
         title: "push --force 게임",
         tags: ["Unity", "C#", "Game Jam"],
@@ -346,8 +357,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (specsContainer && data.specs) {
     specsContainer.innerHTML = '';
     
+    // Sort specs by priority ascending
+    const sortedSpecs = [...data.specs].sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99));
     // Limit homepage specs list to 4
-    const displaySpecs = data.specs.slice(0, 4);
+    const displaySpecs = sortedSpecs.slice(0, 4);
     
     displaySpecs.forEach(spec => {
       const specItem = document.createElement('div');
@@ -416,8 +429,10 @@ document.addEventListener('DOMContentLoaded', () => {
   if (projectsContainer && data.projects) {
     projectsContainer.innerHTML = '';
     
+    // Sort projects by priority ascending
+    const sortedProjects = [...data.projects].sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99));
     // Limit to max 6 projects for the home page list
-    const displayProjects = data.projects.slice(0, 6);
+    const displayProjects = sortedProjects.slice(0, 6);
     
     displayProjects.forEach((project) => {
       const projCard = document.createElement('div');
