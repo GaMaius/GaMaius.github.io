@@ -65,19 +65,13 @@ window.PORTFOLIO_DATA = {
   // 3. 스펙 이력 목록 (Specifications)
   // type은 배지 종류를 나타냅니다: "launch" (출시), "award" (수상), "education" (교육 수료), "internship" (인턴십)
   // 새로운 이력을 맨 위에 추가하면 최신 순서대로 렌더링됩니다.
-  specs: [
+    specs: [
     {
       type: "launch",
       badgeText: "출시",
       institution: "Steam",
       title: "PC 인디 게임 'Drilling' 공식 데모 출시",
       date: "2026.04",
-      desc: "Unity 엔진 기반의 하이퍼 캐주얼 게임 빌드 설계 및 스팀 런칭/운영.",
-      details: "광물 채굴 인벤토리 및 상점 업그레이드 시스템 설계, 미니게임 맵 로직과 보상 시스템 구현 및 QA 수행.",
-      tags: ["Unity", "C#", "PC", "Indie Game"],
-      result: "스팀 정식 데모 출시 완료 및 서비스 운영",
-      link: "https://store.steampowered.com/app/4304980/Drilling/",
-      image: ["./Drilling00.png", "./Drilling01.png"],
       relatedProjectTitle: "Drilling 게임 출시",
       priority: 0
     },
@@ -87,12 +81,6 @@ window.PORTFOLIO_DATA = {
       institution: "블레이버스 (Blaybus)",
       title: "블레이버스 MVP 개발 해커톤 수료",
       date: "2025.10",
-      desc: "Three.js 기반 3D CAD 부품 웹 뷰어 및 LLM 피드백 공부 보조 사이트 기획/개발로 MVP 경쟁 우수 평가 획득.",
-      details: "",
-      tags: ["Three.js", "React.js", "FastAPI", "OpenAI API"],
-      result: "블레이버스 MVP 해커톤 최우수상 수상 (1등)",
-      link: "https://github.com/GaMaius",
-      image: ["./Blaybus00.png", "./Blaybus03.png", "./Blaybus01.png", "./Blaybus02.png"],
       relatedProjectTitle: "기계 부품 3D 뷰어 및 AI 공부 보조 사이트",
       priority: 1
     },
@@ -102,12 +90,6 @@ window.PORTFOLIO_DATA = {
       institution: "테크위크 (Techweek)",
       title: "테크위크 1일 게임 해커톤 우승",
       date: "2025.09",
-      desc: "24시간 동안 Unity를 활용하여 Git 명령어 테마의 로컬 멀티플레이 난투 게임 'push --force' 프로토타입 빌드 완성.",
-      details: "Git 명령어 컨셉의 밀치기 액션 및 가속 물리 반사 로직 설계, 단독 게임플레이 클라이언트 코딩 및 24시간 내 시연 완성도 확보.",
-      tags: ["Unity", "C#", "Physics Engine", "Game Jam"],
-      result: "테크위크 해커톤 최종 우승 (1위)",
-      link: "https://github.com/GaMaius",
-      image: "",
       relatedProjectTitle: "push --force 게임",
       priority: 2
     },
@@ -117,16 +99,10 @@ window.PORTFOLIO_DATA = {
       institution: "라이프 스타일 해커톤 위원회",
       title: "라이프 스타일 해커톤 우수상 수상",
       date: "2025.07",
-      desc: "OpenAI GPT-4 API 및 비동기 음성 인식 연동 대시보드 스마트 미러 웹앱 개발.",
-      details: "React 기반 스마트 미러 대시보드 컴포넌트 개발, Node.js 기반 OpenAI 비동기 호출 아키텍처 수립, 날씨/캘린더 외부 API 통합 파이프라인 연동.",
-      tags: ["React.js", "Node.js", "OpenAI GPT-4", "Speech Recognition"],
-      result: "라이프 스타일 해커톤 우수상 수상",
-      link: "https://github.com/GaMaius",
-      image: "",
       relatedProjectTitle: "LLM 기반 스마트 미러 웹앱",
       priority: 3
     },
-    {
+{
       type: "education",
       badgeText: "수료",
       institution: "C++ 프로그래밍 교육센터",
@@ -169,7 +145,7 @@ window.PORTFOLIO_DATA = {
       team: "3인 개발 (클라이언트 2, 그래픽 1)",
       role: "메인 게임 프로그래머 (물리 충돌 반사 기믹 구현, 코어 채굴 루프 및 업그레이드 데이터 영속화 처리)",
       desc: "Unity 엔진 기반의 하이퍼 캐주얼 게임 빌드 설계 및 스팀 런칭/운영.\n\n수행 내용:\n광물 채굴 인벤토리 및 상점 업그레이드 시스템 설계, 미니게임 맵 로직과 보상 시스템 구현 및 QA 수행.",
-      github: "https://github.com/GaMaius",
+      github: "https://store.steampowered.com/app/4304980/Drilling/",
       icon: "⛏️",
       platformLabel: "Unity / Mobile",
       image: ["./Drilling00.png", "./Drilling01.png"]
