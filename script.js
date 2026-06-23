@@ -246,20 +246,15 @@ document.addEventListener('DOMContentLoaded', () => {
   if (eduContainerNode && data.profile?.education) {
     eduContainerNode.innerHTML = data.profile.education
       .map(edu => `
-        <div class="edu-item" style="position: relative; padding-left: 1.8rem; margin-bottom: 1.5rem;">
-          <div class="edu-dot" style="position: absolute; left: 0; top: 0.35rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-primary); box-shadow: var(--glow-strength); z-index: 2;"></div>
-          <div class="edu-header" style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.2rem; flex-wrap: wrap; gap: 0.4rem;">
-            <span class="edu-level" style="font-weight: 700; font-size: 0.95rem; color: var(--text-primary);">${edu.level}</span>
-            <span class="edu-period mono" style="font-size: 0.8rem; color: var(--text-muted);">${edu.period}</span>
+        <div class="edu-item">
+          <div class="edu-dot"></div>
+          <div class="edu-header">
+            <span class="edu-level">${edu.level}</span>
+            <span class="edu-period mono">${edu.period}</span>
           </div>
-          <div class="edu-name" style="font-size: 0.88rem; color: var(--text-secondary);">${edu.name}</div>
+          <div class="edu-name">${edu.name}</div>
         </div>
       `).join('');
-      
-    // Remove margin bottom from last item
-    if (eduContainerNode.lastElementChild) {
-      eduContainerNode.lastElementChild.style.marginBottom = '0';
-    }
   }
 
   // 3. Skills Board Injection (Grouped Categorically)

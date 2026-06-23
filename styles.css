@@ -675,7 +675,7 @@ h1, h2, h3, h4, h5, h6 {
   display: grid;
   grid-template-columns: 1.6fr 1fr;
   gap: 3.5rem;
-  align-items: start;
+  align-items: stretch;
 }
 
 .about-edu-wrap {
@@ -684,6 +684,9 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--border-color);
   box-shadow: var(--shadow-card);
   transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .about-edu-wrap:hover {
@@ -705,6 +708,11 @@ h1, h2, h3, h4, h5, h6 {
 
 .edu-timeline {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  gap: 1.5rem;
 }
 
 .edu-timeline::before {
@@ -721,10 +729,59 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(99, 102, 241, 0.12);
 }
 
+.edu-item {
+  position: relative;
+  padding-left: 1.8rem;
+}
+
+.edu-dot {
+  position: absolute;
+  left: 0;
+  top: 0.35rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent-primary);
+  box-shadow: var(--glow-strength);
+  z-index: 2;
+}
+
+.edu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.25rem;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.edu-level {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.edu-period {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.edu-name {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+}
+
 @media (max-width: 992px) {
   .profile-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
+  }
+  .about-edu-wrap {
+    height: auto;
+  }
+  .edu-timeline {
+    justify-content: start;
+    gap: 1.8rem;
   }
 }
 
