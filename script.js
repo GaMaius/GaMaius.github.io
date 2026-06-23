@@ -355,6 +355,12 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="modal-desc-text" style="white-space: pre-wrap; margin-bottom: 2.2rem; line-height: 1.7;">${spec.details}</p>
       ` : ''}
       
+      ${spec.image ? `
+        <div class="modal-image-container">
+          <img src="${spec.image}" alt="${spec.title}" class="modal-image">
+        </div>
+      ` : ''}
+      
       ${spec.tags && spec.tags.length > 0 ? `
         <h3 class="modal-desc-title" style="margin-bottom: 0.8rem;">관련 기술 스택</h3>
         <div class="project-tags" style="margin-bottom: 2.2rem;">
@@ -440,6 +446,12 @@ document.addEventListener('DOMContentLoaded', () => {
       
       <h3 class="modal-desc-title">상세 설명</h3>
       <p class="modal-desc-text" style="white-space: pre-wrap;">${project.desc || ''}</p>
+      
+      ${project.image ? `
+        <div class="modal-image-container">
+          <img src="${project.image}" alt="${project.title}" class="modal-image">
+        </div>
+      ` : ''}
       
       <div class="project-tags" style="margin-bottom: 2rem;">
         ${tagsMarkup}
