@@ -77,7 +77,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Unity", "C#", "PC", "Indie Game"],
       result: "스팀 정식 데모 출시 완료 및 서비스 운영",
       link: "https://store.steampowered.com/app/4304980/Drilling/",
-      image: ["./Drilling00.png", "./Drilling01.png"]
+      image: ["./Drilling00.png", "./Drilling01.png"],
+      relatedProjectTitle: "Drilling 게임 출시"
     },
     {
       type: "education",
@@ -85,12 +86,13 @@ window.PORTFOLIO_DATA = {
       institution: "블레이버스 (Blaybus)",
       title: "블레이버스 MVP 개발 해커톤 수료",
       date: "2025.10",
-      desc: "Three.js 기반 3D CAD 부품 웹 뷰어 및 LLM 피드백 공부 보조 사이트 기획/개발로 MVP 경쟁 우수 평가 획득.",
-      details: "Three.js 라이브러리를 활용한 3D CAD 부품 객체 로드 및 조작 기능 구현, OpenAI API 기반 학습 보조 챗봇 프롬프트 튜닝 및 실시간 챗 인터페이스 연동.",
-      tags: ["Three.js", "React.js", "FastAPI", "OpenAI API"],
+      desc: "WebGL(Three.js) 기반의 3D CAD 부품 분해 뷰어 및 OpenAI GPT 기반 대화형 학습 피드백 시스템을 탑재한 지능형 교육 웹 플랫폼 기획/개발.",
+      details: "3D CAD 부품 시각화 및 인터랙티브 뷰어 구현:\nThree.js(WebGL) 라이브러리를 활용하여 기계 장치(드론, V4 엔진, 로봇 암 등)의 GLB 메쉬 파일을 부품 단위로 웹 브라우저에 로드.\n회전, 확대, 이동 제어 및 부품 분해 뷰(Explode View) 기능을 연동하고, 사용자 시각화 상태(카메라 좌표, 타겟, 분해율)를 Django 세션과 연동하여 DB(SQLite)에 실시간으로 저장 및 복구하는 백엔드 API 설계.\n\nOpenAI API 연동 및 지능형 학습 어시스턴트 기능 구축:\nOpenAI API 기반 챗봇 인터페이스를 통해 부품 선택 시 기계적 작동 원리와 물리적 정보에 대한 질의응답 기능 제공.\n유저 대화 맥락을 파악하여 자동으로 대화를 요약하는 AI 요약 API와 3D CAD 객체 정보 기반 맞춤형 학습 퀴즈를 생성해 주는 API 모듈 설계.\n\n데이터 관리 및 비동기 파이프라인 설계:\n부품의 역할 및 재질(PartInfo) 비동기 호출 API 구현.\n유저 대화 히스토리를 JSON 스토리지 파일 및 DB에 하이브리드로 저장 및 관리(CRUD)하는 데이터 입출력 파이프라인 개발.",
+      tags: ["Python / Django", "SQLite", "JavaScript", "Three.js (WebGL)", "HTML5 / CSS3", "OpenAI API", "WhiteNoise", "Gunicorn"],
       result: "블레이버스 MVP 해커톤 최우수상 수상 (1등)",
       link: "https://github.com/GaMaius",
-      image: "./Blaybus.png"
+      image: ["./Blaybus00.png", "./Blaybus03.png", "./Blaybus01.png", "./Blaybus02.png"],
+      relatedProjectTitle: "기계 부품 3D 뷰어 및 AI 공부 보조 사이트"
     },
     {
       type: "education",
@@ -103,7 +105,8 @@ window.PORTFOLIO_DATA = {
       tags: ["Unity", "C#", "Physics Engine", "Game Jam"],
       result: "테크위크 해커톤 최종 우승 (1위)",
       link: "https://github.com/GaMaius",
-      image: ""
+      image: "",
+      relatedProjectTitle: "push --force 게임"
     },
     {
       type: "award",
@@ -116,7 +119,8 @@ window.PORTFOLIO_DATA = {
       tags: ["React.js", "Node.js", "OpenAI GPT-4", "Speech Recognition"],
       result: "라이프 스타일 해커톤 우수상 수상",
       link: "https://github.com/GaMaius",
-      image: ""
+      image: "",
+      relatedProjectTitle: "LLM 기반 스마트 미러 웹앱"
     },
     {
       type: "education",

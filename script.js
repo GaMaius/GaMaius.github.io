@@ -386,14 +386,39 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
       ` : ''}
 
-      ${spec.link ? `
-        <div class="project-links" style="padding-top: 1.5rem; border-top: 1px dashed var(--border-color); margin-top: 2rem;">
-          <a href="${spec.link}" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem; padding: 0.6rem 1.4rem;">
-            관련 링크 바로가기 &rarr;
-          </a>
-        </div>
-      ` : ''}
+      ${(() => {
+        const relatedProj = spec.relatedProjectTitle ? (data.projects || []).find(p => p.title === spec.relatedProjectTitle) : null;
+        const hasLinks = spec.link || (relatedProj && relatedProj.desc);
+        if (!hasLinks) return '';
+        return `
+          <div class="project-links" style="padding-top: 1.5rem; border-top: 1px dashed var(--border-color); margin-top: 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+            ${spec.link ? `
+              <a href="${spec.link}" class="btn btn-secondary" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem; padding: 0.6rem 1.4rem;">
+                관련 링크 바로가기 &rarr;
+              </a>
+            ` : ''}
+            ${relatedProj && relatedProj.desc ? `
+              <button id="spec-related-proj-btn" class="btn btn-primary" style="font-size:0.8rem; padding: 0.6rem 1.4rem; cursor: pointer;">
+                자세히 보기 &rarr;
+              </button>
+            ` : ''}
+          </div>
+        `;
+      })()}
     `;
+
+    // Bind click trigger for related project button inside Spec Modal
+    if (spec.relatedProjectTitle) {
+      const relatedProj = (data.projects || []).find(p => p.title === spec.relatedProjectTitle);
+      if (relatedProj && relatedProj.desc) {
+        const btn = projectModalBody.querySelector('#spec-related-proj-btn');
+        if (btn) {
+          btn.addEventListener('click', () => {
+            openProjectModal(relatedProj);
+          });
+        }
+      }
+    }
     
     projectModal.classList.add('open');
     document.body.style.overflow = 'hidden';
