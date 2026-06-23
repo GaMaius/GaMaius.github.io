@@ -77,7 +77,7 @@ window.PORTFOLIO_DATA = {
       tags: ["Unity", "C#", "PC", "Indie Game"],
       result: "스팀 정식 데모 출시 완료 및 서비스 운영",
       link: "https://store.steampowered.com/app/4304980/Drilling/",
-      image: "./Drilling00.png"
+      image: ["./Drilling00.png", "./Drilling01.png"]
     },
     {
       type: "education",

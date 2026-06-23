@@ -62,15 +62,15 @@ document.addEventListener('DOMContentLoaded', () => {
         priority: 0,
         type: "launch",
         badgeText: "출시",
-        institution: "Google Play Store",
-        title: "모바일 캐주얼 아케이드 게임 'Drilling' 공식 출시",
-        date: "2026.02",
-        desc: "Unity 엔진 기반의 물리 및 터치 기믹 아케이드 게임 빌드 설계 및 구글 플레이 스토어 런칭/운영.",
-        details: "터치 드래그 가속 물리 조작감 구현, 코어 채굴 루프 및 업그레이드 수집 시스템 설계, 구글 플레이 스토어 빌드 등록 및 출시 프로세스 전담 대응.",
-        tags: ["Unity", "C#", "Android", "Mobile Game"],
-        result: "구글 플레이 스토어 정식 출시 완료 및 서비스 운영",
-        link: "https://play.google.com/store",
-        image: ""
+        institution: "Steam",
+        title: "PC 인디 게임 'Drilling' 공식 데모 출시",
+        date: "2026.04",
+        desc: "Unity 엔진 기반의 하이퍼 캐주얼 게임 빌드 설계 및 스팀 런칭/운영.",
+        details: "광물 채굴 인벤토리 및 상점 업그레이드 시스템 설계, 미니게임 맵 로직과 보상 시스템 구현 및 QA 수행.",
+        tags: ["Unity", "C#", "PC", "Indie Game"],
+        result: "스팀 정식 데모 출시 완료 및 서비스 운영",
+        link: "https://store.steampowered.com/app/4304980/Drilling/",
+        image: ["./Drilling00.png", "./Drilling01.png"]
       },
       {
         priority: 1,
@@ -355,11 +355,19 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="modal-desc-text" style="white-space: pre-wrap; margin-bottom: 2.2rem; line-height: 1.7;">${spec.details}</p>
       ` : ''}
       
-      ${spec.image ? `
-        <div class="modal-image-container">
-          <img src="${spec.image}" alt="${spec.title}" class="modal-image">
-        </div>
-      ` : ''}
+      ${spec.image ? (() => {
+        const imgs = Array.isArray(spec.image) ? spec.image : [spec.image];
+        const imgsMarkup = imgs.map(img => `
+          <div class="modal-image-wrapper">
+            <img src="${img}" alt="${spec.title}" class="modal-image">
+          </div>
+        `).join('');
+        return `
+          <div class="modal-images-grid ${imgs.length > 1 ? 'multi' : ''}">
+            ${imgsMarkup}
+          </div>
+        `;
+      })() : ''}
       
       ${spec.tags && spec.tags.length > 0 ? `
         <h3 class="modal-desc-title" style="margin-bottom: 0.8rem;">관련 기술 스택</h3>
@@ -447,11 +455,19 @@ document.addEventListener('DOMContentLoaded', () => {
       <h3 class="modal-desc-title">상세 설명</h3>
       <p class="modal-desc-text" style="white-space: pre-wrap;">${project.desc || ''}</p>
       
-      ${project.image ? `
-        <div class="modal-image-container">
-          <img src="${project.image}" alt="${project.title}" class="modal-image">
-        </div>
-      ` : ''}
+      ${project.image ? (() => {
+        const imgs = Array.isArray(project.image) ? project.image : [project.image];
+        const imgsMarkup = imgs.map(img => `
+          <div class="modal-image-wrapper">
+            <img src="${img}" alt="${project.title}" class="modal-image">
+          </div>
+        `).join('');
+        return `
+          <div class="modal-images-grid ${imgs.length > 1 ? 'multi' : ''}">
+            ${imgsMarkup}
+          </div>
+        `;
+      })() : ''}
       
       <div class="project-tags" style="margin-bottom: 2rem;">
         ${tagsMarkup}

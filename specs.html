@@ -223,11 +223,19 @@
             <p class="modal-desc-text" style="white-space: pre-wrap; margin-bottom: 2.2rem; line-height: 1.7;">${spec.details}</p>
           ` : ''}
           
-          ${spec.image ? `
-            <div class="modal-image-container">
-              <img src="${spec.image}" alt="${spec.title}" class="modal-image">
-            </div>
-          ` : ''}
+          ${spec.image ? (() => {
+            const imgs = Array.isArray(spec.image) ? spec.image : [spec.image];
+            const imgsMarkup = imgs.map(img => `
+              <div class="modal-image-wrapper">
+                <img src="${img}" alt="${spec.title}" class="modal-image">
+              </div>
+            `).join('');
+            return `
+              <div class="modal-images-grid ${imgs.length > 1 ? 'multi' : ''}">
+                ${imgsMarkup}
+              </div>
+            `;
+          })() : ''}
           
           ${spec.tags && spec.tags.length > 0 ? `
             <h3 class="modal-desc-title" style="margin-bottom: 0.8rem;">관련 기술 스택</h3>
