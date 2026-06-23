@@ -176,19 +176,19 @@ document.addEventListener('DOMContentLoaded', () => {
         platformLabel: "Web / LLM"
       },
       {
-        priority: 4,
+        priority: 3,
         category: "ai",
         title: "CNN을 통한 수화 인식 프로그램",
         tags: ["Python", "PyTorch", "OpenCV (CNN)"],
         period: "2025.04 - 2025.06 (2개월)",
         team: "2인 개발 (모델 1, 데이터 가공 1)",
         role: "CNN 모델 아키텍처 설계, PyTorch 학습 파이프라인 개발, OpenCV 웹캠 인터페이스 실시간 프레임 예측 구현",
-        desc: "컴퓨터 비전 기술을 접목하여 카메라로 캡처한 손짓 동작을 분석하고 실시간으로 지문자 수화(A-Z) 문자로 분류해 주는 프로그램입니다.",
+        desc: "컴퓨터 vision 기술을 접목하여 카메라로 캡처한 손짓 동작을 분석하고 실시간으로 지문자 수화(A-Z) 문자로 분류해 주는 프로그램입니다.",
         details: "CNN 모델 아키텍처 설계, PyTorch 학습 파이프라인 개발, OpenCV 웹캠 인터페이스 실시간 프레임 예측 구현.\n데이터 전처리 및 경량화된 CNN 레이어 최적화 설계 수행.",
         result: "경량화 모델 최적화 및 30 FPS 이상 실시간 인식률 확보",
-        github: "https://github.com/GaMaius",
         icon: "🤟",
-        platformLabel: "Python / PyTorch"
+        platformLabel: "Python / PyTorch",
+        image: ["./CNN00.png"]
       },
       {
         priority: 1,
@@ -273,7 +273,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const skillsBoard = document.getElementById('skills-board-container');
   if (skillsBoard && data.skills) {
     skillsBoard.innerHTML = '';
-    
+
     const categories = [
       { id: 'language', name: 'Language', icon: '📝' },
       { id: 'frontend', name: 'Frontend', icon: '🎨' },
@@ -285,11 +285,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     categories.forEach(cat => {
       const catSkills = data.skills.filter(s => s.category === cat.id);
-      
+
       if (catSkills.length > 0) {
         const row = document.createElement('div');
         row.className = 'skill-row';
-        
+
         const badgesMarkup = catSkills.map(skill => {
           const lvl = (skill.level || 'beginner').toLowerCase();
           return `<span class="skill-badge ${lvl}">${skill.name}</span>`;
@@ -431,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
     }
-    
+
     projectModal.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -440,16 +440,16 @@ document.addEventListener('DOMContentLoaded', () => {
   const specsContainer = document.getElementById('specs-list-container');
   if (specsContainer && data.specs) {
     specsContainer.innerHTML = '';
-    
+
     // Sort specs by priority ascending
     const sortedSpecs = [...data.specs].sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99));
     // Limit homepage specs list to 4
     const displaySpecs = sortedSpecs.slice(0, 4);
-    
+
     displaySpecs.forEach(spec => {
       const specItem = document.createElement('div');
       specItem.className = 'specs-row-item clickable-spec';
-      
+
       // Horizontal row order: Title (내용) -> Badge (분류) -> Institution (개최기관) -> Date (기간)
       specItem.innerHTML = `
         <div class="spec-col-title" style="font-weight: 700; font-size: 1rem; color: var(--text-primary);">${spec.title}</div>
@@ -457,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="spec-col-institution" style="font-weight: 600; font-size: 0.9rem; color: var(--text-secondary);">${spec.institution || ''}</div>
         <div class="spec-col-date mono" style="font-size: 0.85rem; color: var(--text-muted); text-align: right;">${spec.date}</div>
       `;
-      
+
       // Bind click trigger: if related project exists, open project modal directly, otherwise open spec modal
       specItem.addEventListener('click', () => {
         const relatedProj = spec.relatedProjectTitle ? (data.projects || []).find(p => p.title === spec.relatedProjectTitle) : null;
@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', () => {
           openSpecModal(spec);
         }
       });
-      
+
       specsContainer.appendChild(specItem);
     });
   }
@@ -537,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="background: rgba(var(--accent-rgb), 0.05); border: 1px solid rgba(var(--accent-rgb), 0.2); border-radius: var(--radius-sm); padding: 1.2rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.8rem;">
           <span style="font-size: 1.6rem; line-height: 1;">🏆</span>
           <div>
-            <div style="font-size: 0.7rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--accent-primary); font-weight:600;">결과 및 성과 (RESULT)</div>
+            <div style="font-size: 0.7rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--accent-primary); font-weight:600;">결과 및 성과</div>
             <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-top: 0.15rem;">${project.result}</div>
           </div>
         </div>
@@ -547,18 +547,18 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="project-links" style="padding-top: 1.5rem; border-top: 1px dashed var(--border-color); margin-top: 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
           <a href="${project.github}" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem; padding: 0.6rem 1.4rem; display: inline-flex; align-items: center; gap: 0.4rem;">
             ${(() => {
-              const isGithub = project.github && project.github.includes('github.com');
-              const label = isGithub ? 'GitHub Repository' : '관련 링크 바로가기';
-              const icon = isGithub 
-                ? `<svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: currentColor;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`
-                : '🔗';
-              return `${icon} ${label}`;
-            })()}
+          const isGithub = project.github && project.github.includes('github.com');
+          const label = isGithub ? 'GitHub Repository' : '관련 링크 바로가기';
+          const icon = isGithub
+            ? `<svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: currentColor;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`
+            : '🔗';
+          return `${icon} ${label}`;
+        })()}
           </a>
         </div>
       ` : ''}
     `;
-    
+
     projectModal.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
@@ -567,17 +567,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const projectsContainer = document.getElementById('projects-list-container');
   if (projectsContainer && data.projects) {
     projectsContainer.innerHTML = '';
-    
+
     // Sort projects by priority ascending
     const sortedProjects = [...data.projects].sort((a, b) => (a.priority ?? 99) - (b.priority ?? 99));
     // Limit to max 6 projects for the home page list
     const displayProjects = sortedProjects.slice(0, 6);
-    
+
     displayProjects.forEach((project) => {
       const projCard = document.createElement('div');
       projCard.className = 'project-card-wrapper glass-card reveal';
       projCard.dataset.category = project.category;
-      
+
       const tagsMarkup = project.tags
         .map(tag => `<span class="project-tag">${tag}</span>`)
         .join('');
@@ -604,7 +604,7 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `;
-      
+
       // Open Modal on Card Click
       projCard.addEventListener('click', () => {
         openProjectModal(project);
@@ -622,9 +622,9 @@ document.addEventListener('DOMContentLoaded', () => {
     dark: document.getElementById('theme-opt-dark'),
     system: document.getElementById('theme-opt-system')
   };
-  
+
   const systemMediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-  
+
   function applySystemTheme() {
     const isDark = systemMediaQuery.matches;
     document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
@@ -720,7 +720,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function typeEffect() {
     const currentWord = wordsToType[wordIndex];
-    
+
     if (isDeleting) {
       typingTarget.textContent = currentWord.substring(0, charIndex - 1);
       charIndex--;
@@ -815,7 +815,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       projectCards.forEach(card => {
         const cardCategory = card.getAttribute('data-category');
-        
+
         if (filterValue === 'all' || cardCategory === filterValue) {
           card.style.display = 'block';
           setTimeout(() => {
@@ -843,7 +843,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (img) {
         const src = img.getAttribute('src');
         const alt = img.getAttribute('alt') || 'Image Preview';
-        
+
         const overlay = document.createElement('div');
         overlay.className = 'lightbox-overlay';
         overlay.innerHTML = `
@@ -852,26 +852,26 @@ document.addEventListener('DOMContentLoaded', () => {
             <img class="lightbox-img" src="${src}" alt="${alt}">
           </div>
         `;
-        
+
         document.body.appendChild(overlay);
-        
+
         // Force reflow
         overlay.offsetHeight;
         overlay.classList.add('active');
-        
+
         const closeLightbox = () => {
           overlay.classList.remove('active');
           setTimeout(() => {
             overlay.remove();
           }, 300);
         };
-        
+
         overlay.addEventListener('click', (ev) => {
           if (ev.target === overlay || ev.target.classList.contains('lightbox-close')) {
             closeLightbox();
           }
         });
-        
+
         const escHandler = (ev) => {
           if (ev.key === 'Escape') {
             closeLightbox();
