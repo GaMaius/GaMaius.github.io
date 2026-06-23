@@ -65,7 +65,7 @@ window.PORTFOLIO_DATA = {
   // 3. 스펙 이력 목록 (Specifications)
   // type은 배지 종류를 나타냅니다: "launch" (출시), "award" (수상), "education" (교육 수료), "internship" (인턴십)
   // 새로운 이력을 맨 위에 추가하면 최신 순서대로 렌더링됩니다.
-    specs: [
+  specs: [
     {
       type: "launch",
       badgeText: "출시",
@@ -102,7 +102,7 @@ window.PORTFOLIO_DATA = {
       relatedProjectTitle: "LLM 기반 스마트 미러 웹앱",
       priority: 3
     },
-{
+    {
       type: "education",
       badgeText: "수료",
       institution: "C++ 프로그래밍 교육센터",
@@ -144,7 +144,9 @@ window.PORTFOLIO_DATA = {
       period: "2025.11 - 2026.02 (4개월)",
       team: "3인 개발 (클라이언트 2, 그래픽 1)",
       role: "메인 게임 프로그래머 (물리 충돌 반사 기믹 구현, 코어 채굴 루프 및 업그레이드 데이터 영속화 처리)",
-      desc: "Unity 엔진 기반의 하이퍼 캐주얼 게임 빌드 설계 및 스팀 런칭/운영.\n\n수행 내용:\n광물 채굴 인벤토리 및 상점 업그레이드 시스템 설계, 미니게임 맵 로직과 보상 시스템 구현 및 QA 수행.",
+      desc: "Unity 엔진 기반의 하이퍼 캐주얼 게임 빌드 설계 및 스팀 런칭/운영.",
+      details: "광물 채굴 인벤토리 및 상점 업그레이드 시스템 설계, 미니게임 맵 로직과 보상 시스템 구현 및 QA 수행.",
+      result: "스팀 정식 데모 출시 완료 및 서비스 운영",
       github: "https://store.steampowered.com/app/4304980/Drilling/",
       icon: "⛏️",
       platformLabel: "Unity / Mobile",
@@ -158,7 +160,9 @@ window.PORTFOLIO_DATA = {
       period: "2025.07 (3일, 라이프 스타일 해커톤)",
       team: "4인 개발 (프론트 2, 백엔드 1, 디자인 1)",
       role: "백엔드 아키텍처 설계, OpenAI GPT-4 대화 인터페이스 통합, 음성 인식(STT) 라이브러리 연동 API 개발",
-      desc: "거울 디스플레이 배후 스크린에 탑재하는 스마트 미러 대시보드 웹앱입니다. 사용자의 아침 음성 질문을 수신하여 날씨 정보 분석 및 캘린더 일정을 조회하고, 맞춤화된 요약 일과 및 의상 제안을 생성형 AI를 거쳐 화면에 출력합니다. 우수상을 수상했습니다.",
+      desc: "거울 디스플레이 배후 스크린에 탑재하는 스마트 미러 대시보드 웹앱입니다. 사용자의 아침 음성 질문을 수신하여 날씨 정보 분석 및 캘린더 일정을 조회하고, 맞춤화된 요약 일과 및 의상 제안을 생성형 AI를 거쳐 화면에 출력합니다.",
+      details: "React 기반 스마트 미러 대시보드 컴포넌트 개발, Node.js 기반 OpenAI 비동기 호출 아키텍처 수립, 날씨/캘린더 외부 API 통합 파이프라인 연동.",
+      result: "라이프 스타일 해커톤 우수상 수상",
       github: "https://github.com/GaMaius",
       icon: "🪞",
       platformLabel: "Web / LLM"
@@ -171,7 +175,9 @@ window.PORTFOLIO_DATA = {
       period: "2025.04 - 2025.06 (2개월)",
       team: "2인 개발 (모델 1, 데이터 가공 1)",
       role: "CNN 모델 아키텍처 설계, PyTorch 학습 파이프라인 개발, OpenCV 웹캠 인터페이스 실시간 프레임 예측 구현",
-      desc: "컴퓨터 비전 기술을 접목하여 카메라로 캡처한 손짓 동작을 분석하고 실시간으로 지문자 수화(A-Z) 문자로 분류해 주는 프로그램입니다. 데이터 전처리, 경량화된 CNN 레이어 최적화 설계를 거쳐 저사양 PC 환경에서도 프레임 손실 없는 높은 정확도의 인식을 완성했습니다.",
+      desc: "컴퓨터 비전 기술을 접목하여 카메라로 캡처한 손짓 동작을 분석하고 실시간으로 지문자 수화(A-Z) 문자로 분류해 주는 프로그램입니다.",
+      details: "CNN 모델 아키텍처 설계, PyTorch 학습 파이프라인 개발, OpenCV 웹캠 인터페이스 실시간 프레임 예측 구현.\n데이터 전처리 및 경량화된 CNN 레이어 최적화 설계 수행.",
+      result: "경량화 모델 최적화 및 30 FPS 이상 실시간 인식률 확보",
       github: "https://github.com/GaMaius",
       icon: "🤟",
       platformLabel: "Python / PyTorch"
@@ -184,7 +190,9 @@ window.PORTFOLIO_DATA = {
       period: "2025.10 (3일, 블레이버스 MVP 해커톤)",
       team: "4인 개발 (프론트 2, 백엔드 1, 3D 모델러 1)",
       role: "Three.js 기반 OBJ/GLTF 3D 기계 메쉬 렌더러 컴포넌트 구현, FastAPI 공부 보조 챗봇 어시스턴트 구조 설계",
-      desc: "WebGL(Three.js) 기반의 3D CAD 부품 분해 뷰어 및 OpenAI GPT 기반 대화형 학습 피드백 시스템을 탑재한 지능형 교육 웹 플랫폼 기획/개발.\n\n수행 내용:\n\n3D CAD 부품 시각화 및 인터랙티브 뷰어 구현:\nThree.js(WebGL) 라이브러리를 활용하여 기계 장치(드론, V4 엔진, 로봇 암 등)의 GLB 메쉬 파일을 부품 단위로 웹 브라우저에 로드.\n회전, 확대, 이동 제어 및 부품 분해 뷰(Explode View) 기능을 연동하고, 사용자 시각화 상태(카메라 좌표, 타겟, 분해율)를 Django 세션과 연동하여 DB(SQLite)에 실시간으로 저장 및 복구하는 백엔드 API 설계.\n\nOpenAI API 연동 및 지능형 학습 어시스턴트 기능 구축:\nOpenAI API 기반 챗봇 인터페이스를 통해 부품 선택 시 기계적 작동 원리와 물리적 정보에 대한 질의응답 기능 제공.\n유저 대화 맥락을 파악하여 자동으로 대화를 요약하는 AI 요약 API와 3D CAD 객체 정보 기반 맞춤형 학습 퀴즈를 생성해 주는 API 모듈 설계.\n\n데이터 관리 및 비동기 파이프라인 설계:\n부품의 역할 및 재질(PartInfo) 비동기 호출 API 구현.\n유저 대화 히스토리를 JSON 스토리지 파일 및 DB에 하이브리드로 저장 및 관리(CRUD)하는 데이터 입출력 파이프라인 개발.",
+      desc: "WebGL(Three.js) 기반의 3D CAD 부품 분해 뷰어 및 OpenAI GPT 기반 대화형 학습 피드백 시스템을 탑재한 지능형 교육 웹 플랫폼 기획/개발.",
+      details: "3D CAD 부품 시각화 및 인터랙티브 뷰어 구현:\nThree.js(WebGL) 라이브러리를 활용하여 기계 장치(드론, V4 엔진, 로봇 암 등)의 GLB 메쉬 파일을 부품 단위로 웹 브라우저에 로드.\n회전, 확대, 이동 제어 및 부품 분해 뷰(Explode View) 기능을 연동하고, 사용자 시각화 상태(카메라 좌표, 타겟, 분해율)를 Django 세션과 연동하여 DB(SQLite)에 실시간으로 저장 및 복구하는 백엔드 API 설계.\n\nOpenAI API 연동 및 지능형 학습 어시스턴트 기능 구축:\nOpenAI API 기반 챗봇 인터페이스를 통해 부품 선택 시 기계적 작동 원리와 물리적 정보에 대한 질의응답 기능 제공.\n유저 대화 맥락을 파악하여 자동으로 대화를 요약하는 AI 요약 API와 3D CAD 객체 정보 기반 맞춤형 학습 퀴즈를 생성해 주는 API 모듈 설계.\n\n데이터 관리 및 비동기 파이프라인 설계:\n부품의 역할 및 재질(PartInfo) 비동기 호출 API 구현.\n유저 대화 히스토리를 JSON 스토리지 파일 및 DB에 하이브리드로 저장 및 관리(CRUD)하는 데이터 입출력 파이프라인 개발.",
+      result: "블레이버스 MVP 해커톤 최우수상 수상 (1등)",
       github: "https://github.com/GaMaius",
       icon: "⚙️",
       platformLabel: "WebGL / React / FastAPI",
@@ -198,7 +206,9 @@ window.PORTFOLIO_DATA = {
       period: "2025.09 (24시간, 테크위크 해커톤)",
       team: "2인 개발 (클라이언트 1, 기획/아트 1)",
       role: "단독 1인 프로그래밍 (플레이어 탑다운 이동 물리 반발력 구현, 키보드 대전 맵 낙사 기믹 및 승리 판정 루프 완성)",
-      desc: "Git 강제 푸시 명령어 'push --force' 컨셉을 탑다운 격투 메카닉으로 승화시킨 로컬 멀티플레이어 밀치기 난투 게임입니다. 24시간 해커톤 동안 충돌 가속도 반발 공식과 스피디한 이동 컨트롤러를 단독 구현하여 기획성을 입증받고 우승을 차지했습니다.",
+      desc: "Git 강제 푸시 명령어 'push --force' 컨셉을 탑다운 격투 메카닉으로 승화시킨 로컬 멀티플레이어 밀치기 난투 게임입니다.",
+      details: "Git 명령어 컨셉의 밀치기 액션 및 가속 물리 반사 로직 설계, 단독 게임플레이 클라이언트 코딩 및 24시간 내 시연 완성도 확보.",
+      result: "테크위크 해커톤 최종 우승 (1위)",
       github: "https://github.com/GaMaius",
       icon: "💥",
       platformLabel: "Unity / PC"

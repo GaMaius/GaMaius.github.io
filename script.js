@@ -152,10 +152,13 @@ document.addEventListener('DOMContentLoaded', () => {
         period: "2025.11 - 2026.02 (4개월)",
         team: "3인 개발 (클라이언트 2, 그래픽 1)",
         role: "메인 게임 프로그래머 (물리 충돌 반사 기믹 구현, 코어 채굴 루프 및 업그레이드 데이터 영속화 처리)",
-        desc: "지하 깊은 곳으로 드릴을 하강시키며 희귀 광물을 수집하고 위협적인 장애물을 회피하는 모바일 아케이드 게임입니다. 터치 드래그에 반응하는 최적화된 물리 가속 조작감을 완성하고 빌드를 구글 플레이에 출시하여 배포 주기를 경험했습니다.",
-        github: "https://github.com/GaMaius",
+        desc: "Unity 엔진 기반의 하이퍼 캐주얼 게임 빌드 설계 및 스팀 런칭/운영.",
+        details: "광물 채굴 인벤토리 및 상점 업그레이드 시스템 설계, 미니게임 맵 로직과 보상 시스템 구현 및 QA 수행.",
+        result: "스팀 정식 데모 출시 완료 및 서비스 운영",
+        github: "https://store.steampowered.com/app/4304980/Drilling/",
         icon: "⛏️",
-        platformLabel: "Unity / Mobile"
+        platformLabel: "Unity / Mobile",
+        image: ["./Drilling00.png", "./Drilling01.png"]
       },
       {
         priority: 2,
@@ -165,7 +168,9 @@ document.addEventListener('DOMContentLoaded', () => {
         period: "2025.07 (3일, 라이프 스타일 해커톤)",
         team: "4인 개발 (프론트 2, 백엔드 1, 디자인 1)",
         role: "백엔드 아키텍처 설계, OpenAI GPT-4 대화 인터페이스 통합, 음성 인식(STT) 라이브러리 연동 API 개발",
-        desc: "거울 디스플레이 배후 스크린에 탑재하는 스마트 미러 대시보드 웹앱입니다. 사용자의 아침 음성 질문을 수신하여 날씨 정보 분석 및 캘린더 일정을 조회하고, 맞춤화된 요약 일과 및 의상 제안을 생성형 AI를 거쳐 화면에 출력합니다. 우수상을 수상했습니다.",
+        desc: "거울 디스플레이 배후 스크린에 탑재하는 스마트 미러 대시보드 웹앱입니다. 사용자의 아침 음성 질문을 수신하여 날씨 정보 분석 및 캘린더 일정을 조회하고, 맞춤화된 요약 일과 및 의상 제안을 생성형 AI를 거쳐 화면에 출력합니다.",
+        details: "React 기반 스마트 미러 대시보드 컴포넌트 개발, Node.js 기반 OpenAI 비동기 호출 아키텍처 수립, 날씨/캘린더 외부 API 통합 파이프라인 연동.",
+        result: "라이프 스타일 해커톤 우수상 수상",
         github: "https://github.com/GaMaius",
         icon: "🪞",
         platformLabel: "Web / LLM"
@@ -178,7 +183,9 @@ document.addEventListener('DOMContentLoaded', () => {
         period: "2025.04 - 2025.06 (2개월)",
         team: "2인 개발 (모델 1, 데이터 가공 1)",
         role: "CNN 모델 아키텍처 설계, PyTorch 학습 파이프라인 개발, OpenCV 웹캠 인터페이스 실시간 프레임 예측 구현",
-        desc: "컴퓨터 비전 기술을 접목하여 카메라로 캡처한 손짓 동작을 분석하고 실시간으로 지문자 수화(A-Z) 문자로 분류해 주는 프로그램입니다. 데이터 전처리, 경량화된 CNN 레이어 최적화 설계를 거쳐 저사양 PC 환경에서도 프레임 손실 없는 높은 정확도의 인식을 완성했습니다.",
+        desc: "컴퓨터 비전 기술을 접목하여 카메라로 캡처한 손짓 동작을 분석하고 실시간으로 지문자 수화(A-Z) 문자로 분류해 주는 프로그램입니다.",
+        details: "CNN 모델 아키텍처 설계, PyTorch 학습 파이프라인 개발, OpenCV 웹캠 인터페이스 실시간 프레임 예측 구현.\n데이터 전처리 및 경량화된 CNN 레이어 최적화 설계 수행.",
+        result: "경량화 모델 최적화 및 30 FPS 이상 실시간 인식률 확보",
         github: "https://github.com/GaMaius",
         icon: "🤟",
         platformLabel: "Python / PyTorch"
@@ -191,10 +198,13 @@ document.addEventListener('DOMContentLoaded', () => {
         period: "2025.10 (3일, 블레이버스 MVP 해커톤)",
         team: "4인 개발 (프론트 2, 백엔드 1, 3D 모델러 1)",
         role: "Three.js 기반 OBJ/GLTF 3D 기계 메쉬 렌더러 컴포넌트 구현, FastAPI 공부 보조 챗봇 어시스턴트 구조 설계",
-        desc: "웹 브라우저 내에서 CAD 기계 설계 파일을 WebGL을 이용해 3D 렌더링하고 분해도를 볼 수 있는 플랫폼입니다. 업로드된 기계 부품의 원리와 작동 방식을 학습할 수 있도록 우측 뷰에 LLM 챗봇을 연결해 학습 보조 사이트를 설계했습니다. 최우수상을 받았습니다.",
+        desc: "WebGL(Three.js) 기반의 3D CAD 부품 분해 뷰어 및 OpenAI GPT 기반 대화형 학습 피드백 시스템을 탑재한 지능형 교육 웹 플랫폼 기획/개발.",
+        details: "3D CAD 부품 시각화 및 인터랙티브 뷰어 구현:\nThree.js(WebGL) 라이브러리를 활용하여 기계 장치(드론, V4 엔진, 로봇 암 등)의 GLB 메쉬 파일을 부품 단위로 웹 브라우저에 로드.\n회전, 확대, 이동 제어 및 부품 분해 뷰(Explode View) 기능을 연동하고, 사용자 시각화 상태(카메라 좌표, 타겟, 분해율)를 Django 세션과 연동하여 DB(SQLite)에 실시간으로 저장 및 복구하는 백엔드 API 설계.\n\nOpenAI API 연동 및 지능형 학습 어시스턴트 기능 구축:\nOpenAI API 기반 챗봇 인터페이스를 통해 부품 선택 시 기계적 작동 원리와 물리적 정보에 대한 질의응답 기능 제공.\n유저 대화 맥락을 파악하여 자동으로 대화를 요약하는 AI 요약 API와 3D CAD 객체 정보 기반 맞춤형 학습 퀴즈를 생성해 주는 API 모듈 설계.\n\n데이터 관리 및 비동기 파이프라인 설계:\n부품의 역할 및 재질(PartInfo) 비동기 호출 API 구현.\n유저 대화 히스토리를 JSON 스토리지 파일 및 DB에 하이브리드로 저장 및 관리(CRUD)하는 데이터 입출력 파이프라인 개발.",
+        result: "블레이버스 MVP 해커톤 최우수상 수상 (1등)",
         github: "https://github.com/GaMaius",
         icon: "⚙️",
-        platformLabel: "WebGL / React / FastAPI"
+        platformLabel: "WebGL / React / FastAPI",
+        image: ["./Blaybus00.png", "./Blaybus03.png", "./Blaybus01.png", "./Blaybus02.png"]
       },
       {
         priority: 3,
@@ -204,7 +214,9 @@ document.addEventListener('DOMContentLoaded', () => {
         period: "2025.09 (24시간, 테크위크 해커톤)",
         team: "2인 개발 (클라이언트 1, 기획/아트 1)",
         role: "단독 1인 프로그래밍 (플레이어 탑다운 이동 물리 반발력 구현, 키보드 대전 맵 낙사 기믹 및 승리 판정 루프 완성)",
-        desc: "Git 강제 푸시 명령어 'push --force' 컨셉을 탑다운 격투 메카닉으로 승화시킨 로컬 멀티플레이어 밀치기 난투 게임입니다. 24시간 해커톤 동안 충돌 가속도 반발 공식과 스피디한 이동 컨트롤러를 단독 구현하여 기획성을 입증받고 우승을 차지했습니다.",
+        desc: "Git 강제 푸시 명령어 'push --force' 컨셉을 탑다운 격투 메카닉으로 승화시킨 로컬 멀티플레이어 밀치기 난투 게임입니다.",
+        details: "Git 명령어 컨셉 of 밀치기 액션 및 가속 물리 반사 로직 설계, 단독 게임플레이 클라이언트 코딩 및 24시간 내 시연 완성도 확보.",
+        result: "테크위크 해커톤 최종 우승 (1위)",
         github: "https://github.com/GaMaius",
         icon: "💥",
         platformLabel: "Unity / PC"
@@ -468,10 +480,20 @@ document.addEventListener('DOMContentLoaded', () => {
       .map(tag => `<span class="project-tag">${tag}</span>`)
       .join('');
 
+    const categoryMap = {
+      game: { text: "게임", badgeClass: "launch" },
+      web: { text: "웹", badgeClass: "education" },
+      ai: { text: "인공지능", badgeClass: "award" }
+    };
+    const cat = categoryMap[project.category] || { text: "프로젝트", badgeClass: "internship" };
+
     projectModalBody.innerHTML = `
-      <div class="modal-header-icon">${project.icon || '📁'}</div>
+      <div class="modal-header-icon" style="font-size: 3rem; margin-bottom: 1rem;">${project.icon || '📁'}</div>
       <h2 class="modal-project-title font-display">${project.title}</h2>
-      <div class="modal-project-platform">${project.platformLabel || ''}</div>
+      <div class="modal-project-platform" style="margin-bottom: 1.8rem;">
+        <span class="specs-badge ${cat.badgeClass}" style="display:inline-block; vertical-align:middle; margin-right:0.5rem;">${cat.text}</span>
+        <span style="font-weight: 600; font-size: 0.95rem; color: var(--text-primary); vertical-align:middle;">${project.platformLabel || ''}</span>
+      </div>
       
       <div class="project-meta-grid" style="margin-bottom: 2rem;">
         <div class="project-meta-label">개발 기간</div>
@@ -482,8 +504,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="project-meta-value">${project.role || ''}</div>
       </div>
       
-      <h3 class="modal-desc-title">상세 설명</h3>
-      <p class="modal-desc-text" style="white-space: pre-wrap;">${project.desc || ''}</p>
+      <h3 class="modal-desc-title">프로젝트 개요</h3>
+      <p class="modal-desc-text">${project.desc || ''}</p>
+      
+      ${project.details ? `
+        <h3 class="modal-desc-title">수행 내용</h3>
+        <p class="modal-desc-text" style="white-space: pre-wrap; margin-bottom: 2.2rem; line-height: 1.7;">${project.details}</p>
+      ` : ''}
       
       ${project.image ? (() => {
         const imgs = Array.isArray(project.image) ? project.image : [project.image];
@@ -499,22 +526,37 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
       })() : ''}
       
-      <div class="project-tags" style="margin-bottom: 2rem;">
-        ${tagsMarkup}
-      </div>
+      ${project.tags && project.tags.length > 0 ? `
+        <h3 class="modal-desc-title" style="margin-bottom: 0.8rem;">관련 기술 스택</h3>
+        <div class="project-tags" style="margin-bottom: 2.2rem;">
+          ${tagsMarkup}
+        </div>
+      ` : ''}
+      
+      ${project.result ? `
+        <div style="background: rgba(var(--accent-rgb), 0.05); border: 1px solid rgba(var(--accent-rgb), 0.2); border-radius: var(--radius-sm); padding: 1.2rem; margin-bottom: 2rem; display: flex; align-items: center; gap: 0.8rem;">
+          <span style="font-size: 1.6rem; line-height: 1;">🏆</span>
+          <div>
+            <div style="font-size: 0.7rem; font-family: var(--font-mono); text-transform: uppercase; color: var(--accent-primary); font-weight:600;">결과 및 성과 (RESULT)</div>
+            <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary); margin-top: 0.15rem;">${project.result}</div>
+          </div>
+        </div>
+      ` : ''}
 
-      <div class="project-links" style="padding-top: 1.5rem; border-top: 1px dashed var(--border-color);">
-        <a href="${project.github || '#'}" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem; padding: 0.6rem 1.4rem; display: inline-flex; align-items: center; gap: 0.4rem;">
-          ${(() => {
-            const isGithub = project.github && project.github.includes('github.com');
-            const label = isGithub ? 'GitHub Repository' : '관련 링크 바로가기';
-            const icon = isGithub 
-              ? `<svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: currentColor;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`
-              : '🔗';
-            return `${icon} ${label}`;
-          })()}
-        </a>
-      </div>
+      ${project.github ? `
+        <div class="project-links" style="padding-top: 1.5rem; border-top: 1px dashed var(--border-color); margin-top: 2rem; display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+          <a href="${project.github}" class="btn btn-primary" target="_blank" rel="noopener noreferrer" style="font-size:0.8rem; padding: 0.6rem 1.4rem; display: inline-flex; align-items: center; gap: 0.4rem;">
+            ${(() => {
+              const isGithub = project.github && project.github.includes('github.com');
+              const label = isGithub ? 'GitHub Repository' : '관련 링크 바로가기';
+              const icon = isGithub 
+                ? `<svg viewBox="0 0 24 24" style="width: 14px; height: 14px; fill: currentColor;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>`
+                : '🔗';
+              return `${icon} ${label}`;
+            })()}
+          </a>
+        </div>
+      ` : ''}
     `;
     
     projectModal.classList.add('open');
