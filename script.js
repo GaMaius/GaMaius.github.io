@@ -19,6 +19,23 @@ document.addEventListener('DOMContentLoaded', () => {
         "단일 분야에 머무르지 않고, <strong>게임 개발</strong>, <strong>웹 풀스택</strong>, <strong>인공지능(AI)</strong> 도메인을 상호 보완하며 유기적인 구조를 갖춘 프로젝트를 만듭니다.",
         "게임 개발과 3D WebGL 뷰어 렌더링 최적화 로직에서 쌓은 리소스 핸들링 감각을 웹 인터랙션에 응용하고, 클라우드 환경 위에 AI 모델이나 OpenAI GPT API 등의 생성형 지능형 서비스를 안전하게 접목하는 아키텍처 구축을 지향합니다.",
         "프로토타이핑을 통해 아이디어를 린(Lean)하게 검증하는 해커톤 협업과, 복잡한 실무 문제를 본질적인 코드 최적화 및 논리적 설계를 통해 해결하는 과정 자체를 즐깁니다."
+      ],
+      education: [
+        {
+          level: "초등학교",
+          name: "초등학교 졸업",
+          period: "2014.03 - 2020.02"
+        },
+        {
+          level: "중학교",
+          name: "중학교 졸업",
+          period: "2020.03 - 2023.02"
+        },
+        {
+          level: "고등학교",
+          name: "고등학교 졸업",
+          period: "2023.03 - 2026.02"
+        }
       ]
     },
     skills: [
@@ -222,6 +239,27 @@ document.addEventListener('DOMContentLoaded', () => {
     bioContainerNode.innerHTML = data.profile.bioParagraphs
       .map(para => `<p>${para}</p>`)
       .join('');
+  }
+
+  // 2-2. Profile 학력 사항 주입
+  const eduContainerNode = document.getElementById('edu-timeline-container');
+  if (eduContainerNode && data.profile?.education) {
+    eduContainerNode.innerHTML = data.profile.education
+      .map(edu => `
+        <div class="edu-item" style="position: relative; padding-left: 1.8rem; margin-bottom: 1.5rem;">
+          <div class="edu-dot" style="position: absolute; left: 0; top: 0.35rem; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-primary); box-shadow: var(--glow-strength); z-index: 2;"></div>
+          <div class="edu-header" style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.2rem; flex-wrap: wrap; gap: 0.4rem;">
+            <span class="edu-level" style="font-weight: 700; font-size: 0.95rem; color: var(--text-primary);">${edu.level}</span>
+            <span class="edu-period mono" style="font-size: 0.8rem; color: var(--text-muted);">${edu.period}</span>
+          </div>
+          <div class="edu-name" style="font-size: 0.88rem; color: var(--text-secondary);">${edu.name}</div>
+        </div>
+      `).join('');
+      
+    // Remove margin bottom from last item
+    if (eduContainerNode.lastElementChild) {
+      eduContainerNode.lastElementChild.style.marginBottom = '0';
+    }
   }
 
   // 3. Skills Board Injection (Grouped Categorically)
