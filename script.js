@@ -446,9 +446,14 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="spec-col-date mono" style="font-size: 0.85rem; color: var(--text-muted); text-align: right;">${spec.date}</div>
       `;
       
-      // Bind click trigger for spec modal
+      // Bind click trigger: if related project exists, open project modal directly, otherwise open spec modal
       specItem.addEventListener('click', () => {
-        openSpecModal(spec);
+        const relatedProj = spec.relatedProjectTitle ? (data.projects || []).find(p => p.title === spec.relatedProjectTitle) : null;
+        if (relatedProj && relatedProj.desc) {
+          openProjectModal(relatedProj);
+        } else {
+          openSpecModal(spec);
+        }
       });
       
       specsContainer.appendChild(specItem);

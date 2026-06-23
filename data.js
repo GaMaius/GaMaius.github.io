@@ -86,9 +86,9 @@ window.PORTFOLIO_DATA = {
       institution: "블레이버스 (Blaybus)",
       title: "블레이버스 MVP 개발 해커톤 수료",
       date: "2025.10",
-      desc: "WebGL(Three.js) 기반의 3D CAD 부품 분해 뷰어 및 OpenAI GPT 기반 대화형 학습 피드백 시스템을 탑재한 지능형 교육 웹 플랫폼 기획/개발.",
-      details: "3D CAD 부품 시각화 및 인터랙티브 뷰어 구현:\nThree.js(WebGL) 라이브러리를 활용하여 기계 장치(드론, V4 엔진, 로봇 암 등)의 GLB 메쉬 파일을 부품 단위로 웹 브라우저에 로드.\n회전, 확대, 이동 제어 및 부품 분해 뷰(Explode View) 기능을 연동하고, 사용자 시각화 상태(카메라 좌표, 타겟, 분해율)를 Django 세션과 연동하여 DB(SQLite)에 실시간으로 저장 및 복구하는 백엔드 API 설계.\n\nOpenAI API 연동 및 지능형 학습 어시스턴트 기능 구축:\nOpenAI API 기반 챗봇 인터페이스를 통해 부품 선택 시 기계적 작동 원리와 물리적 정보에 대한 질의응답 기능 제공.\n유저 대화 맥락을 파악하여 자동으로 대화를 요약하는 AI 요약 API와 3D CAD 객체 정보 기반 맞춤형 학습 퀴즈를 생성해 주는 API 모듈 설계.\n\n데이터 관리 및 비동기 파이프라인 설계:\n부품의 역할 및 재질(PartInfo) 비동기 호출 API 구현.\n유저 대화 히스토리를 JSON 스토리지 파일 및 DB에 하이브리드로 저장 및 관리(CRUD)하는 데이터 입출력 파이프라인 개발.",
-      tags: ["Python / Django", "SQLite", "JavaScript", "Three.js (WebGL)", "HTML5 / CSS3", "OpenAI API", "WhiteNoise", "Gunicorn"],
+      desc: "Three.js 기반 3D CAD 부품 웹 뷰어 및 LLM 피드백 공부 보조 사이트 기획/개발로 MVP 경쟁 우수 평가 획득.",
+      details: "",
+      tags: ["Three.js", "React.js", "FastAPI", "OpenAI API"],
       result: "블레이버스 MVP 해커톤 최우수상 수상 (1등)",
       link: "https://github.com/GaMaius",
       image: ["./Blaybus00.png", "./Blaybus03.png", "./Blaybus01.png", "./Blaybus02.png"],
@@ -165,7 +165,8 @@ window.PORTFOLIO_DATA = {
       desc: "지하 깊은 곳으로 드릴을 하강시키며 희귀 광물을 수집하고 위협적인 장애물을 회피하는 모바일 아케이드 게임입니다. 터치 드래그에 반응하는 최적화된 물리 가속 조작감을 완성하고 빌드를 구글 플레이에 출시하여 배포 주기를 경험했습니다.",
       github: "https://github.com/GaMaius",
       icon: "⛏️",
-      platformLabel: "Unity / Mobile"
+      platformLabel: "Unity / Mobile",
+      image: ["./Drilling00.png", "./Drilling01.png"]
     },
     {
       priority: 2,
@@ -201,10 +202,11 @@ window.PORTFOLIO_DATA = {
       period: "2025.10 (3일, 블레이버스 MVP 해커톤)",
       team: "4인 개발 (프론트 2, 백엔드 1, 3D 모델러 1)",
       role: "Three.js 기반 OBJ/GLTF 3D 기계 메쉬 렌더러 컴포넌트 구현, FastAPI 공부 보조 챗봇 어시스턴트 구조 설계",
-      desc: "웹 브라우저 내에서 CAD 기계 설계 파일을 WebGL을 이용해 3D 렌더링하고 분해도를 볼 수 있는 플랫폼입니다. 업로드된 기계 부품의 원리와 작동 방식을 학습할 수 있도록 우측 뷰에 LLM 챗봇을 연결해 학습 보조 사이트를 설계했습니다. 최우수상을 받았습니다.",
+      desc: "WebGL(Three.js) 기반의 3D CAD 부품 분해 뷰어와 OpenAI GPT 기반 대화형 학습 피드백 시스템을 탑재한 교육용 웹 플랫폼입니다. 실시간 3D 조작 제어 API 및 AI 대화 인터페이스 등 공부 보조 사이트 전반을 기획 및 개발하여 최우수상을 수상했습니다.",
       github: "https://github.com/GaMaius",
       icon: "⚙️",
-      platformLabel: "WebGL / React / FastAPI"
+      platformLabel: "WebGL / React / FastAPI",
+      image: ["./Blaybus00.png", "./Blaybus03.png", "./Blaybus01.png", "./Blaybus02.png"]
     },
     {
       priority: 3,

@@ -362,9 +362,14 @@
             <td class="col-period mono">${spec.date}</td>
           `;
 
-          // Add click listener
+          // Add click listener: if related project exists, open project modal directly, otherwise open spec modal
           row.addEventListener('click', () => {
-            openSpecModal(spec);
+            const relatedProj = spec.relatedProjectTitle ? (data.projects || []).find(p => p.title === spec.relatedProjectTitle) : null;
+            if (relatedProj && relatedProj.desc) {
+              openProjectModal(relatedProj);
+            } else {
+              openSpecModal(spec);
+            }
           });
 
           specsBody.appendChild(row);
