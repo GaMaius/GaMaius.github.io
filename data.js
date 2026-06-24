@@ -1,4 +1,4 @@
-﻿window.PORTFOLIO_DATA = {
+window.PORTFOLIO_DATA = {
   // 1. 프로필 정보 (Profile Info)
   profile: {
     name: "지우가람",
@@ -119,13 +119,13 @@
     {
       type: "internship",
       badgeText: "인턴십",
-      institution: "실무 연계 매칭 프로그램",
-      title: "실무 연계형 인턴십 과정",
-      date: "준비 중",
-      desc: "게임 프로그래밍 코어 로직 개발 및 백엔드 지능형 모듈 부문 실무 연계 프로젝트 검색 중.",
-      details: "현업 연계 프로젝트 탐색 및 실무 지원 준비, Git/GitHub 기반의 형상 관리 및 대규모 협업 아키텍처 학습.",
-      tags: ["Unity Engine", "C#", "Python", "Git & GitHub"],
-      result: "실무 인턴십 기회 매칭 프로세스 진행 중",
+      institution: "감바랩스 (Gamba Labs)",
+      title: "기업체험형 인턴십 (온디바이스 AI)",
+      date: "2026.07.27 - 예정",
+      desc: "온디바이스(On-Device) AI 기술 전문 기업 '감바랩스'에서 진행하는 기업체험형 인턴십 과정입니다.",
+      details: "온디바이스 소프트웨어 개발 환경 학습, 현업 개발 프로세스 및 Git 기반 형상 관리 및 대규모 협업 체계 사전 준비.",
+      tags: ["On-Device AI", "Git & GitHub", "Software Engineering"],
+      result: "7월 27일 시작 예정",
       link: "",
       image: "",
       priority: 3
