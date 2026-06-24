@@ -1,4 +1,4 @@
-window.PORTFOLIO_DATA = {
+﻿window.PORTFOLIO_DATA = {
   // 1. 프로필 정보 (Profile Info)
   profile: {
     name: "지우가람",
@@ -205,13 +205,13 @@ window.PORTFOLIO_DATA = {
       category: "game",
       title: "push --force 게임",
       tags: ["Unity 2D", "C#", "URP", "Input System"],
-      period: "2025.09 (24시간, 테크위크 해커톤)",
-      team: "2인 개발 (클라이언트 1명, 기획/아트 1명)",
-      role: "단독 1인 프로그래밍 (플레이어 탑다운 이동 물리 반발력 구현, 키보드 대전 맵 낙사 기믹 및 승리 판정 루프 완성)",
+      period: "2025.07 (1일, 테크위크 해커톤)",
+      team: "3인 개발 (개발자 3명)",
+      role: "맵로직 개발자 (대전 맵 낙사, 아이템, 장애물 기믹 및 승리 판정 루프 개발)",
       desc: "Unity 엔진 기반의 2D 캐주얼 로컬 대전 액션 게임 'PUSH--FORCE'입니다.\n원형 전장 안에서 두 명의 플레이어가 공격과 넉백을 활용해 서로를 밀어내어 맵 밖으로 떨어뜨리는(Ring Out) 직관적이고 박진감 넘치는 배틀 본연의 재미에 집중하도록 설계했습니다.",
       details: "- 로컬 2인 대전 및 물리 기반 전투 시스템:\n  - 단일 키보드 독립 조작 체계(WASD / 방향키) 및 공격 넉백·반동 물리 메커니즘 설계\n- 동적 맵 기믹 및 매치 루프 제어:\n  - 자기장 축소 및 장애물 소환 등 3종 맵 기믹과 3판 2선승제 라운드 제어 루프 구축\n- 낙사 판정 및 동적 아이템 스포너:\n  - 맵 중심 기준의 실시간 링아웃 판정 및 안전 구역을 추적하여 생성하는 아이템 스포너 설계",
-      result: "테크위크 해커톤 최종 우승 (1위)",
-      github: "https://github.com/GaMaius",
+      // result: "테크위크 해커톤 최종 우승 (1위)",
+      github: "https://github.com/Apptive-Game-Team/push--force.git",
       icon: "💥",
       platformLabel: "Unity 2D / PC"
     }
