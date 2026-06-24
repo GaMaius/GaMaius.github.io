@@ -1985,8 +1985,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .lightbox-img {
-  max-width: min(85vw, 480px) !important;
-  max-height: 60vh !important;
+  max-width: min(90vw, 850px) !important;
+  max-height: 75vh !important;
   object-fit: contain;
   border-radius: var(--radius-md);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
