@@ -157,15 +157,16 @@ window.PORTFOLIO_DATA = {
       category: "web",
       title: "LLM 기반 스마트 미러 웹앱",
       tags: ["Python (Flask)", "MediaPipe & OpenCV", "MiniMax LLM", "Vanilla JS"],
-      period: "2025.07 (3일, 라이프 스타일 해커톤)",
+      period: "2026.02 (3일, 라이프 스타일 해커톤)",
       team: "3인 개발 (풀스택 1명, 백엔드 1명, 라즈베리파이 1명)",
       role: "풀스택 아키텍처 설계, OpenAI GPT LLM 개발, 음성 인식(STT) 및 APP과의 연동 개발",
-      desc: "컴퓨터 비전(MediaPipe)과 LLM(MiniMax) 기반의 음성 비서를 결합하여 사용자의 건강한 업무 루틴과 일상 관리를 돕는 가상 캐릭터 성장형 웰니스 대시보드 웹앱입니다.\n실시간 웹캠 분석을 통해 거북목과 졸음을 감지하여 가상 펫 '데브(Dev)'의 HP/퀘스트에 반영하며, 음성 대화를 통해 일정 관리, 타이머 설정, 실시간 날씨/뉴스 통합 브리핑을 제공합니다.",
-      details: "- 실시간 자세/상태 분석 및 피드백 (컴퓨터 비전):\n  - OpenCV와 MediaPipe Face Mesh 기술로 거북목 및 눈감음(졸음) 실시간 감지 (VisionEngine 클래스)\n  - 비정상 자세 감지 시 가상 펫 캐릭터 '데브'의 HP 차감 및 실시간 자세 교정 피드백 알림 연동\n  - Flask 비디오 스트리밍 엔드포인트(video_feed)를 구성하여 분석 중인 카메라 화면을 프론트엔드로 실시간 송출\n- 지능형 음성 비서 및 외부 API 통합 (STT/TTS/LLM):\n  - SpeechRecognition 및 gTTS 기반의 웨이크 워드('데브') 활성화 음성 파이프라인 연동\n  - MiniMax API와 시스템 프롬프트 튜닝을 통해 자연스러운 일상 브리핑(날씨/네이버 뉴스 API 요약) 제공\n  - LLM의 특수 명령어([COMMAND]) 출력을 파싱하는 휴리스틱 처리로 타이머(카운트업/다운/리셋), 일정 등록/삭제 실행 모듈 구축\n- 캐릭터 성장(가상 펫) 및 데이터 시각화:\n  - 일상 웰니스 행동 촉진을 위한 RPG 퀘스트 수락/달성 및 레벨업/친밀도 성장 로직 설계\n  - 자세 로그(posture_logger.py)와 활동 로그(activity_logger.py)를 기반으로 누적 통계 시각화 대시보드 UI 연동\n- 대시보드 상태 및 데이터 영속성 관리:\n  - JSON 기반 데이터 영속화 레이어(data_manager.py) 및 프론트엔드 실시간 연동용 폴링(Polling) API 설계",
+      desc: "MediaPipe와 LLM(MiniMax) 기반의 음성 비서를 결합하여 사용자의 업무 루틴과 건강한 일상 관리를 돕는 성장형 가상 캐릭터 웹앱입니다.\n실시간 웹캠 분석을 통해 거북목과 졸음을 감지하여 가상 펫 '데브(Dev)'의 HP/퀘스트에 반영하며, 음성 대화를 통해 일정 관리, 타이머 설정, 실시간 날씨/뉴스 통합 브리핑을 제공합니다.",
+      details: "- 실시간 자세/상태 분석 및 피드백:\n  - OpenCV와 MediaPipe Face Mesh 기술로 거북목 및 눈감음(졸음) 실시간 감지\n  - 비정상 자세 감지 시 가상 펫 캐릭터 '데브'의 HP 차감 및 실시간 자세 교정 피드백 알림 연동\n  - Flask 비디오 스트리밍 엔드포인트를 구성하여 분석 중인 카메라 화면을 웹앱으로 실시간 송출\n- 지능형 음성 비서 및 외부 API 통합 (STT/TTS/LLM):\n  - SpeechRecognition 및 gTTS 기반의 웨이크 워드('데브') 활성화 음성 파이프라인 연동\n  - MiniMax API와 시스템 프롬프트 튜닝을 통해 자연스러운 일상 브리핑(날씨/네이버 뉴스 API 요약) 제공\n  - LLM의 특수 명령어 출력을 파싱하는 휴리스틱 처리로 타이머(카운트업/다운/리셋), 일정 등록/삭제 실행 모듈 구축\n- 가상 펫 성장 및 데이터 시각화:\n  - 일상 웰니스 행동 촉진을 위한 RPG 퀘스트 수락/달성 및 레벨업/친밀도 성장 로직 설계\n  - 자세 로그와 활동 로그를 기반으로 누적 통계 시각화 대시보드 UI 연동\n- 대시보드 상태 및 데이터 영속성 관리:\n  - JSON 기반 데이터 영속화 레이어및 프론트엔드 실시간 연동용 폴링 API 설계",
       result: "라이프 스타일 해커톤 우수상 수상",
       github: "https://github.com/GaMaius/On-Life.git",
       icon: "🪞",
-      platformLabel: "Python / Flask"
+      platformLabel: "Python / Flask",
+      image: ["./DevGotchi00.png", "./DevGotchi01.png", "./DevGotchi02.png"]
     },
     {
       priority: 3,
