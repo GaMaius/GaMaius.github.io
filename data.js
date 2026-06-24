@@ -1,4 +1,4 @@
-﻿window.PORTFOLIO_DATA = {
+window.PORTFOLIO_DATA = {
   // 1. 프로필 정보 (Profile Info)
   profile: {
     name: "지우가람",
@@ -156,32 +156,32 @@
       priority: 1,
       category: "web",
       title: "LLM 기반 스마트 미러 웹앱",
-      tags: ["React", "Node.js", "OpenAI API", "LLM"],
+      tags: ["Python (Flask)", "MediaPipe & OpenCV", "MiniMax LLM", "Vanilla JS"],
       period: "2025.07 (3일, 라이프 스타일 해커톤)",
       team: "3인 개발 (풀스택 1명, 백엔드 1명, 라즈베리파이 1명)",
       role: "풀스택 아키텍처 설계, OpenAI GPT LLM 개발, 음성 인식(STT) 및 APP과의 연동 개발",
-      desc: "라즈베리파이 기반의 스마트 미러 디바이스와 연동하여 아침 루틴을 돕는 LLM 기반 지능형 대시보드 웹앱입니다.\n음성 명령을 통해 하루 일정과 실시간 기상/캘린더 데이터를 모니터링하고, 가상 캐릭터 '데브'의 건강 퀘스트와 웹캠 자세 분석 기능을 접목하여 일상 관리에 재미 요소를 더했습니다.\n\n주요 기능:\n- 아침 음성 질문 분석 및 외부 API 기반 맞춤형 정보 요약 제공\n- 스트레칭, 산책 등 데일리 웰니스 퀘스트와 캐릭터 성장(가상 펫) 컨셉 연동\n- 컴퓨터 비전(웹캠) 기반 실시간 스트레칭 자세 분석 및 자세 교정 알림",
-      details: "- OpenAI GPT 기반 대화 및 음성 처리 모듈 설계:\n  - 음성 인식(Web Speech API STT) 라이브러리를 연동하여 비동기 음성 명령 수집 아키텍처 구축\n  - GPT API의 시스템 프롬프트 조율 및 컨텍스트 요약을 통한 자연스러운 데일리 브리핑 답변 생성 로직 개발\n- 대시보드 및 서비스 아키텍처 연동:\n  - React 기반의 스마트 미러 화면 최적화 대시보드 UI 컴포넌트 구성\n  - 외부 날씨 API 및 캘린더 데이터 통합 연동을 통해 실시간 스케줄 관리 기능 및 알람 파이프라인 구축\n  - 라즈베리파이 디바이스 및 스마트 미러 앱과 웹앱 간의 실시간 WebSocket 통신 연동",
+      desc: "컴퓨터 비전(MediaPipe)과 LLM(MiniMax) 기반의 음성 비서를 결합하여 사용자의 건강한 업무 루틴과 일상 관리를 돕는 가상 캐릭터 성장형 웰니스 대시보드 웹앱입니다.\n실시간 웹캠 분석을 통해 거북목과 졸음을 감지하여 가상 펫 '데브(Dev)'의 HP/퀘스트에 반영하며, 음성 대화를 통해 일정 관리, 타이머 설정, 실시간 날씨/뉴스 통합 브리핑을 제공합니다.",
+      details: "- 실시간 자세/상태 분석 및 피드백 (컴퓨터 비전):\n  - OpenCV와 MediaPipe Face Mesh 기술로 거북목 및 눈감음(졸음) 실시간 감지 (VisionEngine 클래스)\n  - 비정상 자세 감지 시 가상 펫 캐릭터 '데브'의 HP 차감 및 실시간 자세 교정 피드백 알림 연동\n  - Flask 비디오 스트리밍 엔드포인트(video_feed)를 구성하여 분석 중인 카메라 화면을 프론트엔드로 실시간 송출\n- 지능형 음성 비서 및 외부 API 통합 (STT/TTS/LLM):\n  - SpeechRecognition 및 gTTS 기반의 웨이크 워드('데브') 활성화 음성 파이프라인 연동\n  - MiniMax API와 시스템 프롬프트 튜닝을 통해 자연스러운 일상 브리핑(날씨/네이버 뉴스 API 요약) 제공\n  - LLM의 특수 명령어([COMMAND]) 출력을 파싱하는 휴리스틱 처리로 타이머(카운트업/다운/리셋), 일정 등록/삭제 실행 모듈 구축\n- 캐릭터 성장(가상 펫) 및 데이터 시각화:\n  - 일상 웰니스 행동 촉진을 위한 RPG 퀘스트 수락/달성 및 레벨업/친밀도 성장 로직 설계\n  - 자세 로그(posture_logger.py)와 활동 로그(activity_logger.py)를 기반으로 누적 통계 시각화 대시보드 UI 연동\n- 대시보드 상태 및 데이터 영속성 관리:\n  - JSON 기반 데이터 영속화 레이어(data_manager.py) 및 프론트엔드 실시간 연동용 폴링(Polling) API 설계",
       result: "라이프 스타일 해커톤 우수상 수상",
       github: "https://github.com/GaMaius/On-Life.git",
       icon: "🪞",
-      platformLabel: "Web / LLM"
+      platformLabel: "Python / Flask"
     },
     {
       priority: 3,
       category: "ai",
       title: "CNN을 통한 수화 인식 프로그램",
       tags: ["Python", "PyTorch", "OpenCV (CNN)"],
-      period: "2025.04 - 2025.06 (2개월)",
-      team: "2인 개발 (모델 1, 데이터 가공 1)",
-      role: "CNN 모델 아키텍처 설계, PyTorch 학습 파이프라인 개발, OpenCV 웹캠 인터페이스 실시간 프레임 예측 구현",
-      desc: "컴퓨터 vision 기술을 접목하여 카메라로 캡처한 손짓 동작을 분석하고 실시간으로 지문자 수화(A-Z) 문자로 분류해 주는 프로그램입니다.",
-      details: "CNN 모델 아키텍처 설계, PyTorch 학습 파이프라인 개발, OpenCV 웹캠 인터페이스 실시간 프레임 예측 구현.\n데이터 전처리 및 경량화된 CNN 레이어 최적화 설계 수행.",
+      period: "2023.03 - 2023.09 (6개월)",
+      team: "3인 개발 (모델 1명, 데이터 가공 2명)",
+      role: "학습 시스템 개발 및 Resnet-18 모델 적용, OpenCV로 실시간 웹캠 처리 구현",
+      desc: "CNN을 활용하여 카메라로 캡처한 수어 동작을 분석하고 실시간으로 문자로 번역해주는 프로그램입니다.",
+      details: "PyTorch를 활용한 모델 학습 파이프라인 개발, OpenCV를 통한 실시간 웹캠 프레임 받아오는 기능 구현.\n손 부분의 정확한 정보 추출을 위해 데이터 전처리 구현, ResNet-18을 통한 학습 정확도 향상을 위한 튜닝 수행.",
       result: "경량화 모델 최적화 및 30 FPS 이상 실시간 인식률 확보",
       // github: "https://github.com/GaMaius",
       icon: "🤟",
       platformLabel: "Python / PyTorch",
-      image: ["./CNN00.png"]
+      image: ["./CNN00.png", "./ResNet18.png"]
     },
     {
       priority: 2,
