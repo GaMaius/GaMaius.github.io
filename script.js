@@ -847,9 +847,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const overlay = document.createElement('div');
         overlay.className = 'lightbox-overlay';
         overlay.innerHTML = `
+          <span class="lightbox-close">&times;</span>
           <div class="lightbox-content">
-            <span class="lightbox-close">&times;</span>
             <img class="lightbox-img" src="${src}" alt="${alt}">
+          </div>
+          <div class="lightbox-toolbar">
+            <button class="lightbox-btn zoom-out" title="Zoom Out">
+              <svg viewBox="0 0 24 24"><path d="M19 13H5v-2h14v2z"/></svg>
+            </button>
+            <button class="lightbox-btn zoom-reset" title="Reset Zoom">
+              <svg viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/></svg>
+            </button>
+            <button class="lightbox-btn zoom-in" title="Zoom In">
+              <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+            </button>
           </div>
         `;
 
@@ -859,26 +870,152 @@ document.addEventListener('DOMContentLoaded', () => {
         overlay.offsetHeight;
         overlay.classList.add('active');
 
+        const lightboxImg = overlay.querySelector('.lightbox-img');
+        const zoomInBtn = overlay.querySelector('.zoom-in');
+        const zoomOutBtn = overlay.querySelector('.zoom-out');
+        const resetBtn = overlay.querySelector('.zoom-reset');
+
+        let scale = 1;
+        let panX = 0;
+        let panY = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let hasMoved = false;
+
+        const updateTransform = () => {
+          scale = Math.min(Math.max(scale, 0.8), 5.0);
+          lightboxImg.style.transform = `translate3d(${panX}px, ${panY}px, 0) scale(${scale})`;
+        };
+
+        // ZOOM VIA WHEEL
+        overlay.addEventListener('wheel', (ev) => {
+          ev.preventDefault();
+          const zoomFactor = 0.1;
+          const direction = ev.deltaY < 0 ? 1 : -1;
+          
+          scale += direction * zoomFactor * scale;
+          scale = Math.min(Math.max(scale, 0.8), 5.0);
+          updateTransform();
+        }, { passive: false });
+
+        // DRAG AND PAN
+        const startDrag = (clientX, clientY) => {
+          isDragging = true;
+          hasMoved = false;
+          startX = clientX - panX;
+          startY = clientY - panY;
+          lightboxImg.classList.add('dragging');
+        };
+
+        const moveDrag = (clientX, clientY) => {
+          if (!isDragging) return;
+          const newPanX = clientX - startX;
+          const newPanY = clientY - startY;
+
+          if (Math.abs(newPanX - panX) > 3 || Math.abs(newPanY - panY) > 3) {
+            hasMoved = true;
+          }
+
+          panX = newPanX;
+          panY = newPanY;
+          updateTransform();
+        };
+
+        const stopDrag = () => {
+          if (!isDragging) return;
+          isDragging = false;
+          lightboxImg.classList.remove('dragging');
+        };
+
+        // Mouse Events
+        lightboxImg.addEventListener('mousedown', (ev) => {
+          ev.preventDefault();
+          startDrag(ev.clientX, ev.clientY);
+        });
+
+        const handleMouseMove = (ev) => {
+          moveDrag(ev.clientX, ev.clientY);
+        };
+        const handleMouseUp = () => {
+          stopDrag();
+        };
+
+        window.addEventListener('mousemove', handleMouseMove);
+        window.addEventListener('mouseup', handleMouseUp);
+
+        // Touch Events (Mobile)
+        lightboxImg.addEventListener('touchstart', (ev) => {
+          if (ev.touches.length === 1) {
+            startDrag(ev.touches[0].clientX, ev.touches[0].clientY);
+          }
+        });
+
+        const handleTouchMove = (ev) => {
+          if (ev.touches.length === 1) {
+            moveDrag(ev.touches[0].clientX, ev.touches[0].clientY);
+          }
+        };
+        const handleTouchEnd = () => {
+          stopDrag();
+        };
+
+        window.addEventListener('touchmove', handleTouchMove, { passive: true });
+        window.addEventListener('touchend', handleTouchEnd);
+
+        // TOOLBAR BUTTONS
+        zoomInBtn.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          scale *= 1.25;
+          updateTransform();
+        });
+
+        zoomOutBtn.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          scale /= 1.25;
+          updateTransform();
+        });
+
+        resetBtn.addEventListener('click', (ev) => {
+          ev.stopPropagation();
+          scale = 1;
+          panX = 0;
+          panY = 0;
+          updateTransform();
+        });
+
+        // CLOSE SYSTEM
         const closeLightbox = () => {
           overlay.classList.remove('active');
+          window.removeEventListener('mousemove', handleMouseMove);
+          window.removeEventListener('mouseup', handleMouseUp);
+          window.removeEventListener('touchmove', handleTouchMove);
+          window.removeEventListener('touchend', handleTouchEnd);
+          document.removeEventListener('keydown', escHandler);
           setTimeout(() => {
             overlay.remove();
           }, 300);
         };
 
-        overlay.addEventListener('click', (ev) => {
-          if (ev.target === overlay || ev.target.classList.contains('lightbox-close')) {
-            closeLightbox();
-          }
-        });
-
         const escHandler = (ev) => {
           if (ev.key === 'Escape') {
             closeLightbox();
-            document.removeEventListener('keydown', escHandler);
           }
         };
         document.addEventListener('keydown', escHandler);
+
+        // Click overlay to close
+        overlay.addEventListener('click', (ev) => {
+          if (ev.target.classList.contains('lightbox-close')) {
+            closeLightbox();
+            return;
+          }
+          if (ev.target === overlay || ev.target.classList.contains('lightbox-content')) {
+            if (!hasMoved) {
+              closeLightbox();
+            }
+          }
+        });
       }
     }
   });
