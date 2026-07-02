@@ -48,28 +48,28 @@
 
 /* Light Theme Overrides */
 [data-theme="light"] {
-  --bg-primary: #e0f2fe;          /* Warm pastel sky-blue */
-  --bg-secondary: #f3e8ff;        /* Warm pastel lavender */
-  --bg-card: rgba(255, 255, 255, 0.28); /* Highly translucent white frosted glass */
-  --bg-card-hover: rgba(255, 255, 255, 0.42);
-  --border-color: rgba(255, 255, 255, 0.45); /* Soft white rim border */
-  --border-hover: rgba(99, 102, 241, 0.35);
+  --bg-primary: #fcf0f5;          /* Warm pastel pink (matching user image) */
+  --bg-secondary: #f3ebf7;        /* Warm pastel lavender/violet */
+  --bg-card: rgba(255, 255, 255, 0.42); /* Translucent white frosted glass */
+  --bg-card-hover: rgba(255, 255, 255, 0.65);
+  --border-color: rgba(255, 255, 255, 0.55); /* Soft white rim border */
+  --border-hover: rgba(219, 39, 119, 0.35); /* Soft pink/magenta hover */
   
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #64748b;
+  --text-primary: #3b0724;        /* Deep wine color for readable primary text */
+  --text-secondary: #5c0f3d;      /* Readable secondary text */
+  --text-muted: #9d3f74;          /* Warm pink-muted secondary text */
   
-  --accent-primary: #4f46e5;      /* Tech Indigo */
-  --accent-secondary: #8b5cf6;    /* Tech Violet */
-  --accent-rgb: 79, 70, 229;
-  --accent-sec-rgb: 139, 92, 246;
+  --accent-primary: #db2777;      /* Tech Pink/Magenta */
+  --accent-secondary: #9333ea;    /* Tech Purple */
+  --accent-rgb: 219, 39, 119;
+  --accent-sec-rgb: 147, 51, 234;
   
-  --shadow-color: rgba(31, 38, 135, 0.05);
+  --shadow-color: rgba(219, 39, 119, 0.04);
   --shadow-card: 0 15px 35px var(--shadow-color);
-  --glow-strength: 0 0 25px rgba(79, 70, 229, 0.1);
+  --glow-strength: 0 0 25px rgba(219, 39, 119, 0.1);
   
   --gradient-accent: linear-gradient(90deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
-  --gradient-text: linear-gradient(135deg, #0f172a 20%, #8b5cf6 100%);
+  --gradient-text: linear-gradient(135deg, #3b0724 20%, #9333ea 100%);
 }
 
 /* ==========================================
@@ -2087,4 +2087,69 @@ h1, h2, h3, h4, h5, h6 {
     top: -45px;
     right: 10px;
   }
+}
+
+/* ==========================================
+   NEGATIVE SPACE ART BACKGROUND TYPOGRAPHY
+   ========================================== */
+.hero-bg-text-wrap {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4rem;
+  pointer-events: none;
+  z-index: 0;
+  font-family: var(--font-display);
+  font-size: 26vw;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  user-select: none;
+}
+
+.hero-bg-letter {
+  color: var(--bg-card-hover);
+  opacity: 0.15;
+  transition: color var(--transition-normal);
+}
+
+[data-theme="light"] .hero-bg-letter {
+  color: #ffffff;
+  opacity: 0.55;
+}
+
+.section-bg-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 26vw;
+  font-weight: 900;
+  color: var(--bg-card-hover);
+  opacity: 0.15;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  z-index: 0;
+  pointer-events: none;
+  line-height: 1;
+  user-select: none;
+  white-space: nowrap;
+  transition: color var(--transition-normal);
+}
+
+[data-theme="light"] .section-bg-text {
+  color: #ffffff;
+  opacity: 0.55;
+}
+
+/* Ensure sections containing background text have relative position and overflow hidden */
+section, main {
+  position: relative;
+  overflow: hidden;
 }
