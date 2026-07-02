@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html lang="ko" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
@@ -15,7 +15,7 @@
   <!-- Immediate Theme Loader -->
   <script>
     (function () {
-      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'light';
+      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'dark';
       if (savedMode === 'system') {
         const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
@@ -98,8 +98,6 @@
        ARCHIVE SECTION
        ========================================== -->
   <main class="archive-section" style="padding: 5rem 0 8rem 0; min-height: 75vh;">
-    <!-- Negative Space BG Typography -->
-    <div class="section-bg-text font-display">LIST</div>
     <div class="container">
       <div class="section-title-wrap">
         <span class="section-idx">[ARCHIVE]</span>
@@ -456,13 +454,13 @@
       });
 
       systemMediaQuery.addEventListener('change', () => {
-        const currentMode = localStorage.getItem('portfolio-theme-mode') || 'system';
+        const currentMode = localStorage.getItem('portfolio-theme-mode') || 'dark';
         if (currentMode === 'system') {
           applySystemTheme();
         }
       });
 
-      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'system';
+      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'dark';
       setThemeMode(savedMode);
 
       // ==========================================
@@ -525,7 +523,7 @@
               ev.preventDefault();
               const zoomFactor = 0.1;
               const direction = ev.deltaY < 0 ? 1 : -1;
-              
+
               scale += direction * zoomFactor * scale;
               scale = Math.min(Math.max(scale, 0.8), 5.0);
               updateTransform();

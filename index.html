@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
+<html lang="ko" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
@@ -24,7 +24,7 @@
   <!-- Immediate Theme Loader -->
   <script>
     (function () {
-      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'light';
+      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'dark';
       if (savedMode === 'system') {
         const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
@@ -139,12 +139,6 @@
     <div class="hero-glow-1"></div>
     <div class="hero-glow-2"></div>
 
-    <!-- Negative Space BG Typography -->
-    <div class="hero-bg-text-wrap font-display">
-      <span class="hero-bg-letter">GA</span>
-      <span class="hero-bg-letter">RAM</span>
-    </div>
-
     <div class="container hero-content">
       <div class="hero-text">
         <div class="hero-tag">GAME • WEB • AI DEVELOPER</div>
@@ -174,8 +168,6 @@
        PROFILE SECTION
        ========================================== -->
   <section class="about" id="profile">
-    <!-- Negative Space BG Typography -->
-    <div class="section-bg-text font-display">WHO</div>
     <div class="container">
       <div class="section-title-wrap">
         <span class="section-idx">[01]</span>
@@ -195,8 +187,13 @@
 
         <!-- Right: Education timeline -->
         <div class="about-edu-wrap glass-card" style="padding: 2.2rem; border-radius: var(--radius-md);">
-          <h3 style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 0.6rem; color: var(--text-primary);">
-            <svg viewBox="0 0 24 24" style="width: 22px; height: 22px; fill: none; stroke: var(--accent-primary); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path></svg>
+          <h3
+            style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 0.6rem; color: var(--text-primary);">
+            <svg viewBox="0 0 24 24"
+              style="width: 22px; height: 22px; fill: none; stroke: var(--accent-primary); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle;">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
+            </svg>
             학력 사항
           </h3>
           <div class="edu-timeline" id="edu-timeline-container">
@@ -242,8 +239,6 @@
        ========================================== -->
   <section class="specs" id="specs">
     <div class="specs-glow"></div>
-    <!-- Negative Space BG Typography -->
-    <div class="section-bg-text font-display">RUN</div>
     <div class="container">
       <div class="section-title-wrap" style="text-align: center;">
         <span class="section-idx" style="display: block;">[02]</span>
@@ -272,8 +267,6 @@
        ========================================== -->
   <section class="projects" id="projects">
     <div class="projects-glow"></div>
-    <!-- Negative Space BG Typography -->
-    <div class="section-bg-text font-display">WORK</div>
     <div class="container">
       <div class="section-title-wrap" style="text-align: center;">
         <span class="section-idx" style="display: block;">[03]</span>
@@ -309,8 +302,6 @@
        CONTACT SECTION
        ========================================== -->
   <section class="contact" id="contact">
-    <!-- Negative Space BG Typography -->
-    <div class="section-bg-text font-display">TALK</div>
     <div class="container">
       <div class="section-title-wrap" style="text-align: center;">
         <span class="section-idx" style="display: block;">[04]</span>
