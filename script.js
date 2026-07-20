@@ -709,43 +709,6 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // DEPTH GAUGE HUD (scroll = descent) — signature
-  // ==========================================
-  const depthReadout = document.getElementById('depth-readout');
-  const depthProgress = document.getElementById('depth-gauge-progress');
-  const depthCursor = document.getElementById('depth-gauge-cursor');
-  const MAX_DEPTH = 1200; // metres at the bottom of the page
-
-  if (depthReadout && depthProgress && depthCursor) {
-    let depthTicking = false;
-
-    const renderDepth = () => {
-      const doc = document.documentElement;
-      const scrollable = (doc.scrollHeight - window.innerHeight) || 1;
-      const ratio = Math.min(Math.max(window.scrollY / scrollable, 0), 1);
-      const metres = Math.round(ratio * MAX_DEPTH);
-      const pct = (ratio * 100).toFixed(2);
-
-      depthReadout.innerHTML =
-        `-${String(metres).padStart(4, '0')}<span class="unit">m</span>`;
-      depthProgress.style.height = pct + '%';
-      depthCursor.style.top = pct + '%';
-      depthTicking = false;
-    };
-
-    const requestDepth = () => {
-      if (!depthTicking) {
-        depthTicking = true;
-        window.requestAnimationFrame(renderDepth);
-      }
-    };
-
-    window.addEventListener('scroll', requestDepth, { passive: true });
-    window.addEventListener('resize', requestDepth);
-    renderDepth();
-  }
-
-  // ==========================================
   // TYPING EFFECT (HERO)
   // ==========================================
   const typingTarget = document.getElementById('typing-text');

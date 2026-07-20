@@ -38,23 +38,21 @@
   <script src="data.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=4.0">
+  <link rel="stylesheet" href="styles.css?v=3.0">
 </head>
 
 <body>
 
-  <!-- ==========================================
-       DEPTH GAUGE HUD — scroll = descent (signature)
-       ========================================== -->
-  <aside class="depth-gauge" id="depth-gauge" aria-hidden="true">
-    <span class="depth-gauge-cap">지표</span>
-    <div class="depth-gauge-track">
-      <div class="depth-gauge-progress" id="depth-gauge-progress"></div>
-      <div class="depth-gauge-cursor" id="depth-gauge-cursor"></div>
-    </div>
-    <div class="depth-readout" id="depth-readout">-0000<span class="unit">m</span></div>
-    <span class="depth-gauge-label">Depth</span>
-  </aside>
+  <!-- Floating 3D Refraction Backdrop Shapes -->
+  <div class="floating-shapes-container">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+    <div class="floating-shape shape-4"></div>
+  </div>
+
+  <!-- Interactive Particles Canvas Backdrop -->
+  <canvas id="bg-canvas"></canvas>
 
   <!-- ==========================================
        HEADER & NAVIGATION
@@ -139,10 +137,11 @@
        ========================================== -->
   <section class="hero" id="home">
     <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
 
     <div class="container hero-content">
       <div class="hero-text">
-        <div class="hero-tag">GAME · WEB · AI DEVELOPER</div>
+        <div class="hero-tag">GAME • WEB • AI DEVELOPER</div>
         <h1>안녕하세요, <br><span class="gradient-text">지우가람</span>입니다.</h1>
         <h2 style="font-size: 1.8rem; font-weight: 500; margin-bottom: 1.5rem; color: var(--text-primary);">
           저는 <span id="typing-text" class="gradient-text"></span><span class="typing-cursor">|</span>
@@ -151,7 +150,7 @@
           <!-- Dynamically Injected -->
         </p>
         <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary" id="view-work-btn">프로젝트 시추하기</a>
+          <a href="#projects" class="btn btn-primary" id="view-work-btn">프로젝트 보기</a>
           <a href="#contact" class="btn btn-secondary" id="contact-me-btn">연락하기</a>
         </div>
       </div>
@@ -163,12 +162,6 @@
         </div>
       </div>
     </div>
-
-    <div class="container hero-descend">
-      <span class="arrow">▽</span>
-      <span>Scroll to descend · 0m 지표</span>
-      <span class="rule"></span>
-    </div>
   </section>
 
   <!-- ==========================================
@@ -177,7 +170,7 @@
   <section class="about" id="profile">
     <div class="container">
       <div class="section-title-wrap">
-        <span class="section-idx">01 · 표토층 Topsoil · -120m</span>
+        <span class="section-idx">[01]</span>
         <h2 class="section-title">Developer Profile</h2>
         <p class="section-subtitle">'나'에 대한 설명입니다.</p>
       </div>
@@ -219,17 +212,17 @@
             style="display: flex; gap: 1.2rem; font-size: 0.8rem; font-family: var(--font-mono); align-items: center;">
             <span class="legend-item" style="display: flex; align-items: center; gap: 0.4rem;">
               <span class="legend-dot advanced"
-                style="display: inline-block; width: 9px; height: 9px; transform: rotate(45deg); background: #f2a154; box-shadow: 0 0 8px rgba(242, 161, 84, 0.6);"></span>
+                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);"></span>
               Advanced
             </span>
             <span class="legend-item" style="display: flex; align-items: center; gap: 0.4rem;">
               <span class="legend-dot intermediate"
-                style="display: inline-block; width: 9px; height: 9px; transform: rotate(45deg); background: #cf9a6a; box-shadow: 0 0 8px rgba(207, 154, 106, 0.5);"></span>
+                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #a855f7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);"></span>
               Intermediate
             </span>
             <span class="legend-item" style="display: flex; align-items: center; gap: 0.4rem;">
               <span class="legend-dot beginner"
-                style="display: inline-block; width: 9px; height: 9px; transform: rotate(45deg); background: #8a8072;"></span>
+                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #64748b; box-shadow: 0 0 8px rgba(100, 116, 139, 0.4);"></span>
               Beginner
             </span>
           </div>
@@ -248,7 +241,7 @@
     <div class="specs-glow"></div>
     <div class="container">
       <div class="section-title-wrap" style="text-align: center;">
-        <span class="section-idx">02 · 퇴적층 Sediment · -420m</span>
+        <span class="section-idx" style="display: block;">[02]</span>
         <h2 class="section-title">Specifications</h2>
         <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">다양한 대회와 실무 협업 무대에서 달성해낸 주요 이력들입니다.
         </p>
@@ -276,7 +269,7 @@
     <div class="projects-glow"></div>
     <div class="container">
       <div class="section-title-wrap" style="text-align: center;">
-        <span class="section-idx">03 · 기반암 Bedrock · -900m</span>
+        <span class="section-idx" style="display: block;">[03]</span>
         <h2 class="section-title">Featured Projects</h2>
         <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">각 도메인 분석과 물리적 최적화를 고려해 설계해 낸 주요
           성과물입니다.</p>
@@ -311,7 +304,7 @@
   <section class="contact" id="contact">
     <div class="container">
       <div class="section-title-wrap" style="text-align: center;">
-        <span class="section-idx">04 · 지핵 Core · -1200m</span>
+        <span class="section-idx" style="display: block;">[04]</span>
         <h2 class="section-title">Get In Touch</h2>
         <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">프로젝트 협업 제안이나 기타 문의사항이 있으시면 이메일이나
           GitHub을 통해 언제든지 연락해 주세요.</p>
@@ -407,8 +400,10 @@
     <span id="toast-msg" class="toast-msg">메시지가 정상적으로 발송되었습니다.</span>
   </div>
 
+  <!-- Interactive Particles Canvas -->
+  <script src="canvas-bg.js"></script>
   <!-- Core Interactions Script -->
-  <script src="script.js?v=4.0"></script>
+  <script src="script.js?v=3.0"></script>
 </body>
 
 </html>

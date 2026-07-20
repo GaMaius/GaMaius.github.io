@@ -27,10 +27,21 @@
 
   <!-- Load Database and Styles -->
   <script src="data.js"></script>
-  <link rel="stylesheet" href="styles.css?v=4.0">
+  <link rel="stylesheet" href="styles.css?v=3.0">
 </head>
 
 <body>
+
+  <!-- Floating 3D Refraction Backdrop Shapes -->
+  <div class="floating-shapes-container">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    <div class="floating-shape shape-3"></div>
+    <div class="floating-shape shape-4"></div>
+  </div>
+
+  <!-- Interactive Particles Canvas Backdrop -->
+  <canvas id="bg-canvas"></canvas>
 
   <!-- ==========================================
        HEADER & NAVIGATION
@@ -89,7 +100,7 @@
   <main class="archive-section" style="padding: 5rem 0 8rem 0; min-height: 75vh;">
     <div class="container">
       <div class="section-title-wrap">
-        <span class="section-idx">ARCHIVE · 전체 시추 기록</span>
+        <span class="section-idx">[ARCHIVE]</span>
         <h1 class="section-title">Specifications Archive</h1>
         <p class="section-subtitle">참여 및 수료한 교육, 수상 경력, 출시 이력의 전체 목록입니다. 항목을 클릭하시면 상세한 활동 및 수행 내용을 확인하실 수 있습니다.</p>
       </div>
@@ -640,6 +651,8 @@
       });
     });
   </script>
+  <!-- Interactive Particles Canvas -->
+  <script src="canvas-bg.js"></script>
 </body>
 
 </html>
