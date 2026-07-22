@@ -38,21 +38,15 @@
   <script src="data.js"></script>
 
   <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=3.0">
+  <link rel="stylesheet" href="styles.css?v=6.0">
 </head>
 
 <body>
 
-  <!-- Floating 3D Refraction Backdrop Shapes -->
-  <div class="floating-shapes-container">
-    <div class="floating-shape shape-1"></div>
-    <div class="floating-shape shape-2"></div>
-    <div class="floating-shape shape-3"></div>
-    <div class="floating-shape shape-4"></div>
+  <!-- Scroll Progress Signal -->
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress-fill" id="scroll-progress-fill"></div>
   </div>
-
-  <!-- Interactive Particles Canvas Backdrop -->
-  <canvas id="bg-canvas"></canvas>
 
   <!-- ==========================================
        HEADER & NAVIGATION
@@ -136,16 +130,25 @@
        HERO SECTION
        ========================================== -->
   <section class="hero" id="home">
-    <div class="hero-glow-1"></div>
-    <div class="hero-glow-2"></div>
-
     <div class="container hero-content">
       <div class="hero-text">
-        <div class="hero-tag">GAME • WEB • AI DEVELOPER</div>
-        <h1>안녕하세요, <br><span class="gradient-text">지우가람</span>입니다.</h1>
-        <h2 style="font-size: 1.8rem; font-weight: 500; margin-bottom: 1.5rem; color: var(--text-primary);">
-          저는 <span id="typing-text" class="gradient-text"></span><span class="typing-cursor">|</span>
-        </h2>
+        <div class="crt" id="crt">
+          <div class="crt-bezel">
+            <div class="crt-brand">GARAM‑TRON <span>MODEL&nbsp;G‑1</span></div>
+            <div class="crt-screen">
+              <div class="scanlines" aria-hidden="true"></div>
+              <div class="flicker-overlay" aria-hidden="true"></div>
+              <pre class="boot-log crt-boot-log" id="crt-boot-log" aria-hidden="true"></pre>
+              <h1 class="name-reveal" aria-label="GARAM">
+                <span id="nameText" aria-hidden="true"></span><span class="cursor" id="nameCursor" aria-hidden="true">▏</span>
+              </h1>
+              <p class="tagline-line" id="taglineLine">GAME • WEB • AI DEVELOPER</p>
+              <p class="role-line" aria-label="Game Developer, Python Programmer, AI Developer, Creative Problem Solver">
+                &gt; <span id="typing-text"></span><span class="typing-cursor cursor small" aria-hidden="true">▏</span>
+              </p>
+            </div>
+          </div>
+        </div>
         <p class="hero-desc" id="hero-description">
           <!-- Dynamically Injected -->
         </p>
@@ -160,6 +163,7 @@
           <div class="hero-img-border"></div>
           <img src="avatar.png" alt="GARAM Profile Avatar" class="hero-img" id="profile-avatar">
         </div>
+        <p class="hero-name-caption">안녕하세요, <span class="gradient-text">지우가람</span>입니다.</p>
       </div>
     </div>
   </section>
@@ -186,18 +190,19 @@
         </div>
 
         <!-- Right: Education timeline -->
-        <div class="about-edu-wrap glass-card" style="padding: 2.2rem; border-radius: var(--radius-md);">
-          <h3
-            style="font-size: 1.4rem; font-weight: 700; margin-bottom: 1.8rem; display: flex; align-items: center; gap: 0.6rem; color: var(--text-primary);">
+        <div class="about-edu-wrap">
+          <div class="panel-header">
             <svg viewBox="0 0 24 24"
-              style="width: 22px; height: 22px; fill: none; stroke: var(--accent-primary); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; vertical-align: middle;">
+              style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
               <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
               <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
             </svg>
             학력 사항
-          </h3>
-          <div class="edu-timeline" id="edu-timeline-container">
-            <!-- Dynamically Injected -->
+          </div>
+          <div class="panel-body">
+            <div class="edu-timeline" id="edu-timeline-container">
+              <!-- Dynamically Injected -->
+            </div>
           </div>
         </div>
       </div>
@@ -212,22 +217,22 @@
             style="display: flex; gap: 1.2rem; font-size: 0.8rem; font-family: var(--font-mono); align-items: center;">
             <span class="legend-item" style="display: flex; align-items: center; gap: 0.4rem;">
               <span class="legend-dot advanced"
-                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #00f0ff; box-shadow: 0 0 8px rgba(0, 240, 255, 0.6);"></span>
+                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-secondary);"></span>
               Advanced
             </span>
             <span class="legend-item" style="display: flex; align-items: center; gap: 0.4rem;">
               <span class="legend-dot intermediate"
-                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #a855f7; box-shadow: 0 0 8px rgba(168, 85, 247, 0.6);"></span>
+                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-primary);"></span>
               Intermediate
             </span>
             <span class="legend-item" style="display: flex; align-items: center; gap: 0.4rem;">
               <span class="legend-dot beginner"
-                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: #64748b; box-shadow: 0 0 8px rgba(100, 116, 139, 0.4);"></span>
+                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--text-secondary);"></span>
               Beginner
             </span>
           </div>
         </div>
-        <div class="glass-card skills-board" id="skills-board-container">
+        <div class="skills-board" id="skills-board-container">
           <!-- Dynamically Injected Rows -->
         </div>
       </div>
@@ -238,7 +243,6 @@
        SPECS SECTION (AWARDS, LAUNCHES, ETC.)
        ========================================== -->
   <section class="specs" id="specs">
-    <div class="specs-glow"></div>
     <div class="container">
       <div class="section-title-wrap" style="text-align: center;">
         <span class="section-idx" style="display: block;">[02]</span>
@@ -266,7 +270,6 @@
        PROJECTS SECTION
        ========================================== -->
   <section class="projects" id="projects">
-    <div class="projects-glow"></div>
     <div class="container">
       <div class="section-title-wrap" style="text-align: center;">
         <span class="section-idx" style="display: block;">[03]</span>
@@ -310,48 +313,19 @@
           GitHub을 통해 언제든지 연락해 주세요.</p>
       </div>
 
-      <div class="grid grid-3 contact-grid reveal">
-        <!-- Card 1: Email -->
-        <a href="mailto:rkfka04101212@gmail.com" class="glass-card contact-card-item">
-          <div class="contact-info-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
-              <polyline points="22,6 12,13 2,6"></polyline>
-            </svg>
-          </div>
-          <div class="contact-info-details">
-            <h4>Email</h4>
-            <p>rkfka04101212@gmail.com</p>
-          </div>
-        </a>
-
-        <!-- Card 2: Github -->
-        <a href="https://github.com/GaMaius" target="_blank" rel="noopener noreferrer"
-          class="glass-card contact-card-item">
-          <div class="contact-info-icon">
-            <svg viewBox="0 0 24 24">
-              <path
-                d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
-              </path>
-            </svg>
-          </div>
-          <div class="contact-info-details">
-            <h4>GitHub</h4>
-            <p>github.com/GaMaius</p>
-          </div>
-        </a>
-
-        <!-- Card 3: Location -->
-        <div class="glass-card contact-card-item">
-          <div class="contact-info-icon">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-              <circle cx="12" cy="10" r="3"></circle>
-            </svg>
-          </div>
-          <div class="contact-info-details">
-            <h4>Location</h4>
-            <p>Busan, South Korea</p>
+      <div class="contact-grid reveal">
+        <div class="contact-panel">
+          <a href="mailto:rkfka04101212@gmail.com" class="contact-row">
+            <span class="contact-row-label">Email</span>
+            <span class="contact-row-value">rkfka04101212@gmail.com</span>
+          </a>
+          <a href="https://github.com/GaMaius" target="_blank" rel="noopener noreferrer" class="contact-row">
+            <span class="contact-row-label">GitHub</span>
+            <span class="contact-row-value">github.com/GaMaius</span>
+          </a>
+          <div class="contact-row">
+            <span class="contact-row-label">Location</span>
+            <span class="contact-row-value">Busan, South Korea</span>
           </div>
         </div>
       </div>
@@ -363,7 +337,7 @@
        ========================================== -->
   <div class="project-modal" id="project-modal">
     <div class="project-modal-overlay" id="project-modal-overlay"></div>
-    <div class="glass-card project-modal-content">
+    <div class="project-modal-content">
       <button class="project-modal-close" id="project-modal-close" aria-label="닫기">&times;</button>
       <div class="project-modal-body" id="project-modal-body">
         <!-- Dynamically Injected Detail View -->
@@ -400,10 +374,8 @@
     <span id="toast-msg" class="toast-msg">메시지가 정상적으로 발송되었습니다.</span>
   </div>
 
-  <!-- Interactive Particles Canvas -->
-  <script src="canvas-bg.js"></script>
   <!-- Core Interactions Script -->
-  <script src="script.js?v=3.0"></script>
+  <script src="script.js?v=6.0"></script>
 </body>
 
 </html>

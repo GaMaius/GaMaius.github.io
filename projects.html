@@ -27,21 +27,15 @@
 
   <!-- Load Database and Styles -->
   <script src="data.js"></script>
-  <link rel="stylesheet" href="styles.css?v=3.0">
+  <link rel="stylesheet" href="styles.css?v=6.0">
 </head>
 
 <body>
 
-  <!-- Floating 3D Refraction Backdrop Shapes -->
-  <div class="floating-shapes-container">
-    <div class="floating-shape shape-1"></div>
-    <div class="floating-shape shape-2"></div>
-    <div class="floating-shape shape-3"></div>
-    <div class="floating-shape shape-4"></div>
+  <!-- Scroll Progress Signal -->
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress-fill" id="scroll-progress-fill"></div>
   </div>
-
-  <!-- Interactive Particles Canvas Backdrop -->
-  <canvas id="bg-canvas"></canvas>
 
   <!-- ==========================================
        HEADER & NAVIGATION
@@ -144,7 +138,7 @@
   <!-- Project Detail Modal -->
   <div class="project-modal" id="project-modal">
     <div class="project-modal-overlay" id="project-modal-overlay"></div>
-    <div class="glass-card project-modal-content">
+    <div class="project-modal-content">
       <button class="project-modal-close" id="project-modal-close" aria-label="닫기">&times;</button>
       <div class="project-modal-body" id="project-modal-body">
         <!-- Injected details -->
@@ -155,6 +149,19 @@
   <!-- Card Loader and Theme Script -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Scroll Progress Signal
+      const scrollProgressFill = document.getElementById('scroll-progress-fill');
+      if (scrollProgressFill) {
+        const updateScrollProgress = () => {
+          const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+          scrollProgressFill.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+        };
+        window.addEventListener('scroll', updateScrollProgress);
+        window.addEventListener('resize', updateScrollProgress);
+        updateScrollProgress();
+      }
+
       // 1. Load Data
       const data = window.PORTFOLIO_DATA;
       if (!data || !data.projects) {
@@ -181,18 +188,19 @@
 
           projCard.innerHTML = `
             <div class="project-card">
-              <div class="project-img-wrapper">
-                <div class="project-img-placeholder">
-                  <span class="project-placeholder-icon">${project.icon || '📁'}</span>
-                  <span class="project-placeholder-platform">${project.platformLabel || ''}</span>
-                </div>
+              <div class="project-card-header">
+                <span class="project-card-icon">${project.icon || '📁'}</span>
+                <span class="project-card-title-text">${project.title}</span>
               </div>
               <div class="project-content">
                 <div class="project-tags">${tagsMarkup}</div>
-                <h3 class="project-title">${project.title}</h3>
+                <div class="project-meta-rows">
+                  <div class="spec-meta-row"><span class="spec-meta-label">플랫폼</span><span class="spec-meta-value">${project.platformLabel || ''}</span></div>
+                  <div class="spec-meta-row"><span class="spec-meta-label">기간</span><span class="spec-meta-value">${project.period || ''}</span></div>
+                </div>
                 <p class="project-desc">${project.desc.length > 100 ? project.desc.substring(0, 95) + '...' : project.desc}</p>
                 <div class="project-links" style="margin-top: auto;">
-                  <span class="project-link" style="color: var(--accent-primary); font-weight:600; cursor:pointer;">
+                  <span class="project-link" style="cursor:pointer;">
                     자세히 보기 &rarr;
                   </span>
                 </div>
@@ -590,8 +598,6 @@
       });
     });
   </script>
-  <!-- Interactive Particles Canvas -->
-  <script src="canvas-bg.js"></script>
 </body>
 
 </html>

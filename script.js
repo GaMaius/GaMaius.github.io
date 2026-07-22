@@ -283,6 +283,8 @@ document.addEventListener('DOMContentLoaded', () => {
       { id: 'others', name: 'Others', icon: '⚙️' }
     ];
 
+    const LEVEL_DOTS = { advanced: 3, intermediate: 2, beginner: 1 };
+
     categories.forEach(cat => {
       const catSkills = data.skills.filter(s => s.category === cat.id);
 
@@ -290,9 +292,22 @@ document.addEventListener('DOMContentLoaded', () => {
         const row = document.createElement('div');
         row.className = 'skill-row';
 
-        const badgesMarkup = catSkills.map(skill => {
+        const rowsMarkup = catSkills.map(skill => {
           const lvl = (skill.level || 'beginner').toLowerCase();
-          return `<span class="skill-badge ${lvl}">${skill.name}</span>`;
+          const filled = LEVEL_DOTS[lvl] || 1;
+          let dots = '';
+          for (let d = 1; d <= 3; d++) {
+            dots += `<span class="skill-dot${d <= filled ? ' filled' : ''}"></span>`;
+          }
+          return `
+            <div class="skill-meter-row">
+              <span class="skill-meter-name">${skill.name}</span>
+              <span class="skill-meter-gauge">
+                <span class="skill-dots">${dots}</span>
+                <span class="skill-level-text">${(skill.level || 'Beginner').toUpperCase()}</span>
+              </span>
+            </div>
+          `;
         }).join('');
 
         row.innerHTML = `
@@ -301,7 +316,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <span class="skill-category-name">${cat.name}</span>
           </div>
           <div class="skill-badges-container">
-            ${badgesMarkup}
+            ${rowsMarkup}
           </div>
         `;
         skillsBoard.appendChild(row);
@@ -450,12 +465,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const specItem = document.createElement('div');
       specItem.className = 'specs-row-item clickable-spec';
 
-      // Horizontal row order: Title (내용) -> Badge (분류) -> Institution (개최기관) -> Date (기간)
+      // Ledger card: header bar (title + badge), body (institution / date dashed rows)
       specItem.innerHTML = `
-        <div class="spec-col-title" style="font-weight: 700; font-size: 1rem; color: var(--text-primary);">${spec.title}</div>
-        <div class="spec-col-badge"><span class="specs-badge ${spec.type}">${spec.badgeText}</span></div>
-        <div class="spec-col-institution" style="font-weight: 600; font-size: 0.9rem; color: var(--text-secondary);">${spec.institution || ''}</div>
-        <div class="spec-col-date mono" style="font-size: 0.85rem; color: var(--text-muted); text-align: right;">${spec.date}</div>
+        <div class="spec-card-header">
+          <span class="spec-col-title">${spec.title}</span>
+          <span class="specs-badge ${spec.type}">${spec.badgeText}</span>
+        </div>
+        <div class="spec-card-body">
+          <div class="spec-meta-row"><span class="spec-meta-label">기관</span><span class="spec-meta-value">${spec.institution || '—'}</span></div>
+          <div class="spec-meta-row"><span class="spec-meta-label">기간</span><span class="spec-meta-value">${spec.date}</span></div>
+        </div>
       `;
 
       // Bind click trigger: if related project exists, open project modal directly, otherwise open spec modal
@@ -584,20 +603,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
       projCard.innerHTML = `
         <div class="project-card">
-          <div class="project-img-wrapper">
-            <div class="project-img-placeholder">
-              <span class="project-placeholder-icon">${project.icon || '📁'}</span>
-              <span class="project-placeholder-platform">${project.platformLabel || ''}</span>
-            </div>
+          <div class="project-card-header">
+            <span class="project-card-icon">${project.icon || '📁'}</span>
+            <span class="project-card-title-text">${project.title}</span>
           </div>
           <div class="project-content">
             <div class="project-tags">${tagsMarkup}</div>
-            <h3 class="project-title">${project.title}</h3>
-            
+            <div class="project-meta-rows">
+              <div class="spec-meta-row"><span class="spec-meta-label">플랫폼</span><span class="spec-meta-value">${project.platformLabel || ''}</span></div>
+              <div class="spec-meta-row"><span class="spec-meta-label">기간</span><span class="spec-meta-value">${project.period || ''}</span></div>
+            </div>
             <p class="project-desc">${project.desc.length > 100 ? project.desc.substring(0, 95) + '...' : project.desc}</p>
-            
             <div class="project-links" style="margin-top: auto;">
-              <span class="project-link" style="color: var(--accent-primary); font-weight:600; cursor:pointer;">
+              <span class="project-link" style="cursor:pointer;">
                 자세히 보기 &rarr;
               </span>
             </div>
@@ -653,7 +671,17 @@ document.addEventListener('DOMContentLoaded', () => {
   Object.keys(themeButtons).forEach(mode => {
     const btn = themeButtons[mode];
     if (btn) {
-      btn.addEventListener('click', () => setThemeMode(mode));
+      btn.addEventListener('click', () => {
+        setThemeMode(mode);
+        const crtDevice = document.getElementById('crt');
+        if (crtDevice && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          crtDevice.classList.remove('flash');
+          requestAnimationFrame(() => {
+            crtDevice.classList.add('flash');
+            setTimeout(() => crtDevice.classList.remove('flash'), 400);
+          });
+        }
+      });
     }
   });
 
@@ -709,42 +737,130 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ==========================================
-  // TYPING EFFECT (HERO)
+  // SCROLL PROGRESS SIGNAL
   // ==========================================
-  const typingTarget = document.getElementById('typing-text');
-  const wordsToType = data.profile?.typingWords || ["Developer"];
-  let wordIndex = 0;
-  let charIndex = 0;
-  let isDeleting = false;
-  let typingSpeed = 100;
-
-  function typeEffect() {
-    const currentWord = wordsToType[wordIndex];
-
-    if (isDeleting) {
-      typingTarget.textContent = currentWord.substring(0, charIndex - 1);
-      charIndex--;
-      typingSpeed = 50;
-    } else {
-      typingTarget.textContent = currentWord.substring(0, charIndex + 1);
-      charIndex++;
-      typingSpeed = 120;
-    }
-
-    if (!isDeleting && charIndex === currentWord.length) {
-      isDeleting = true;
-      typingSpeed = 2000;
-    } else if (isDeleting && charIndex === 0) {
-      isDeleting = false;
-      wordIndex = (wordIndex + 1) % wordsToType.length;
-      typingSpeed = 500;
-    }
-
-    setTimeout(typeEffect, typingSpeed);
+  const scrollProgressFill = document.getElementById('scroll-progress-fill');
+  if (scrollProgressFill) {
+    const updateScrollProgress = () => {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      scrollProgressFill.style.width = `${Math.min(100, Math.max(0, progress))}%`;
+    };
+    window.addEventListener('scroll', updateScrollProgress);
+    window.addEventListener('resize', updateScrollProgress);
+    updateScrollProgress();
   }
 
-  if (typingTarget) {
-    typeEffect();
+  // ==========================================
+  // CRT HERO SEQUENCE (boot log -> name type -> tagline reveal -> role loop)
+  // Ported from the D mockup's boot/typewriter flow, wired to real profile data.
+  // ==========================================
+  const bootLogEl = document.getElementById('crt-boot-log');
+  if (bootLogEl) {
+    const nameTextEl = document.getElementById('nameText');
+    const nameCursorEl = document.getElementById('nameCursor');
+    const taglineEl = document.getElementById('taglineLine');
+    const heroDescEl = document.getElementById('hero-description');
+    const roleWordEl = document.getElementById('typing-text');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    const bootLines = ['SYSTEM BOOT v1.0 ...', 'LOADING USER PROFILE ... OK', 'DISPLAY READY'];
+    const nameFull = 'GARAM';
+    const roles = data.profile?.typingWords || ['Developer'];
+
+    function typeInto(el, text, speed, cb) {
+      let i = 0;
+      (function step() {
+        if (i <= text.length) {
+          el.textContent = text.slice(0, i);
+          i++;
+          setTimeout(step, speed);
+        } else if (cb) {
+          cb();
+        }
+      })();
+    }
+
+    function typeLinesInto(el, lines, speed, pause, cb) {
+      let li = 0;
+      let acc = '';
+      (function nextLine() {
+        if (li >= lines.length) {
+          if (cb) cb();
+          return;
+        }
+        const line = lines[li];
+        let ci = 0;
+        (function step() {
+          if (ci <= line.length) {
+            el.textContent = acc + line.slice(0, ci);
+            ci++;
+            setTimeout(step, speed);
+          } else {
+            acc += line + '\n';
+            li++;
+            setTimeout(nextLine, pause);
+          }
+        })();
+      })();
+    }
+
+    function eraseWord(el, word, speed, cb) {
+      let i = word.length;
+      (function step() {
+        if (i >= 0) {
+          el.textContent = word.slice(0, i);
+          i--;
+          setTimeout(step, speed);
+        } else if (cb) {
+          cb();
+        }
+      })();
+    }
+
+    function startRoleLoop() {
+      if (!roleWordEl) return;
+      if (reduceMotion) {
+        roleWordEl.textContent = roles.join(' / ');
+        return;
+      }
+      let idx = 0;
+      function cycle() {
+        const word = roles[idx % roles.length];
+        typeInto(roleWordEl, word, 90, () => {
+          setTimeout(() => {
+            eraseWord(roleWordEl, word, 40, () => {
+              idx++;
+              setTimeout(cycle, 400);
+            });
+          }, 1600);
+        });
+      }
+      cycle();
+    }
+
+    function revealTagline() {
+      if (taglineEl) taglineEl.classList.add('visible');
+      if (heroDescEl) setTimeout(() => heroDescEl.classList.add('visible'), 350);
+      startRoleLoop();
+    }
+
+    if (reduceMotion) {
+      bootLogEl.textContent = bootLines.join('\n');
+      if (nameTextEl) nameTextEl.textContent = nameFull;
+      if (nameCursorEl) nameCursorEl.style.display = 'none';
+      revealTagline();
+    } else {
+      typeLinesInto(bootLogEl, bootLines, 18, 220, () => {
+        setTimeout(() => {
+          if (nameTextEl) {
+            typeInto(nameTextEl, nameFull, 70, () => setTimeout(revealTagline, 300));
+          } else {
+            revealTagline();
+          }
+        }, 200);
+      });
+    }
   }
 
   // ==========================================
