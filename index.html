@@ -24,7 +24,7 @@
   <!-- Immediate Theme Loader -->
   <script>
     (function () {
-      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'dark';
+      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'light';
       if (savedMode === 'system') {
         const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');

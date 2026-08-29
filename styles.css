@@ -684,6 +684,11 @@ h6 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    /* Line the avatar + caption up with the CRT box on the left instead of
+       centering it against the whole text column (CRT + desc + CTA), which
+       pushed it noticeably lower than the GARAM screen. */
+    align-self: flex-start;
+    margin-top: 1rem;
   }
 }
 
@@ -1346,12 +1351,6 @@ h6 {
   flex-shrink: 0;
 }
 
-.spec-card-header .specs-badge {
-  background: color-mix(in srgb, var(--bg-primary) 20%, transparent);
-  border: 1px solid color-mix(in srgb, var(--bg-primary) 35%, transparent);
-  color: inherit;
-}
-
 .specs-badge.launch {
   background: rgba(var(--accent-sec-rgb), 0.12);
   color: var(--accent-secondary);
@@ -1387,6 +1386,23 @@ h6 {
   color: #6c5d92;
   background: rgba(108, 93, 146, 0.1);
   border: 1px solid rgba(108, 93, 146, 0.3);
+}
+
+/* Badge sitting ON the accent-filled card header.
+   The type-colored rules below (.specs-badge.award etc.) share this selector's
+   specificity and come later, so they used to win here — .award paints
+   accent-primary text on an accent-primary header, i.e. invisible. Pinning each
+   type explicitly keeps the chip readable on the header no matter the type. */
+.spec-card-header .specs-badge,
+.spec-card-header .specs-badge.launch,
+.spec-card-header .specs-badge.award,
+.spec-card-header .specs-badge.education,
+.spec-card-header .specs-badge.internship {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-card);
+  color: var(--accent-primary);
+  transform: none;
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.18);
 }
 
 .spec-col-title {

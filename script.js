@@ -686,13 +686,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   systemMediaQuery.addEventListener('change', () => {
-    const currentMode = localStorage.getItem('portfolio-theme-mode') || 'dark';
+    const currentMode = localStorage.getItem('portfolio-theme-mode') || 'light';
     if (currentMode === 'system') {
       applySystemTheme();
     }
   });
 
-  const savedMode = localStorage.getItem('portfolio-theme-mode') || 'dark';
+  const savedMode = localStorage.getItem('portfolio-theme-mode') || 'light';
   setThemeMode(savedMode);
 
   // ==========================================

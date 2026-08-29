@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="dark">
+<html lang="ko" data-theme="light">
 
 <head>
   <meta charset="UTF-8">
@@ -15,7 +15,7 @@
   <!-- Immediate Theme Loader -->
   <script>
     (function () {
-      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'dark';
+      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'light';
       if (savedMode === 'system') {
         const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
@@ -558,13 +558,13 @@
       });
 
       systemMediaQuery.addEventListener('change', () => {
-        const currentMode = localStorage.getItem('portfolio-theme-mode') || 'dark';
+        const currentMode = localStorage.getItem('portfolio-theme-mode') || 'light';
         if (currentMode === 'system') {
           applySystemTheme();
         }
       });
 
-      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'dark';
+      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'light';
       setThemeMode(savedMode);
 
       // 6. Projects Category Filter
