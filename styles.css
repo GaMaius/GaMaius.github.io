@@ -1,12 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap');
+
 /* ==========================================
    AMERICAN RETRO DESIGN SYSTEM
    ========================================== */
 
 :root {
-  /* Fonts — vintage serif display/body, Batang/Myeongjo cover Hangul, Courier New for data/labels */
-  --font-display: 'Rockwell', Georgia, 'Batang', 'Nanum Myeongjo', 'Times New Roman', serif;
-  --font-sans: Georgia, 'Batang', 'Nanum Myeongjo', 'Times New Roman', serif;
-  --font-mono: 'Courier New', Consolas, monospace;
+  /* Fonts — vintage serif display/body with Noto Sans KR covering Hangul, Courier New for data/labels */
+  --font-display: 'Rockwell', Georgia, 'Noto Sans KR', serif;
+  --font-sans: Georgia, 'Noto Sans KR', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'Courier New', Consolas, 'Noto Sans KR', monospace;
 
   /* Transitions */
   --transition-fast: 0.15s cubic-bezier(0.25, 0.8, 0.25, 1);
