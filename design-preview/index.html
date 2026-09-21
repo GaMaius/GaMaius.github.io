@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GARAM — 디자인 후보</title>
+  <link rel="stylesheet" href="preview.css">
+  <link rel="stylesheet" href="accent.css">
+  <link rel="stylesheet" href="studio.css">
+</head>
+<body data-design="a">
+  <aside class="review" aria-label="디자인 후보 선택">
+    <div class="review-title">Home 디자인 미리보기 <span>실제 사이트에는 미적용</span></div>
+    <div class="choices" role="group" aria-label="후보">
+      <button type="button" data-choice="a" aria-pressed="true">A · 클린</button>
+      <button type="button" data-choice="b" aria-pressed="false">B · 쇼케이스</button>
+      <button type="button" data-choice="c" aria-pressed="false">C · 컴팩트</button>
+      <button type="button" data-choice="d" aria-pressed="false">D · 컬러 포인트</button>
+      <button type="button" data-choice="e" aria-pressed="false">E · 가람의 작업실</button>
+    </div>
+    <a href="../index.html" target="_blank" rel="noopener">현재 디자인 ↗</a>
+  </aside>
+  <div class="site">
+    <header class="navigation">
+      <a class="wordmark" href="#home">garam<span>.</span></a>
+      <nav aria-label="페이지 메뉴"><a href="#work">Projects</a><a href="../specs.html">Experience ↗</a><a href="https://github.com/GaMaius" target="_blank" rel="noopener">GitHub ↗</a></nav>
+    </header>
+    <main id="home">
+      <section class="intro" aria-labelledby="intro-title">
+        <div class="intro-copy">
+          <p class="eyebrow">GAME / WEB / AI</p>
+          <h1 id="intro-title">안녕하세요.<br>개발자 <span>지우가람</span>입니다.</h1>
+          <p class="description">게임을 만들고, 웹으로 연결하고,<br class="desktop-break"> AI로 새로운 가능성을 실험합니다.</p>
+          <div class="field-selector" role="group" aria-label="관심 분야별 프로젝트 강조">
+            <button type="button" data-field="all" aria-pressed="true">전체</button>
+            <button type="button" data-field="game" aria-pressed="false"><i></i>Game</button>
+            <button type="button" data-field="web" aria-pressed="false"><i></i>Web</button>
+            <button type="button" data-field="ai" aria-pressed="false"><i></i>AI</button>
+          </div>
+          <a class="work-link" href="#work">프로젝트 살펴보기 <span aria-hidden="true">↓</span></a>
+        </div>
+        <figure class="portrait"><img src="../avatar.png" alt="지우가람 프로필" width="320" height="320"><figcaption>Jiwoo Garam <span>Developer</span></figcaption></figure>
+      </section>
+      <section class="work" id="work" aria-labelledby="work-title">
+        <div class="section-heading"><h2 id="work-title">Selected projects</h2><span>게임에서 일상의 도구까지</span></div>
+        <div class="project-list">
+          <a class="project featured" data-fields="game" href="https://store.steampowered.com/app/4304980/Drilling/" target="_blank" rel="noopener">
+            <div class="project-image"><img src="../Drilling00.png" alt="Drilling 게임 화면" loading="lazy"></div>
+            <div class="project-copy"><span class="category">GAME · UNITY</span><h3>Drilling <span aria-hidden="true">↗</span></h3><p>땅속을 탐험하며 자원을 모으는 캐주얼 채굴 게임.</p><span class="destination">Steam 데모</span></div>
+          </a>
+          <a class="project" data-fields="web ai" href="https://riot-report.onrender.com" target="_blank" rel="noopener">
+            <div class="project-copy"><span class="category">WEB · AI</span><h3>Riot Report <span aria-hidden="true">↗</span></h3><p>경기 데이터를 바탕으로 생성하는 개인 맞춤 AI 코칭 리포트.</p><span class="destination">사이트 방문</span></div>
+          </a>
+          <a class="project" data-fields="web ai" href="https://skillprac.vercel.app/" target="_blank" rel="noopener">
+            <div class="project-copy"><span class="category">WEB · VISION</span><h3>VisionLab <span aria-hidden="true">↗</span></h3><p>웹캠으로 경험하는 생체 신호 분석과 실시간 3D 모션캡처.</p><span class="destination">사이트 방문</span></div>
+          </a>
+        </div>
+        <a class="all-projects" href="../projects.html">전체 프로젝트 보기 <span aria-hidden="true">→</span></a>
+      </section>
+    </main>
+    <footer>지우가람 <span>Game, Web & AI.</span></footer>
+  </div>
+  <script src="preview.js"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+.field-selector{display:none}
+body[data-design=e]{--accent:#244a40;--muted:#6d7471;color:#252c29;background:#fcfdfc}
+body[data-design=e] .site{max-width:1170px}
+body[data-design=e] .wordmark{letter-spacing:-1.8px;font-weight:500}
+body[data-design=e] .wordmark span{color:#bc7647}
+body[data-design=e] .intro{padding:72px 0 68px;align-items:center;gap:60px}
+body[data-design=e] .eyebrow{font-size:10px;letter-spacing:2.5px;color:#78817b}
+body[data-design=e] h1{font-size:clamp(32px,3.8vw,50px);font-weight:400;line-height:1.45;letter-spacing:-2.4px}
+body[data-design=e] h1 span{font-weight:650;color:inherit}
+body[data-design=e] .description{font-size:14px;line-height:1.95;margin:25px 0}
+body[data-design=e] .portrait{width:180px;transform:rotate(-3deg)}
+body[data-design=e] .portrait img{height:210px;border-radius:48% 48% 8px 8px;filter:saturate(.7);transition:filter .3s,transform .3s}
+body[data-design=e] .portrait:hover img{filter:saturate(1);transform:rotate(3deg)}
+body[data-design=e] .portrait figcaption{font-size:10px;transform:rotate(3deg);padding-top:5px}
+body[data-design=e] .field-selector{display:flex;gap:6px;margin:0 0 28px;flex-wrap:wrap}
+.field-selector button{display:flex;align-items:center;gap:7px;border:1px solid transparent;background:transparent;border-radius:24px;padding:9px 13px;font-size:12px;color:#737a76;transition:background .2s,color .2s}
+.field-selector button[aria-pressed=true]{background:#eaf0eb;color:#234337;border-color:#d4dfd5}
+.field-selector i{width:7px;height:7px;border-radius:50%;background:#b56a35}
+.field-selector [data-field=web] i{background:#3e786a}.field-selector [data-field=ai] i{background:#887399}
+body[data-design=e] .work-link{font-size:12px;color:#515e55;font-weight:400}
+body[data-design=e] .section-heading{margin-bottom:22px}
+body[data-design=e] .section-heading h2{font-size:18px;font-weight:500}
+body[data-design=e] .project-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px;border:0}
+body[data-design=e] .project{border:0;border-top:3px solid var(--project-color);padding:22px 0 20px;--project-color:#b56a35;transition:opacity .25s,transform .25s}
+body[data-design=e] .project:nth-child(2){--project-color:#3e786a}
+body[data-design=e] .project:nth-child(3){--project-color:#887399}
+body[data-design=e] .project-copy{display:flex;flex-direction:column;align-items:flex-start;gap:0}
+body[data-design=e] .project-image{display:none}
+body[data-design=e] .category{font-size:9px;letter-spacing:1px;color:var(--project-color)}
+body[data-design=e] h3{font-size:25px;letter-spacing:-1px;font-weight:500;margin:30px 0 14px;width:100%}
+body[data-design=e] h3 span{float:right;font-size:15px;opacity:0;transition:opacity .2s,transform .2s}
+body[data-design=e] .project p{font-size:12px;line-height:1.85;min-height:66px}
+body[data-design=e] .destination{display:block;margin-top:22px;font-size:10px;color:var(--project-color)}
+body[data-design=e] .project:hover{background:transparent;transform:translateY(-3px)}
+body[data-design=e] .project:hover h3 span,body[data-design=e] .project:focus-visible h3 span{opacity:1}
+body[data-design=e] .project.field-muted{opacity:.65}
+body[data-design=e] .project.field-muted:hover,body[data-design=e] .project.field-muted:focus-visible{opacity:1}
+body[data-design=e] .intro-copy{animation:studio-enter .5s both}
+@keyframes studio-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){body[data-design=e] .intro{gap:30px;padding:40px 0 55px}body[data-design=e] .portrait{width:110px;margin-top:0}body[data-design=e] .portrait img{height:140px}body[data-design=e] h1{font-size:32px;letter-spacing:-1.5px}body[data-design=e] .project-list{gap:20px}body[data-design=e] h3{font-size:21px}body[data-design=e] .project p{min-height:90px}body[data-design=e] h3 span{opacity:1}}
+@media(max-width:560px){body[data-design=e] .intro{flex-direction:column-reverse;align-items:flex-start;gap:25px}body[data-design=e] .portrait{width:74px}body[data-design=e] .portrait img{height:87px}body[data-design=e] .project-list{grid-template-columns:1fr;gap:14px}body[data-design=e] .project{padding:20px 0}body[data-design=e] h3{margin:16px 0 10px;font-size:25px}body[data-design=e] .project p{min-height:0}body[data-design=e] .destination{margin-top:16px}}
+@media(prefers-reduced-motion:reduce){body[data-design=e] *{animation:none!important;transition:none!important}}

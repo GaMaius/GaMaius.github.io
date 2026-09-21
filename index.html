@@ -44,6 +44,8 @@
 
   <!-- Core Stylesheet -->
   <link rel="stylesheet" href="styles.css?v=6.0">
+  <link rel="stylesheet" href="studio.css?v=1.0">
+  <script src="studio.js?v=1.0" defer></script>
 </head>
 
 <body>
@@ -137,40 +139,25 @@
   <section class="hero" id="home">
     <div class="container hero-content">
       <div class="hero-text">
-        <div class="crt" id="crt">
-          <div class="crt-bezel">
-            <div class="crt-brand">GARAM‑TRON <span>MODEL&nbsp;G‑1</span></div>
-            <div class="crt-screen">
-              <div class="scanlines" aria-hidden="true"></div>
-              <div class="flicker-overlay" aria-hidden="true"></div>
-              <pre class="boot-log crt-boot-log" id="crt-boot-log" aria-hidden="true"></pre>
-              <h1 class="name-reveal" aria-label="GARAM">
-                <span id="nameText" aria-hidden="true"></span><span class="cursor" id="nameCursor"
-                  aria-hidden="true">▏</span>
-              </h1>
-              <p class="tagline-line" id="taglineLine">GAME • WEB • AI DEVELOPER</p>
-              <p class="role-line"
-                aria-label="Game Developer, Python Programmer, AI Developer, Creative Problem Solver">
-                &gt; <span id="typing-text"></span><span class="typing-cursor cursor small" aria-hidden="true">▏</span>
-              </p>
-            </div>
-          </div>
+        <p class="studio-eyebrow">GAME / WEB / AI</p>
+        <h1 class="studio-title">안녕하세요.<br>개발자 <strong>지우가람</strong>입니다.</h1>
+        <p class="studio-intro">게임을 만들고, 웹으로 연결하고,<br>AI로 새로운 가능성을 실험합니다.</p>
+        <div class="studio-fields" role="group" aria-label="관심 분야 선택">
+          <button type="button" data-studio-field="all" aria-pressed="true">전체</button>
+          <button type="button" data-studio-field="game" aria-pressed="false">Game</button>
+          <button type="button" data-studio-field="web" aria-pressed="false">Web</button>
+          <button type="button" data-studio-field="ai" aria-pressed="false">AI</button>
         </div>
-        <p class="hero-desc" id="hero-description">
-          <!-- Dynamically Injected -->
-        </p>
         <div class="hero-cta">
-          <a href="#projects" class="btn btn-primary" id="view-work-btn">프로젝트 보기</a>
-          <a href="#contact" class="btn btn-secondary" id="contact-me-btn">연락하기</a>
+          <a href="#projects" class="studio-work-link">프로젝트 살펴보기 <span aria-hidden="true">↓</span></a>
+          <a href="#contact" class="studio-work-link">연락하기 ↗</a>
         </div>
       </div>
-
       <div class="hero-visual">
         <div class="hero-img-container">
-          <div class="hero-img-border"></div>
-          <img src="avatar.png" alt="GARAM Profile Avatar" class="hero-img" id="profile-avatar">
+          <img src="avatar.png" alt="지우가람 프로필" class="hero-img" id="profile-avatar">
         </div>
-        <p class="hero-name-caption">안녕하세요, <span class="gradient-text">지우가람</span>입니다.</p>
+        <p class="hero-name-caption">Jiwoo Garam <span>Developer</span></p>
       </div>
     </div>
   </section>
