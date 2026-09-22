@@ -1,11 +1,53 @@
 /* A clearer hierarchy: section surfaces, category labels, and readable cards. */
+/* Reset legacy geometry only in the modern theme; vivid keeps styles.css. */
+.container{width:100%;min-width:0}
+html{scrollbar-gutter:stable}
+.header,.header.scrolled{padding:0}
+.hero-text,.profile-grid>*{min-width:0}
+.hero-visual{margin:0}
+.skills-board{grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));align-items:start}
+.skills-board .skill-row{min-width:0;padding:0;border:1px solid var(--border-color);border-radius:8px;overflow:hidden;box-shadow:none;transform:none}
+.skills-board .skill-row:hover{transform:none;box-shadow:none}
+.skill-category-header{border-bottom:1px solid var(--border-color);background:var(--bg-secondary);color:var(--text-primary);padding:14px 16px}
+.skill-category-name{font-weight:650}
+.skill-badges-container{padding:4px 16px 10px;min-width:0}
+.project-modal-close,.lightbox-close{width:44px;height:44px;flex-shrink:0;transform:none;transition:background-color .18s,color .18s}
+.project-modal-close:hover,.lightbox-close:hover{transform:none}
+.project-modal-body{padding-top:68px}
+.modal-project-title,.spec-col-title,.col-title{word-break:keep-all;overflow-wrap:anywhere}
+.project-modal-body .specs-badge{transform:none}
+.project-meta-value,.modal-desc-text{word-break:keep-all;overflow-wrap:anywhere}
+.spec-card-header .specs-badge{flex-shrink:0;white-space:nowrap}
+.archive-back{white-space:nowrap}
+.back-short{display:none}
+.burger-menu{width:36px;height:44px;flex-shrink:0}
+.burger-line{left:6px;width:24px;transform-origin:center}
+.burger-line:nth-child(1){top:13px}
+.burger-line:nth-child(2){top:21px}
+.burger-line:nth-child(3){top:29px}
+.burger-menu.open .burger-line:nth-child(1),.burger-menu.open .burger-line:nth-child(3){top:21px}
+.mobile-nav{top:73px;height:calc(100dvh - 73px);padding:32px 24px;box-shadow:-8px 16px 30px #0001;border-left:1px solid var(--border-color)}
+@media(max-width:768px){
+  .archive-table{width:100%;min-width:0}
+  .archive-table-wrapper{overflow:visible}
+  .archive-table tbody tr{padding:20px;border-bottom:1px solid var(--border-color)}
+  .archive-table tbody tr:last-child{border-bottom:0}
+  .archive-table td{padding:6px 0;border-bottom:0;overflow-wrap:anywhere}
+}
+@media(max-width:600px){
+  .nav-container{gap:10px}
+  .archive-back .back-label{display:none}
+  .archive-back .back-short{display:inline}
+  .project-modal-body{padding-top:68px}
+  .spec-card-header{align-items:flex-start;flex-wrap:wrap}
+}
 .design-switch{font-size:12px;white-space:nowrap;border:1px solid var(--panel-border);border-radius:7px;padding:8px 12px;color:var(--text-primary);background:var(--bg-card)}
 .design-switch:hover{background:var(--bg-secondary)}
 .section-title{font-weight:650;font-size:30px;letter-spacing:-1px}
-.section-title-wrap{margin-bottom:32px}.section-subtitle{max-width:650px}
+.section-title-wrap{margin-bottom:32px}.section-subtitle{max-width:650px;text-align:left;margin-left:0;margin-right:0}
 .about,.projects{background:var(--bg-secondary)}
 .about,.specs,.projects,.contact{border-bottom:1px solid var(--border-color)}
-.profile-grid{gap:44px}.about-edu-wrap{padding:0 24px 24px;border:1px solid var(--border-color);border-radius:12px;background:var(--bg-card)}
+.profile-grid{gap:44px}.about-edu-wrap{padding:0 24px 24px!important;border:1px solid var(--border-color);border-radius:12px;background:var(--bg-card)}
 .about-edu-wrap:hover{transform:none}.panel-header{font-weight:650;font-size:17px}
 .skills-board{background:var(--bg-card);padding:12px 24px;border:1px solid var(--border-color);border-radius:12px}
 .specs-row-item{border:1px solid var(--panel-border);border-radius:10px;background:var(--bg-card);padding:0 20px;transition:border-color .2s,transform .2s}
@@ -26,3 +68,4 @@
 .archive-table-wrapper{border:1px solid var(--panel-border);border-radius:10px}.archive-table th{font-weight:650}.archive-table tbody tr:hover{background:var(--bg-secondary)}
 @media(min-width:992px){.nav-links{gap:20px}.nav-actions{gap:10px}.nav-link{font-size:11px}}
 @media(max-width:600px){.nav-actions{gap:7px}.design-switch{font-size:11px;padding:7px 9px}.section-title{font-size:26px}.profile-grid{gap:26px}.project-card-header{padding:20px 20px 12px}.project-content{padding:0 20px 22px}.project-content>.project-desc{min-height:0}.skills-board{padding:8px 14px}.contact-panel{padding:0 18px}}
+@media(max-width:360px){.nav-container{padding-left:16px;padding-right:16px;gap:6px}.nav-actions{gap:4px}.design-switch{padding:7px}.theme-opt-btn{padding:6px}.skill-meter-row{flex-wrap:wrap;gap:6px}.skill-meter-gauge{margin-left:auto}}

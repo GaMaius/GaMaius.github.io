@@ -1,6 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Run after the existing content renderer and preserve its filter/modal handlers.
   queueMicrotask(() => {
+    document.querySelectorAll('.nav-links a[href="index.html"]').forEach(link => {
+      link.classList.add('archive-back');
+      link.setAttribute('aria-label', '포트폴리오 홈으로');
+    });
     const filters = document.querySelectorAll('.filter-btn');
     const fields = document.querySelectorAll('[data-studio-field]');
     function sync(value) {
