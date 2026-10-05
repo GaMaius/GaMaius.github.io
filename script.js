@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   // ==========================================
   // LOCAL PORTFOLIO DATABASE FALLBACK
   // (Prevents site crash if data.js is blocked or missing)
@@ -517,8 +517,7 @@
       <div class="project-meta-grid" style="margin-bottom: 2rem;">
         <div class="project-meta-label">개발 기간</div>
         <div class="project-meta-value">${project.period || ''}</div>
-        <div class="project-meta-label">인원 구성</div>
-        <div class="project-meta-value">${project.team || ''}</div>
+        ${project.team ? `<div class="project-meta-label">인원 구성</div><div class="project-meta-value">${project.team}</div>` : ''}
         <div class="project-meta-label">본인 역할</div>
         <div class="project-meta-value">${project.role || ''}</div>
       </div>

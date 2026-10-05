@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', () => {
     filters.forEach(button => button.addEventListener('click', () => sync(button.dataset.filter)));
     sync('all');
     const summaries = [
+      ['DevCompass', '12개 분야·48개 직무를 탐색하고 프로젝트·포트폴리오·지원 준비로 연결하는 진로 탐색 웹앱.'],
       ['Drilling', '땅속을 탐험하고 자원을 모으는 캐주얼 채굴 게임. Steam 데모 출시.'],
       ['감바랩스', 'PPT 제작·Excel 편집·SVG 변환을 하나로 묶은 LLM 기반 사내 업무 도구.'],
       ['리그 오브', 'LoL 경기 지표를 분석하고 개인 맞춤 AI 코칭 리포트를 생성하는 웹 서비스.'],
