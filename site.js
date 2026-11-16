@@ -70,8 +70,8 @@
   if (sparkles) {
     for (let i = 0; i < 18; i++) {
       const s = h("i");
-      s.style.left = `${8 + Math.random() * 88}%`;
-      s.style.top = `${6 + Math.random() * 80}%`;
+      s.style.left = `${58 + Math.random() * 40}%`;
+      s.style.top = `${6 + Math.random() * 84}%`;
       s.style.animationDelay = `${(Math.random() * 2.4).toFixed(2)}s`;
       sparkles.append(s);
     }
@@ -196,7 +196,11 @@
   const rvIO = "IntersectionObserver" in window && !reduce
     ? new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { rvIO.unobserve(e.target); reveal(e.target); } }), { threshold: 0.25, rootMargin: "0px 0px -8% 0px" })
     : null;
-  document.querySelectorAll(".rv, .xp").forEach((el) => (rvIO ? rvIO.observe(el) : reveal(el)));
+  document.querySelectorAll(".rv, .xp").forEach((el) => {
+    if (!rvIO) return reveal(el);
+    el.classList.add("anim");
+    rvIO.observe(el);
+  });
 
   // ---------- 디더링 띠: 어두운 동굴 → 밝은 지상 ----------
   const dither = $(".dither");
