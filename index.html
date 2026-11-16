@@ -10,25 +10,25 @@
   <meta property="og:description" content="Steam 정식 출시작 Drilling의 인벤토리, 상점, 업그레이드, 보상 시스템을 만들었습니다.">
   <meta property="og:url" content="https://gamaius.github.io/">
   <meta property="og:image" content="https://gamaius.github.io/img/drilling-play.webp">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22 shape-rendering=%22crispEdges%22><rect width=%2216%22 height=%2216%22 fill=%22%2314171B%22/><rect x=%225%22 y=%223%22 width=%226%22 height=%222%22 fill=%22%23E8EAEC%22/><rect x=%224%22 y=%225%22 width=%228%22 height=%224%22 fill=%22%23E8EAEC%22/><rect x=%226%22 y=%229%22 width=%224%22 height=%222%22 fill=%22%23E8EAEC%22/><rect x=%227%22 y=%2211%22 width=%222%22 height=%222%22 fill=%22%2329C3C9%22/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22 shape-rendering=%22crispEdges%22><rect width=%2216%22 height=%2216%22 fill=%22%2315191e%22/><rect x=%225%22 y=%223%22 width=%226%22 height=%222%22 fill=%22%23dfe5ea%22/><rect x=%224%22 y=%225%22 width=%228%22 height=%224%22 fill=%22%23dfe5ea%22/><rect x=%226%22 y=%229%22 width=%224%22 height=%222%22 fill=%22%23dfe5ea%22/><rect x=%227%22 y=%2211%22 width=%222%22 height=%222%22 fill=%22%2336d0d6%22/></svg>">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/variable/woff2/SUIT-Variable.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
-  <link rel="stylesheet" href="site.css?v=1">
-  <script src="data.js?v=1" defer></script>
-  <script src="site.js?v=1" defer></script>
+  <link rel="stylesheet" href="site.css?v=3">
+  <script src="data.js?v=3" defer></script>
+  <script src="site.js?v=3" defer></script>
 </head>
-<body data-page="home">
+<body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
 
-  <header class="topbar">
+  <header class="topbar" data-tone="dark">
     <div class="wrap topbar-inner">
-      <a class="brand" href="index.html">지우가람</a>
+      <a class="brand" href="#top"><span class="brand-ore" aria-hidden="true"></span>지우가람</a>
       <nav aria-label="주요 메뉴">
         <ul class="nav">
           <li><a href="#drilling">Drilling</a></li>
           <li><a href="#projects">프로젝트</a></li>
-          <li><a href="#career">경력과 자격</a></li>
+          <li><a href="#about">강점·경력</a></li>
           <li><a href="#skills">기술</a></li>
           <li><a href="#contact">연락</a></li>
         </ul>
@@ -36,91 +36,133 @@
     </div>
   </header>
 
+  <!-- 스크롤 깊이계: 드릴이 페이지를 따라 파 내려간다 -->
+  <div class="depth" aria-hidden="true">
+    <div class="depth-shaft"><div class="depth-trail"></div><div class="depth-drill" data-sprite="drill"></div></div>
+    <div class="depth-read"><span class="depth-num">0</span>m</div>
+    <div class="depth-zone"></div>
+  </div>
+
   <main id="main">
-    <section class="cave" aria-labelledby="hero-name">
-      <div class="wrap cave-grid">
-        <div class="hero-copy">
-          <h1 id="hero-name" class="pixel hero-name" data-bind="person.name"></h1>
-          <p class="hero-role" data-bind="person.role"></p>
-          <div class="hero-intro" data-slot="intro"></div>
-          <dl class="proof" data-slot="proof"></dl>
-          <div class="actions">
-            <a class="btn btn-ore" href="#drilling">Drilling 작업 보기</a>
-            <a class="btn btn-ghost" data-href="featured.links.store" target="_blank" rel="noopener">Steam 상점 페이지</a>
+    <!-- 1. 동굴 입구: 도트 -->
+    <section id="top" class="cave lv-pixel" data-zone="동굴 입구" aria-labelledby="hero-name">
+      <div class="cave-bg" aria-hidden="true"></div>
+      <div class="sparkles" aria-hidden="true"></div>
+      <div class="wrap hero">
+        <h1 id="hero-name" class="hero-name pixel" data-bind="person.name"></h1>
+        <div class="dialog px">
+          <p class="dialog-text"><span class="typed" data-type="person.role"></span><span class="caret" aria-hidden="true"></span></p>
+          <p class="dialog-sub" data-bind="person.tagline"></p>
+        </div>
+        <ul class="hud" data-slot="slots" aria-label="요약"></ul>
+        <div class="hero-actions">
+          <a class="pbtn pbtn-ore" href="#drilling">Drilling 보기</a>
+          <a class="pbtn" href="#projects">프로젝트 9개</a>
+        </div>
+      </div>
+      <a class="dig-hint" href="#drilling">
+        <span class="dig-drill" data-sprite="drill" aria-hidden="true"></span>
+        <span>아래로 파고 내려가기</span>
+      </a>
+      <div class="rock-edge" aria-hidden="true"></div>
+    </section>
+
+    <!-- 2. 대표작: 게임 HUD -->
+    <section id="drilling" class="mine lv-pixel" data-zone="대표작 갱도" aria-labelledby="drilling-title">
+      <div class="wrap">
+        <div class="mine-head">
+          <h2 id="drilling-title" class="pixel mine-title">Drilling</h2>
+          <span class="badge-gold px">Steam 정식 출시</span>
+        </div>
+        <p class="mine-line" data-bind="featured.oneLine"></p>
+
+        <div class="mine-grid">
+          <figure class="screen px">
+            <img src="img/drilling-play.webp" width="1440" height="810" loading="lazy" alt="">
+            <figcaption>실제 플레이 화면</figcaption>
+          </figure>
+          <dl class="quest px" data-slot="facts" aria-label="프로젝트 정보"></dl>
+        </div>
+
+        <div class="xp px">
+          <p class="xp-label">개발 진행</p>
+          <ol class="xp-track" data-slot="milestones"></ol>
+        </div>
+
+        <h3 class="pixel sub-title">내가 만든 시스템</h3>
+        <ul class="systems" data-slot="systems"></ul>
+        <ul class="also" data-slot="also" aria-label="그 밖에 맡은 일"></ul>
+
+        <div class="mine-foot">
+          <a class="pbtn pbtn-gold" data-href="person.steam" target="_blank" rel="noopener">Steam 상점 페이지</a>
+          <span class="note-dim" data-bind="featured.codeNote"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. 프로젝트: 도트가 옅어진다 -->
+    <section id="projects" class="vein lv-half" data-zone="광맥" aria-labelledby="projects-title">
+      <div class="wrap">
+        <div class="vein-head">
+          <h2 id="projects-title">다른 프로젝트</h2>
+          <div class="filters" role="group" aria-label="분야로 거르기" data-slot="filters"></div>
+        </div>
+        <ul class="cards" data-slot="projects" aria-live="polite"></ul>
+      </div>
+    </section>
+
+    <canvas class="dither" aria-hidden="true"></canvas>
+
+    <!-- 4. 지상: 일반 UI -->
+    <section id="about" class="surface lv-smooth" data-zone="지표면" aria-labelledby="about-title">
+      <div class="wrap">
+        <h2 id="about-title">이런 개발자입니다</h2>
+        <ul class="strengths" data-slot="strengths"></ul>
+
+        <div class="career">
+          <div>
+            <h3 class="h3">경력과 자격</h3>
+            <ol class="timeline" data-slot="timeline"></ol>
+          </div>
+          <div>
+            <h3 class="h3">학력</h3>
+            <ul class="edu" data-slot="education"></ul>
+            <div class="legend" aria-label="색 구분">
+              <span class="lg lg-출시">출시</span><span class="lg lg-인턴">인턴</span><span class="lg lg-자격">자격</span><span class="lg lg-수상">수상</span><span class="lg lg-수료">수료</span>
+            </div>
           </div>
         </div>
-        <figure class="hero-shot">
-          <img src="img/drilling-play.webp" width="1440" height="810" fetchpriority="high"
-            alt="Drilling 플레이 화면. 어두운 동굴 속에서 드릴이 바위를 뚫고, 하단에 광물 인벤토리 슬롯 세 칸이 보인다.">
-          <figcaption><span class="shipped">Steam 정식 출시</span> 메인 클라이언트 개발로 참여한 Drilling</figcaption>
-        </figure>
       </div>
     </section>
 
-    <section id="drilling" class="section" aria-labelledby="drilling-title">
+    <section id="skills" class="surface surface-alt lv-smooth" data-zone="지표면" aria-labelledby="skills-title">
       <div class="wrap">
-        <div class="feature-head">
-          <h2 id="drilling-title" class="pixel feature-title">Drilling</h2>
-          <p class="lead" data-bind="featured.oneLine"></p>
+        <div class="skills-head">
+          <h2 id="skills-title">기술</h2>
+          <p class="scale-note"><span class="gauge-demo" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> 한 칸 = 20%. 숙련은 실무 수준으로 혼자 완성할 수 있는 정도, 중급은 프로젝트에 써 본 정도, 입문은 기본을 다뤄 본 정도입니다.</p>
         </div>
-        <dl class="facts" data-slot="facts"></dl>
-        <h3 class="subhead">제가 만든 것</h3>
-        <ul class="systems" data-slot="systems"></ul>
-        <div class="feature-foot">
-          <a class="btn btn-ore" data-href="featured.links.store" target="_blank" rel="noopener">Steam 상점 페이지</a>
-          <p class="note" data-bind="featured.codeNote"></p>
-        </div>
+        <div class="skills" data-slot="skills"></div>
       </div>
     </section>
 
-    <section id="projects" class="section section-alt" aria-labelledby="projects-title">
-      <div class="wrap">
-        <div class="section-head">
-          <h2 id="projects-title">다른 프로젝트</h2>
-          <p>게임 밖에서도 직접 만들고 배포한 것들입니다. 줄을 누르면 자세히 볼 수 있습니다.</p>
-        </div>
-        <ul class="rows" data-slot="home-projects"></ul>
-        <p class="more"><a href="projects.html">전체 프로젝트 10개 보기</a></p>
-      </div>
-    </section>
-
-    <section id="career" class="section" aria-labelledby="career-title">
-      <div class="wrap career-grid">
-        <div>
-          <h2 id="career-title">경력과 자격</h2>
-          <ol class="timeline" data-slot="timeline"></ol>
-        </div>
-        <div>
-          <h2 class="h2-small">학력</h2>
-          <ul class="edu" data-slot="education"></ul>
+    <section id="contact" class="surface contact lv-smooth" data-zone="지상 도착" aria-labelledby="contact-title">
+      <div class="wrap contact-inner">
+        <h2 id="contact-title">함께 게임을 만들고 싶습니다</h2>
+        <a class="mail" data-mail></a>
+        <div class="contact-links">
+          <a class="btn btn-ink" data-href="person.github" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-line" data-href="person.steam" target="_blank" rel="noopener">Drilling Steam 페이지</a>
         </div>
       </div>
-    </section>
-
-    <section id="skills" class="section section-alt" aria-labelledby="skills-title">
-      <div class="wrap">
-        <h2 id="skills-title">기술</h2>
-        <dl class="skills" data-slot="skills"></dl>
-      </div>
-    </section>
-
-    <section id="contact" class="section contact" aria-labelledby="contact-title">
-      <div class="wrap">
-        <h2 id="contact-title">연락</h2>
-        <p class="contact-line">함께 게임을 만들 기회를 찾고 있습니다. 메일로 편하게 연락 주세요.</p>
-        <p><a class="contact-mail" data-mail></a></p>
-        <p><a class="contact-gh" data-href="person.github" target="_blank" rel="noopener">GitHub에서 코드 보기</a></p>
-      </div>
+      <div class="moon" aria-hidden="true"></div>
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="wrap">지우가람, 2026</div>
-  </footer>
+  <footer class="footer"><div class="wrap">지우가람, 2026. 도트 이미지는 Pixel Factory로 만들었습니다.</div></footer>
 
   <dialog class="sheet" id="detail" aria-labelledby="detail-title">
     <div class="sheet-inner">
-      <button class="sheet-close" type="button" data-close aria-label="닫기">닫기</button>
+      <button class="sheet-close" type="button" data-close>닫기</button>
       <div data-slot="detail"></div>
     </div>
   </dialog>
