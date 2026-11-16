@@ -123,7 +123,7 @@ window.PORTFOLIO = {
       ],
       result: "Vercel 배포 운영 중",
       stack: ["TypeScript", "Next.js", "MediaPipe", "three.js", "ONNX Runtime Web"],
-      links: { demo: "https://skillprac.vercel.app/", repo: "https://github.com/GaMaius/WebCam" }
+      links: { demo: "https://skillprac.vercel.app/", repo: "https://github.com/GaMaius/WebCam/tree/visionlab" }
     },
     {
       id: "push-force",
