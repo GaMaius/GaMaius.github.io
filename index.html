@@ -1,377 +1,128 @@
 <!DOCTYPE html>
-<html lang="ko" data-theme="light">
-
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- SEO Meta Tags -->
-  <title>GaMaius | Portfolio (Game • Web • AI)</title>
-  <meta name="description" content="게임 개발, 웹 풀스택, AI 개발에 깊은 관심과 역량을 지닌 소프트웨어 엔지니어 GaMaius의 포트폴리오입니다.">
-  <meta name="keywords" content="GaMaius, 포트폴리오, 게임 개발, 웹 개발, AI 개발, Unity, React, PyTorch, Developer">
-  <meta name="author" content="GaMaius">
-
-  <!-- Open Graph / Facebook -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>지우가람 | Unity 게임 클라이언트 개발자</title>
+  <meta name="description" content="Steam에 정식 출시한 Drilling의 클라이언트 개발자 지우가람의 포트폴리오. Unity, C#, 그리고 AI·웹 서비스 개발.">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="GaMaius | Portfolio (Game • Web • AI)">
-  <meta property="og:description" content="게임 개발, 웹 풀스택, 인공지능 엔지니어링을 아우르는 GaMaius의 프로젝트 쇼케이스 사이트입니다.">
+  <meta property="og:title" content="지우가람 | Unity 게임 클라이언트 개발자">
+  <meta property="og:description" content="Steam 정식 출시작 Drilling의 인벤토리, 상점, 업그레이드, 보상 시스템을 만들었습니다.">
   <meta property="og:url" content="https://gamaius.github.io/">
-
-  <!-- Favicon -->
-  <link rel="icon"
-    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>">
-
-  <!-- Google Fonts: Noto Sans KR -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-  <!-- Immediate Theme Loader -->
-  <script>
-    (function () {
-      const savedMode = localStorage.getItem('portfolio-theme-mode') || 'light';
-      if (savedMode === 'system') {
-        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-      } else {
-        document.documentElement.setAttribute('data-theme', savedMode);
-      }
-    })();
-  </script>
-
-  <!-- 0. Load Local CORS-free Config Database First -->
-  <script src="data.js"></script>
-
-  <!-- Core Stylesheet -->
-  <link rel="stylesheet" href="styles.css?v=6.0">
-  <link rel="stylesheet" href="studio.css?v=1.0">
-  <link rel="stylesheet" href="studio-clarity.css?v=1.2">
-  <script src="studio.js?v=1.2" defer></script>
+  <meta property="og:image" content="https://gamaius.github.io/img/drilling-play.webp">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22 shape-rendering=%22crispEdges%22><rect width=%2216%22 height=%2216%22 fill=%22%2314171B%22/><rect x=%225%22 y=%223%22 width=%226%22 height=%222%22 fill=%22%23E8EAEC%22/><rect x=%224%22 y=%225%22 width=%228%22 height=%224%22 fill=%22%23E8EAEC%22/><rect x=%226%22 y=%229%22 width=%224%22 height=%222%22 fill=%22%23E8EAEC%22/><rect x=%227%22 y=%2211%22 width=%222%22 height=%222%22 fill=%22%2329C3C9%22/></svg>">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/variable/woff2/SUIT-Variable.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
+  <link rel="stylesheet" href="site.css?v=1">
+  <script src="data.js?v=1" defer></script>
+  <script src="site.js?v=1" defer></script>
 </head>
+<body data-page="home">
+  <a class="skip" href="#main">본문으로 건너뛰기</a>
 
-<body>
-
-  <!-- Scroll Progress Signal -->
-  <div class="scroll-progress" aria-hidden="true">
-    <div class="scroll-progress-fill" id="scroll-progress-fill"></div>
-  </div>
-
-  <!-- ==========================================
-       HEADER & NAVIGATION
-       ========================================== -->
-  <header class="header" id="header">
-    <div class="container nav-container">
-      <a href="#home" class="logo" id="logo-link">
-        <span class="gradient-text">GARAM</span><span class="logo-dot"></span>
-      </a>
-
-      <!-- Desktop Nav Menu -->
-      <nav class="nav-links" id="desktop-nav">
-        <a href="#home" class="nav-link active">Home</a>
-        <a href="#profile" class="nav-link">Profile</a>
-        <a href="#specs" class="nav-link">Specs</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="index.html">지우가람</a>
+      <nav aria-label="주요 메뉴">
+        <ul class="nav">
+          <li><a href="#drilling">Drilling</a></li>
+          <li><a href="#projects">프로젝트</a></li>
+          <li><a href="#career">경력과 자격</a></li>
+          <li><a href="#skills">기술</a></li>
+          <li><a href="#contact">연락</a></li>
+        </ul>
       </nav>
-
-      <!-- Nav Action Tools -->
-      <div class="nav-actions">
-        <a href="vivid/index.html" class="design-switch">화려한</a>
-        <!-- 3-State Theme Selector -->
-        <div class="theme-selector" id="theme-selector">
-          <!-- Light Mode Button (White) -->
-          <button id="theme-opt-light" class="theme-opt-btn" title="화이트 모드">
-            <svg viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-            <span>Light</span>
-          </button>
-
-          <!-- Dark Mode Button (Black) -->
-          <button id="theme-opt-dark" class="theme-opt-btn" title="블랙 모드">
-            <svg viewBox="0 0 24 24">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-            <span>Dark</span>
-          </button>
-
-          <!-- System Settings Auto Theme -->
-          <button id="theme-opt-system" class="theme-opt-btn" title="시스템 기준">
-            <svg viewBox="0 0 24 24">
-              <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
-              <line x1="8" y1="21" x2="16" y2="21"></line>
-              <line x1="12" y1="17" x2="12" y2="21"></line>
-            </svg>
-            <span>Auto</span>
-          </button>
-        </div>
-
-        <!-- Mobile burger button -->
-        <button id="burger-menu-btn" class="burger-menu" aria-label="메뉴 열기/닫기" aria-expanded="false">
-          <span class="burger-line"></span>
-          <span class="burger-line"></span>
-          <span class="burger-line"></span>
-        </button>
-      </div>
     </div>
   </header>
 
-  <!-- Mobile Drawer Overlay -->
-  <div class="mobile-nav" id="mobile-nav-overlay">
-    <nav style="display: flex; flex-direction: column; gap: 2rem;">
-      <a href="#home" class="nav-link">Home</a>
-      <a href="#profile" class="nav-link">Profile</a>
-      <a href="#specs" class="nav-link">Specs</a>
-      <a href="#projects" class="nav-link">Projects</a>
-      <a href="#contact" class="nav-link">Contact</a>
-    </nav>
-  </div>
-
-  <!-- ==========================================
-       HERO SECTION
-       ========================================== -->
-  <section class="hero" id="home">
-    <div class="container hero-content">
-      <div class="hero-text">
-        <p class="studio-eyebrow">GAME / WEB / AI</p>
-        <h1 class="studio-title">안녕하세요.<br>개발자 <strong>지우가람</strong>입니다.</h1>
-        <p class="studio-intro">게임을 만들고, 웹으로 연결하고,<br>AI로 새로운 가능성을 실험합니다.</p>
-        <div class="studio-fields" role="group" aria-label="관심 분야 선택">
-          <button type="button" data-studio-field="all" aria-pressed="true">전체</button>
-          <button type="button" data-studio-field="game" aria-pressed="false">Game</button>
-          <button type="button" data-studio-field="web" aria-pressed="false">Web</button>
-          <button type="button" data-studio-field="ai" aria-pressed="false">AI</button>
-        </div>
-        <div class="hero-cta">
-          <a href="#projects" class="studio-work-link">프로젝트 살펴보기 <span aria-hidden="true">↓</span></a>
-          <a href="#contact" class="studio-work-link">연락하기 ↗</a>
-        </div>
-      </div>
-      <div class="hero-visual">
-        <div class="hero-img-container">
-          <img src="avatar.png" alt="지우가람 프로필" class="hero-img" id="profile-avatar">
-        </div>
-        <p class="hero-name-caption">Jiwoo Garam <span>Developer</span></p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       PROFILE SECTION
-       ========================================== -->
-  <section class="about" id="profile">
-    <div class="container">
-      <div class="section-title-wrap">
-        <span class="section-idx">[01]</span>
-        <h2 class="section-title">Developer Profile</h2>
-        <p class="section-subtitle">'나'에 대한 설명입니다.</p>
-      </div>
-
-      <!-- Bio Intro & Education Grid -->
-      <div class="profile-grid reveal" style="margin-bottom: 4.5rem;">
-        <!-- Left: Bio Description -->
-        <div class="about-bio-wrap">
-          <h3 id="bio-title" style="font-size: 1.8rem; margin-bottom: 1.5rem;"><!-- Dynamically Injected --></h3>
-          <div id="bio-text-container" class="bio-text-lead">
-            <!-- Dynamically Injected -->
+  <main id="main">
+    <section class="cave" aria-labelledby="hero-name">
+      <div class="wrap cave-grid">
+        <div class="hero-copy">
+          <h1 id="hero-name" class="pixel hero-name" data-bind="person.name"></h1>
+          <p class="hero-role" data-bind="person.role"></p>
+          <div class="hero-intro" data-slot="intro"></div>
+          <dl class="proof" data-slot="proof"></dl>
+          <div class="actions">
+            <a class="btn btn-ore" href="#drilling">Drilling 작업 보기</a>
+            <a class="btn btn-ghost" data-href="featured.links.store" target="_blank" rel="noopener">Steam 상점 페이지</a>
           </div>
         </div>
+        <figure class="hero-shot">
+          <img src="img/drilling-play.webp" width="1440" height="810" fetchpriority="high"
+            alt="Drilling 플레이 화면. 어두운 동굴 속에서 드릴이 바위를 뚫고, 하단에 광물 인벤토리 슬롯 세 칸이 보인다.">
+          <figcaption><span class="shipped">Steam 정식 출시</span> 메인 클라이언트 개발로 참여한 Drilling</figcaption>
+        </figure>
+      </div>
+    </section>
 
-        <!-- Right: Education timeline -->
-        <div class="about-edu-wrap">
-          <div class="panel-header">
-            <svg viewBox="0 0 24 24"
-              style="width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
-              <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"></path>
-            </svg>
-            학력 사항
-          </div>
-          <div class="panel-body">
-            <div class="edu-timeline" id="edu-timeline-container">
-              <!-- Dynamically Injected -->
-            </div>
-          </div>
+    <section id="drilling" class="section" aria-labelledby="drilling-title">
+      <div class="wrap">
+        <div class="feature-head">
+          <h2 id="drilling-title" class="pixel feature-title">Drilling</h2>
+          <p class="lead" data-bind="featured.oneLine"></p>
+        </div>
+        <dl class="facts" data-slot="facts"></dl>
+        <h3 class="subhead">제가 만든 것</h3>
+        <ul class="systems" data-slot="systems"></ul>
+        <div class="feature-foot">
+          <a class="btn btn-ore" data-href="featured.links.store" target="_blank" rel="noopener">Steam 상점 페이지</a>
+          <p class="note" data-bind="featured.codeNote"></p>
         </div>
       </div>
+    </section>
 
-      <!-- Skills Board Row (Full Width) -->
-      <div class="reveal reveal-delay-2">
-        <div
-          style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1.8rem; flex-wrap: wrap; gap: 0.8rem;">
-          <h3 style="font-size: 1.5rem; font-weight: 700;">Technical Skills</h3>
-          <!-- Legend -->
-          <div class="skills-legend"
-            style="display: flex; gap: 1.2rem; font-size: 0.8rem; font-family: var(--font-mono); align-items: center;">
-            <span class="legend-item" style="display: flex; align-items: center; gap: 0.4rem;">
-              <span class="legend-dot advanced"
-                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-secondary);"></span>
-              Advanced
-            </span>
-            <span class="legend-item" style="display: flex; align-items: center; gap: 0.4rem;">
-              <span class="legend-dot intermediate"
-                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--accent-primary);"></span>
-              Intermediate
-            </span>
-            <span class="legend-item" style="display: flex; align-items: center; gap: 0.4rem;">
-              <span class="legend-dot beginner"
-                style="display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--text-secondary);"></span>
-              Beginner
-            </span>
-          </div>
+    <section id="projects" class="section section-alt" aria-labelledby="projects-title">
+      <div class="wrap">
+        <div class="section-head">
+          <h2 id="projects-title">다른 프로젝트</h2>
+          <p>게임 밖에서도 직접 만들고 배포한 것들입니다. 줄을 누르면 자세히 볼 수 있습니다.</p>
         </div>
-        <div class="skills-board" id="skills-board-container">
-          <!-- Dynamically Injected Rows -->
+        <ul class="rows" data-slot="home-projects"></ul>
+        <p class="more"><a href="projects.html">전체 프로젝트 10개 보기</a></p>
+      </div>
+    </section>
+
+    <section id="career" class="section" aria-labelledby="career-title">
+      <div class="wrap career-grid">
+        <div>
+          <h2 id="career-title">경력과 자격</h2>
+          <ol class="timeline" data-slot="timeline"></ol>
+        </div>
+        <div>
+          <h2 class="h2-small">학력</h2>
+          <ul class="edu" data-slot="education"></ul>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ==========================================
-       SPECS SECTION (AWARDS, LAUNCHES, ETC.)
-       ========================================== -->
-  <section class="specs" id="specs">
-    <div class="container">
-      <div class="section-title-wrap" style="text-align: center;">
-        <span class="section-idx" style="display: block;">[02]</span>
-        <h2 class="section-title">Specifications</h2>
-        <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">다양한 대회와 실무 협업 무대에서 달성해낸 주요 이력들입니다.
-        </p>
+    <section id="skills" class="section section-alt" aria-labelledby="skills-title">
+      <div class="wrap">
+        <h2 id="skills-title">기술</h2>
+        <dl class="skills" data-slot="skills"></dl>
       </div>
+    </section>
 
-      <!-- List-Style Specs Group -->
-      <div id="specs-list-container" class="specs-list-group">
-        <!-- Dynamically Injected -->
+    <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 id="contact-title">연락</h2>
+        <p class="contact-line">함께 게임을 만들 기회를 찾고 있습니다. 메일로 편하게 연락 주세요.</p>
+        <p><a class="contact-mail" data-mail></a></p>
+        <p><a class="contact-gh" data-href="person.github" target="_blank" rel="noopener">GitHub에서 코드 보기</a></p>
       </div>
+    </section>
+  </main>
 
-      <!-- View All Specs Button -->
-      <div style="text-align: center; margin-top: 3.5rem;" class="reveal">
-        <a href="specs.html" class="btn btn-secondary"
-          style="padding: 0.9rem 2.2rem; font-family: var(--font-mono); font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem;">
-          전체 이력 보기 &rarr;
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       PROJECTS SECTION
-       ========================================== -->
-  <section class="projects" id="projects">
-    <div class="container">
-      <div class="section-title-wrap" style="text-align: center;">
-        <span class="section-idx" style="display: block;">[03]</span>
-        <h2 class="section-title">Featured Projects</h2>
-        <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">각 도메인 분석과 물리적 최적화를 고려해 설계해 낸 주요
-          성과물입니다.</p>
-      </div>
-
-      <!-- Filter Button Tabs -->
-      <div class="project-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="game">Game Dev</button>
-        <button class="filter-btn" data-filter="web">Web</button>
-        <button class="filter-btn" data-filter="ai">AI Dev</button>
-      </div>
-
-      <!-- Project Showcase Grid -->
-      <div class="grid grid-3 projects-grid" id="projects-list-container">
-        <!-- Dynamically Injected -->
-      </div>
-
-      <!-- View All Button -->
-      <div style="text-align: center; margin-top: 3.5rem;" class="reveal">
-        <a href="projects.html" class="btn btn-secondary"
-          style="padding: 0.9rem 2.2rem; font-family: var(--font-mono); font-size: 0.85rem; display: inline-flex; align-items: center; gap: 0.5rem;">
-          전체 프로젝트 보기 &rarr;
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       CONTACT SECTION
-       ========================================== -->
-  <section class="contact" id="contact">
-    <div class="container">
-      <div class="section-title-wrap" style="text-align: center;">
-        <span class="section-idx" style="display: block;">[04]</span>
-        <h2 class="section-title">Get In Touch</h2>
-        <p class="section-subtitle" style="margin-left: auto; margin-right: auto;">프로젝트 협업 제안이나 기타 문의사항이 있으시면 이메일이나
-          GitHub을 통해 언제든지 연락해 주세요.</p>
-      </div>
-
-      <div class="contact-grid reveal">
-        <div class="contact-panel">
-          <a href="mailto:rkfka04101212@gmail.com" class="contact-row">
-            <span class="contact-row-label">Email</span>
-            <span class="contact-row-value">rkfka04101212@gmail.com</span>
-          </a>
-          <a href="https://github.com/GaMaius" target="_blank" rel="noopener noreferrer" class="contact-row">
-            <span class="contact-row-label">GitHub</span>
-            <span class="contact-row-value">github.com/GaMaius</span>
-          </a>
-          <div class="contact-row">
-            <span class="contact-row-label">Location</span>
-            <span class="contact-row-value">Busan, South Korea</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================
-       PROJECT DETAIL MODAL
-       ========================================== -->
-  <div class="project-modal" id="project-modal">
-    <div class="project-modal-overlay" id="project-modal-overlay"></div>
-    <div class="project-modal-content">
-      <button class="project-modal-close" id="project-modal-close" aria-label="닫기">&times;</button>
-      <div class="project-modal-body" id="project-modal-body">
-        <!-- Dynamically Injected Detail View -->
-      </div>
-    </div>
-  </div>
-
-  <!-- ==========================================
-       FOOTER
-       ========================================== -->
   <footer class="footer">
-    <div class="container footer-content">
-      <div class="footer-logo">
-        GARAM<span class="logo-dot"></span>
-      </div>
-
-      <div class="footer-socials">
-        <a href="https://github.com/GaMaius" class="social-icon" target="_blank" rel="noopener noreferrer"
-          aria-label="Github 링크">
-          <svg viewBox="0 0 24 24">
-            <path
-              d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-          </svg>
-        </a>
-      </div>
-
-      <p class="footer-copy">&copy; 2026 GARAM. All rights reserved.</p>
-    </div>
+    <div class="wrap">지우가람, 2026</div>
   </footer>
 
-  <!-- Submission Toast Notifications -->
-  <div id="toast" class="toast">
-    <span class="toast-icon">✓</span>
-    <span id="toast-msg" class="toast-msg">메시지가 정상적으로 발송되었습니다.</span>
-  </div>
-
-  <!-- Core Interactions Script -->
-  <script src="script.js?v=6.0"></script>
+  <dialog class="sheet" id="detail" aria-labelledby="detail-title">
+    <div class="sheet-inner">
+      <button class="sheet-close" type="button" data-close aria-label="닫기">닫기</button>
+      <div data-slot="detail"></div>
+    </div>
+  </dialog>
 </body>
-
 </html>
