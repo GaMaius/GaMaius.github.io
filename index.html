@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/variable/woff2/SUIT-Variable.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
-  <link rel="stylesheet" href="site.css?v=19">
-  <script src="data.js?v=19" defer></script>
-  <script src="site.js?v=19" defer></script>
+  <link rel="stylesheet" href="site.css?v=20">
+  <script src="data.js?v=20" defer></script>
+  <script src="site.js?v=20" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -26,11 +26,11 @@
       <a class="brand" href="#top"><span class="brand-ore" aria-hidden="true"></span>지우가람</a>
       <nav aria-label="주요 메뉴">
         <ul class="nav">
-          <li><a href="#drilling" data-sprite="drill" data-size="16">Drilling</a></li>
-          <li><a href="#projects" data-sprite="n-pickaxe" data-size="16">프로젝트</a></li>
-          <li><a href="#about" data-sprite="n-star" data-size="16">강점·경력</a></li>
-          <li><a href="#skills" data-sprite="i-upgrade" data-size="16">기술</a></li>
-          <li><a href="#contact" data-sprite="n-mail" data-size="16">연락</a></li>
+          <li><a href="#drilling" data-sprite="drill" data-size="24">Drilling</a></li>
+          <li><a href="#projects" data-sprite="n-pickaxe" data-size="24">프로젝트</a></li>
+          <li><a href="#about" data-sprite="n-star" data-size="24">강점·경력</a></li>
+          <li><a href="#skills" data-sprite="i-upgrade" data-size="24">기술</a></li>
+          <li><a href="#contact" data-sprite="n-mail" data-size="24">연락</a></li>
         </ul>
       </nav>
     </div>
@@ -41,7 +41,7 @@
     <div class="depth-shaft">
       <div class="depth-trail" aria-hidden="true"></div>
       <ol class="depth-marks"></ol>
-      <div class="depth-drill" data-sprite="drill" data-size="32" aria-hidden="true"></div>
+      <div class="depth-drill" data-sprite="drill" data-size="24" aria-hidden="true"></div>
     </div>
     <div class="depth-read" aria-hidden="true"><span class="depth-num">0</span>m</div>
     <div class="depth-zone" aria-hidden="true"></div>
@@ -60,8 +60,8 @@
         </div>
         <ul class="hud" data-slot="slots" aria-label="요약"></ul>
         <div class="hero-actions">
-          <a class="pbtn pbtn-ore" href="#drilling" data-sprite="drill" data-size="16">Drilling 보기</a>
-          <a class="pbtn" href="#projects" data-sprite="n-pickaxe" data-size="16">프로젝트 9개</a>
+          <a class="pbtn pbtn-ore" href="#drilling" data-sprite="drill" data-size="24">Drilling 보기</a>
+          <a class="pbtn" href="#projects" data-sprite="n-pickaxe" data-size="24">프로젝트 9개</a>
         </div>
       </div>
       <a class="dig-hint" href="#drilling">
@@ -76,7 +76,7 @@
       <div class="wrap">
         <div class="mine-head">
           <h2 id="drilling-title" class="pixel mine-title">Drilling</h2>
-          <span class="badge-gold px" data-sprite="steam" data-size="16">Steam 정식 출시</span>
+          <span class="badge-gold px" data-sprite="steam" data-size="24">Steam 정식 출시</span>
         </div>
         <p class="mine-line" data-bind="featured.oneLine"></p>
 
@@ -93,11 +93,11 @@
           <ol class="xp-track" data-slot="milestones"></ol>
         </div>
 
-        <h3 class="pixel sub-title h-ico" data-sprite="i-inventory" data-size="32">담당한 시스템</h3>
+        <h3 class="pixel sub-title h-ico" data-sprite="i-inventory" data-size="24">담당한 시스템</h3>
         <ul class="systems" data-slot="systems"></ul>
 
         <div class="mine-foot">
-          <a class="pbtn pbtn-gold" data-href="person.steam" target="_blank" rel="noopener" data-sprite="steam" data-size="16">Steam 상점 페이지</a>
+          <a class="pbtn pbtn-gold" data-href="person.steam" target="_blank" rel="noopener" data-sprite="steam" data-size="24">Steam 상점 페이지</a>
         </div>
       </div>
       <div class="rock-edge rock-edge-vein" aria-hidden="true"></div>
@@ -107,7 +107,7 @@
     <section id="projects" class="vein lv-half" data-zone="프로젝트" data-icon="n-pickaxe" aria-labelledby="projects-title">
       <div class="wrap">
         <div class="vein-head">
-          <h2 id="projects-title" class="h-ico" data-sprite="n-pickaxe" data-size="32">다른 프로젝트</h2>
+          <h2 id="projects-title" class="h-ico" data-sprite="n-pickaxe" data-size="48">다른 프로젝트</h2>
           <div class="filters" role="group" aria-label="분야로 거르기" data-slot="filters"></div>
         </div>
         <ul class="cards" data-slot="projects" aria-live="polite"></ul>
@@ -119,19 +119,19 @@
     <!-- 4. 지상: 일반 UI -->
     <section id="about" class="surface lv-smooth" data-zone="강점·경력" data-icon="n-star" aria-labelledby="about-title">
       <div class="wrap">
-        <h2 id="about-title" class="h-ico" data-sprite="n-star" data-size="32">이런 개발자입니다</h2>
+        <h2 id="about-title" class="h-ico" data-sprite="n-star" data-size="48">이런 개발자입니다</h2>
         <ul class="strengths" data-slot="strengths"></ul>
 
         <div class="career">
           <div>
-            <h3 class="h3 h-ico" data-sprite="n-map" data-size="32">경력과 자격</h3>
+            <h3 class="h3 h-ico" data-sprite="n-map" data-size="24">경력과 자격</h3>
             <ol class="timeline" data-slot="timeline"></ol>
           </div>
           <div>
-            <h3 class="h3 h-ico" data-sprite="i-school" data-size="32">학력</h3>
+            <h3 class="h3 h-ico" data-sprite="i-school" data-size="24">학력</h3>
             <ul class="edu" data-slot="education"></ul>
             <div class="legend" aria-label="색 구분">
-              <span class="lg lg-출시" data-sprite="steam" data-size="16">출시</span><span class="lg lg-인턴" data-sprite="i-intern" data-size="16">인턴</span><span class="lg lg-자격" data-sprite="n-code" data-size="16">자격</span><span class="lg lg-수상" data-sprite="i-medal" data-size="16">수상</span><span class="lg lg-수료" data-sprite="i-flag" data-size="16">수료</span>
+              <span class="lg lg-출시" data-sprite="steam" data-size="24">출시</span><span class="lg lg-인턴" data-sprite="i-intern" data-size="24">인턴</span><span class="lg lg-자격" data-sprite="n-code" data-size="24">자격</span><span class="lg lg-수상" data-sprite="i-medal" data-size="24">수상</span><span class="lg lg-수료" data-sprite="i-flag" data-size="24">수료</span>
             </div>
           </div>
         </div>
@@ -141,7 +141,7 @@
     <section id="skills" class="surface surface-alt lv-smooth" data-zone="기술" data-icon="i-upgrade" aria-labelledby="skills-title">
       <div class="wrap">
         <div class="skills-head">
-          <h2 id="skills-title" class="h-ico" data-sprite="i-upgrade" data-size="32">기술</h2>
+          <h2 id="skills-title" class="h-ico" data-sprite="i-upgrade" data-size="48">기술</h2>
           <p class="scale-note"><span class="gauge-demo" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> 한 칸 = 20%. 숙련은 실무 수준으로 혼자 완성할 수 있는 정도, 중급은 프로젝트에 써 본 정도, 입문은 기본을 다뤄 본 정도입니다.</p>
         </div>
         <div class="skills" data-slot="skills"></div>
@@ -150,11 +150,11 @@
 
     <section id="contact" class="surface contact lv-smooth" data-zone="연락" data-icon="n-mail" aria-labelledby="contact-title">
       <div class="wrap contact-inner">
-        <h2 id="contact-title" class="h-ico" data-sprite="n-mail" data-size="32">함께 게임을 만들고 싶습니다</h2>
+        <h2 id="contact-title" class="h-ico" data-sprite="n-mail" data-size="48">함께 게임을 만들고 싶습니다</h2>
         <a class="mail" data-mail></a>
         <div class="contact-links">
-          <a class="btn btn-ink" data-href="person.github" target="_blank" rel="noopener" data-sprite="n-code" data-size="16">GitHub</a>
-          <a class="btn btn-line" data-href="person.steam" target="_blank" rel="noopener" data-sprite="steam" data-size="16">Drilling Steam 페이지</a>
+          <a class="btn btn-ink" data-href="person.github" target="_blank" rel="noopener" data-sprite="n-code" data-size="24">GitHub</a>
+          <a class="btn btn-line" data-href="person.steam" target="_blank" rel="noopener" data-sprite="steam" data-size="24">Drilling Steam 페이지</a>
         </div>
       </div>
       <canvas class="dither dither-sky" data-from="#f3f5f7" data-to="#0c183d" aria-hidden="true"></canvas>

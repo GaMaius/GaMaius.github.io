@@ -37,11 +37,11 @@
   const slot = (name) => $(`[data-slot="${name}"]`);
   const fill = (name, nodes) => { const s = slot(name); if (s) s.replaceChildren(...[nodes].flat(Infinity).filter((n) => n != null && n !== false && n !== "")); };
 
-  // 도트 아이콘. 원본은 16×16이고, 픽셀이 고르게 보이도록 16의 정수배(16·32·48·64·96)로만 그린다.
+  // 도트 아이콘. 원본은 24×24이고, 픽셀이 고르게 보이도록 24의 정수배(24·48·72·96)로만 그린다.
   // 파일이 없으면 같은 크기의 광석 모양으로 대체한다.
   const ICON_KIND = { game: "k-game", ai: "k-ai", web: "k-web", tool: "k-tool" };
-  function sprite(name, size = 32) {
-    size = Math.max(16, Math.round(size / 16) * 16);
+  function sprite(name, size = 24) {
+    size = Math.max(24, Math.round(size / 24) * 24);
     const fallback = () => {
       const o = h("span.ore", { class: `ore${/gold|cert|launch|minigame|medal/.test(name || "") ? " gold" : ""}`, "aria-hidden": "true" });
       o.style.width = o.style.height = `${size}px`;
@@ -63,7 +63,7 @@
   document.querySelectorAll("[data-bind]").forEach((el) => { const v = get(el.dataset.bind); if (v) el.textContent = v; else el.hidden = true; });
   document.querySelectorAll("[data-href]").forEach((el) => { const v = get(el.dataset.href); if (v) el.href = v; else el.hidden = true; });
   document.querySelectorAll("[data-mail]").forEach((el) => { el.href = `mailto:${D.person.email}`; el.textContent = D.person.email; });
-  document.querySelectorAll("[data-sprite]").forEach((el) => el.prepend(sprite(el.dataset.sprite, Number(el.dataset.size) || 32)));
+  document.querySelectorAll("[data-sprite]").forEach((el) => el.prepend(sprite(el.dataset.sprite, Number(el.dataset.size) || 24)));
 
   // ---------- 1. 동굴 ----------
   bgArt($(".cave-bg"), "img/px/cave.png");
@@ -97,7 +97,7 @@
 
   // ---------- 2. Drilling ----------
   const F = D.featured;
-  fill("facts", F.facts.map((f) => h("div", null, sprite(f.icon, 32), h("dt", null, f.term), h("dd", null, f.desc))));
+  fill("facts", F.facts.map((f) => h("div", null, sprite(f.icon, 24), h("dt", null, f.term), h("dd", null, f.desc))));
   if (slot("milestones")) {
     const toMonths = (d) => { const [y, m] = d.split(".").map(Number); return y * 12 + m; };
     const a = toMonths(F.milestones[0].date), b = toMonths(F.milestones.at(-1).date);
@@ -110,7 +110,7 @@
       })
     ]);
   }
-  fill("systems", F.systems.map((s) => h("li.px", null, h("div.px.slot", null, sprite(s.icon, 64)), h("h4", null, s.title), h("p", null, s.body))));
+  fill("systems", F.systems.map((s) => h("li.px", null, h("div.px.slot", null, sprite(s.icon, 72)), h("h4", null, s.title), h("p", null, s.body))));
 
   // 썸네일이 처음 보일 때 저해상도 도트에서 원본으로 "렌더링"되는 연출
   const resolveIO = "IntersectionObserver" in window && !reduce
@@ -154,7 +154,7 @@
     const thumb = p.thumb
       ? h("div.thumb", null, h("img", { src: p.thumb, alt: "", loading: "lazy", decoding: "async", "data-resolve": "" }))
       : h("div.thumb.icon-only", null, sprite(p.icon, 96));
-    thumb.prepend(h("span.px.kind-tag", null, sprite(ICON_KIND[p.kind], 16), KIND[p.kind]));
+    thumb.prepend(h("span.px.kind-tag", null, sprite(ICON_KIND[p.kind], 24), KIND[p.kind]));
     return h("li", { "data-kind": p.kind },
       h("button.px.card", { type: "button", class: `px card k-${p.kind}`, "data-open": p.id, "aria-haspopup": "dialog" },
         thumb,
@@ -163,7 +163,7 @@
           h("p.line", null, p.oneLine),
           h("p.meta", null, h("span", null, h("b", null, "기간"), p.period), h("span", null, h("b", null, "구성"), p.team)),
           h("ul.chips", null, p.chips.map((c) => h("li", null, c)))),
-        h("span.more", null, sprite("n-magnify", 16), "자세히 보기")));
+        h("span.more", null, sprite("n-magnify", 24), "자세히 보기")));
   }
   const cards = slot("projects");
   if (cards) {
@@ -176,7 +176,7 @@
       const n = k === "all" ? D.projects.length : D.projects.filter((p) => p.kind === k).length;
       return h("button.px", { type: "button", class: "px", "aria-pressed": String(k === "all"),
         onclick: (e) => { buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === e.currentTarget))); render(k); } },
-        sprite(k === "all" ? "ore-cyan" : ICON_KIND[k], 16), `${label} ${n}`);
+        sprite(k === "all" ? "ore-cyan" : ICON_KIND[k], 24), `${label} ${n}`);
     });
     fill("filters", buttons);
     render("all");
@@ -191,14 +191,14 @@
     else if (t.link) title = h("a", { href: t.link }, t.title);
     return h("li.px.rv", null,
       h("time", null, t.date),
-      h("span.tl-icon", null, sprite(t.icon, 32)),
+      h("span.tl-icon", null, sprite(t.icon, 48)),
       h("div", null, h("div.tl-title", null, title), h("div.tl-meta", null, [t.org, t.note].filter(Boolean).join(", "))),
       h("span.kbadge", { class: `kbadge kc-${t.kind}` }, t.kind));
   }));
-  fill("education", D.education.map((e) => h("li.px.rv", null, sprite(e.icon, 32), h("div", null, h("strong", null, e.school), h("span", null, e.period)))));
+  fill("education", D.education.map((e) => h("li.px.rv", null, sprite(e.icon, 48), h("div", null, h("strong", null, e.school), h("span", null, e.period)))));
 
   fill("skills", D.skills.map((g) => h("section.px.rv.sgroup", { class: `px rv sgroup k-${g.kind}`, "aria-label": g.group },
-    h("h3", null, sprite(ICON_KIND[g.kind], 32), g.group),
+    h("h3", null, sprite(ICON_KIND[g.kind], 24), g.group),
     g.items.map((s) => {
       const on = Math.max(1, Math.min(5, Math.round(s.pct / 20)));
       return h("div.srow", null,
@@ -251,7 +251,7 @@
       if (!z.id || seen.has(z.dataset.zone)) return;
       seen.add(z.dataset.zone);
       marks.append(h("li", { "data-for": z.id },
-        h("a.px", { class: "px", href: `#${z.id}`, "aria-label": `${z.dataset.zone}로 이동` }, sprite(z.dataset.icon || "ore-cyan", 16)),
+        h("a.px", { class: "px", href: `#${z.id}`, "aria-label": `${z.dataset.zone}로 이동` }, sprite(z.dataset.icon || "ore-cyan", 24)),
         h("span.depth-tip", { "aria-hidden": "true" }, z.dataset.zone)));
     });
   }
@@ -299,7 +299,7 @@
     if (p.links?.demo) links.push(h("a.btn.btn-ink", { href: p.links.demo, target: "_blank", rel: "noopener" }, "배포된 사이트 열기"));
     if (p.links?.repo) links.push(h("a.btn.btn-line", { href: p.links.repo, target: "_blank", rel: "noopener" }, "GitHub 저장소"));
     return h("div", { class: `k-${p.kind}` },
-      h("div.d-head", null, sprite(p.icon, 48), h("div", null, h("span.d-kind", null, sprite(ICON_KIND[p.kind], 16), KIND[p.kind]), h("h2", { id: "detail-title" }, p.title))),
+      h("div.d-head", null, sprite(p.icon, 48), h("div", null, h("span.d-kind", null, sprite(ICON_KIND[p.kind], 24), KIND[p.kind]), h("h2", { id: "detail-title" }, p.title))),
       h("p.d-line", null, p.oneLine),
       h("dl.d-meta", null, meta.map(([k, v]) => h("div", null, h("dt", null, k), h("dd", null, v)))),
       p.images?.length && h("div.d-gallery", { tabindex: "0", "aria-label": "화면 모음, 옆으로 넘겨 보기" },

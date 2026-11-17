@@ -129,13 +129,13 @@ body[data-tone="light"] .nav a:hover { color: var(--ink); }
 .depth-shaft { position: relative; width: 8px; height: 46vh; background: rgba(255, 255, 255, 0.07); box-shadow: inset 2px 0 0 rgba(0, 0, 0, 0.35); }
 .depth-trail { position: absolute; left: 0; top: 0; width: 100%; height: 0; background: repeating-linear-gradient(#6b5236 0 4px, #4a3826 4px 8px); }
 .depth-marks { position: absolute; inset: 0; margin: 0; padding: 0; }
-.depth-marks li { position: absolute; left: 50%; top: 0; width: 28px; height: 28px; margin: -14px 0 0 -14px; pointer-events: auto; }
-.depth-marks a { --p: 2px; --pb: var(--rock); --pf: #14171b; width: 28px; height: 28px; display: grid; place-items: center; }
+.depth-marks li { position: absolute; left: 50%; top: 0; width: 32px; height: 32px; margin: -16px 0 0 -16px; pointer-events: auto; }
+.depth-marks a { --p: 2px; --pb: var(--rock); --pf: #14171b; width: 32px; height: 32px; display: grid; place-items: center; }
 .depth-marks a:hover, .depth-marks li.on a { --pb: var(--gold); }
 .depth-marks a:focus-visible { outline: 3px solid var(--ore); outline-offset: -2px; }
 .depth-tip { position: absolute; right: calc(100% + 10px); top: 50%; transform: translateY(-50%); white-space: nowrap; font-size: 12px; font-weight: 800; padding: 4px 9px; background: #0d0f12; color: #fff; box-shadow: 0 0 0 2px var(--rock); opacity: 0; transition: opacity 0.12s steps(2); pointer-events: none; }
 .depth-marks li:hover .depth-tip, .depth-marks a:focus-visible + .depth-tip { opacity: 1; }
-.depth-drill { position: absolute; left: 50%; top: 0; z-index: 2; width: 32px; height: 32px; margin: -16px 0 0 -16px; pointer-events: none; }
+.depth-drill { position: absolute; left: 50%; top: 0; z-index: 2; width: 24px; height: 24px; margin: -12px 0 0 -12px; pointer-events: none; }
 .depth-read { font-family: var(--pixel); font-size: 11px; color: var(--stone-dim); }
 .depth-zone { width: 72px; text-align: center; font-size: 11px; font-weight: 700; line-height: 1.3; color: var(--stone-dim); }
 body[data-tone="light"] .depth-shaft { background: #dfe4e9; box-shadow: none; }
@@ -202,7 +202,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .screen img { width: 100%; }
 .screen figcaption { padding: 8px 4px 2px; font-size: 13px; color: var(--stone-dim); }
 .quest { --pb: var(--rock); padding: 12px 22px; display: grid; align-content: center; }
-.quest > div { display: grid; grid-template-columns: 32px 40px 1fr; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 2px dashed var(--c3); }
+.quest > div { display: grid; grid-template-columns: 24px 40px 1fr; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 2px dashed var(--c3); }
 .quest > div:last-child { border-bottom: 0; }
 .quest dt { font-size: 13px; font-weight: 700; color: var(--stone-dim); }
 .quest dd { font-weight: 800; color: #fff; }
@@ -241,7 +241,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
   .systems { grid-template-columns: 1fr; }
   .systems li { grid-template-columns: 72px 1fr; align-items: center; }
   .systems .slot { width: 72px; height: 72px; grid-row: span 2; }
-  .quest > div { grid-template-columns: 32px 36px 1fr; gap: 12px; }
+  .quest > div { grid-template-columns: 24px 36px 1fr; gap: 12px; }
   .xp-track li { width: 96px; }
   .xp-track span { font-size: 12px; }
 }
@@ -310,7 +310,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 
 .career { margin-top: 56px; display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 64px); }
 .timeline { display: grid; gap: 10px; }
-.timeline li { display: grid; grid-template-columns: 70px 32px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 14px 18px; }
+.timeline li { display: grid; grid-template-columns: 70px 48px minmax(0, 1fr) auto; align-items: center; gap: 14px; padding: 14px 18px; }
 .timeline time { font-weight: 800; font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .tl-title { font-weight: 800; }
 .tl-title a, .tl-title button { all: unset; cursor: pointer; text-decoration: underline; text-decoration-color: var(--line); text-underline-offset: 4px; }
@@ -324,7 +324,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .kc-수상 { --kc: var(--game-l); }
 .kc-수료 { --kc: var(--tool-l); }
 .edu { display: grid; gap: 10px; }
-.edu li { display: grid; grid-template-columns: 32px 1fr; align-items: center; gap: 14px; padding: 14px 18px; }
+.edu li { display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: 14px; padding: 14px 18px; }
 .edu strong { display: block; }
 .edu span { font-size: 13px; color: var(--muted); }
 .legend { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 6px; }
@@ -337,7 +337,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
   .career { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
-  .timeline li { grid-template-columns: 32px minmax(0, 1fr); padding: 12px 14px; }
+  .timeline li { grid-template-columns: 48px minmax(0, 1fr); padding: 12px 14px; }
   .timeline time { grid-column: 2; order: -1; font-size: 13px; }
   .timeline .tl-icon { grid-row: span 2; }
   .timeline .kbadge { grid-column: 2; justify-self: start; }
@@ -468,9 +468,9 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .lg .sprite { filter: drop-shadow(0 0 0 #fff); }
 .sgroup h3 { gap: 12px; }
 @media (max-width: 760px) {
-  .hud .slot .sprite { width: 32px; height: 32px; }
+  .hud .slot .sprite { width: 48px; height: 48px; }
 }
-.kind-tag .sprite, .more .sprite, .filters .sprite, .nav .sprite, .lg .sprite, .d-kind .sprite, .depth-marks .sprite { width: 16px; height: 16px; }
+.kind-tag .sprite, .more .sprite, .filters .sprite, .nav .sprite, .lg .sprite, .d-kind .sprite, .depth-marks .sprite { width: 24px; height: 24px; }
 @media (min-width: 761px) and (max-width: 1100px) {
   .hud { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 520px; }
 }
