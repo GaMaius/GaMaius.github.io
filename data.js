@@ -173,7 +173,7 @@ window.PORTFOLIO = {
     },
     {
       id: "push-force", kind: "game", icon: "p-push",
-      title: "push -‌-force",
+      title: "push --force",
       period: "2025.09 (1일)", team: "3명, 테크위크 게임 해커톤", role: "맵 로직 담당",
       oneLine: "원형 전장에서 서로를 밀어 떨어뜨리는 2인 로컬 대전 게임",
       chips: ["1일 완성", "맵 기믹 3종", "2인 로컬 대전"],
@@ -340,7 +340,7 @@ window.PORTFOLIO = {
     { date: "2026.04", kind: "출시", icon: "i-launch", title: "Drilling Steam 데모 출시", org: "Studio. HONGS", link: "#drilling" },
     { date: "2026.02", kind: "수상", icon: "i-minigame", title: "라이프 스타일 해커톤 우수상", org: "On-Life 스마트 미러", projectId: "on-life" },
     { date: "2026.02", kind: "수료", icon: "ore-gold", title: "블레이버스 MVP 개발 해커톤", org: "기계 부품 3D 뷰어", projectId: "infotive" },
-    { date: "2025.09", kind: "수료", icon: "ore-gold", title: "테크위크 1일 게임 해커톤", org: "push -‌-force", projectId: "push-force" }
+    { date: "2025.09", kind: "수료", icon: "ore-gold", title: "테크위크 1일 게임 해커톤", org: "push --force", projectId: "push-force" }
   ],
 
   education: [
@@ -352,7 +352,7 @@ window.PORTFOLIO = {
   skills: [
     { group: "게임 개발", kind: "game", items: [
       { name: "Unity", pct: 95, level: "숙련", proof: "Drilling 상용 출시" },
-      { name: "C#", pct: 75, level: "중급", proof: "Drilling, push -‌-force" },
+      { name: "C#", pct: 75, level: "중급", proof: "Drilling, push --force" },
       { name: "C++", pct: 75, level: "중급", proof: "학교 수업, 객체지향 과제" },
       { name: "Aseprite", pct: 70, level: "중급", proof: "" }
     ]},

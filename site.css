@@ -379,7 +379,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .btn-line { border: 1px solid var(--line); background: var(--surface); color: var(--ink); }
 .btn-line:hover { border-color: var(--ink); }
 .moon { height: 160px; background: linear-gradient(#f3f5f7, #dfe6ee); }
-.moon.has-art { height: auto; aspect-ratio: 320 / 120; max-height: 300px; background-size: cover; background-position: center bottom; image-rendering: pixelated; }
+.moon.has-art { width: 100%; height: min(37.5vw, 520px); background-size: cover; background-position: center 30%; image-rendering: pixelated; }
 
 .footer { background: #0d0f12; color: var(--stone-dim); font-size: 13px; padding: 22px 0 28px; }
 
@@ -448,3 +448,13 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
   }
   .xp-track time { margin: 0; }
 }
+
+/* 지상 → 밤하늘(달) */
+.dither-sky { background: #0c183d; }
+.moon.has-art { display: block; }
+.contact + .footer, .footer { background: #091129; }
+
+/* 같은 줄 카드 높이 맞추기 */
+.cards > li { display: flex; }
+.cards .card { height: 100%; }
+.dd { font-kerning: none; letter-spacing: 0.06em; margin: 0 0.04em; }

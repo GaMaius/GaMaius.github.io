@@ -17,9 +17,20 @@
     }
     for (const kid of kids.flat(Infinity)) {
       if (kid == null || kid === false || kid === "") continue;
-      el.append(kid instanceof Node ? kid : String(kid));
+      el.append(kid instanceof Node ? kid : text(String(kid)));
     }
     return el;
+  }
+  // "push --force" 처럼 하이픈이 이어지면 커닝으로 붙어 긴 대시처럼 보인다. 그 부분만 커닝을 끈다.
+  function text(s) {
+    if (!s.includes("--")) return s;
+    const frag = document.createDocumentFragment();
+    s.split(/(-{2,})/).forEach((part) => {
+      if (!part) return;
+      if (/^-{2,}$/.test(part)) { const sp = document.createElement("span"); sp.className = "dd"; sp.textContent = part; frag.append(sp); }
+      else frag.append(part);
+    });
+    return frag;
   }
   const get = (path) => path.split(".").reduce((o, k) => (o == null ? o : o[k]), D);
   const $ = (sel) => document.querySelector(sel);
@@ -202,20 +213,23 @@
     rvIO.observe(el);
   });
 
-  // ---------- 디더링 띠: 어두운 동굴 → 밝은 지상 ----------
-  const dither = $(".dither");
+  // ---------- 디더링 띠: 위 색 → 아래 색 (data-from / data-to) ----------
+  // 동굴 → 지상(밝은 화면), 지상 → 밤하늘(마지막 달 그림) 두 군데에 쓴다.
+  const dithers = [...document.querySelectorAll(".dither")];
   function drawDither() {
-    if (!dither) return;
-    const cell = 6, rows = 12;
-    const cols = Math.ceil(dither.clientWidth / cell);
-    dither.width = cols; dither.height = rows;
-    const ctx = dither.getContext("2d");
     const bayer = [[0, 8, 2, 10], [12, 4, 14, 6], [3, 11, 1, 9], [15, 7, 13, 5]];
-    ctx.fillStyle = "#f3f5f7"; ctx.fillRect(0, 0, cols, rows);
-    ctx.fillStyle = "#181c22";
-    for (let y = 0; y < rows; y++) {
-      const darkness = 1 - (y + 0.5) / rows;
-      for (let x = 0; x < cols; x++) if (bayer[y % 4][x % 4] / 16 < darkness) ctx.fillRect(x, y, 1, 1);
+    for (const c of dithers) {
+      const cell = 6, rows = 12;
+      const cols = Math.ceil(c.clientWidth / cell);
+      if (!cols) continue;
+      c.width = cols; c.height = rows;
+      const ctx = c.getContext("2d");
+      ctx.fillStyle = c.dataset.to || "#f3f5f7"; ctx.fillRect(0, 0, cols, rows);
+      ctx.fillStyle = c.dataset.from || "#181c22";
+      for (let y = 0; y < rows; y++) {
+        const amount = 1 - (y + 0.5) / rows;
+        for (let x = 0; x < cols; x++) if (bayer[y % 4][x % 4] / 16 < amount) ctx.fillRect(x, y, 1, 1);
+      }
     }
   }
   drawDither();
