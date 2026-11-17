@@ -22,7 +22,7 @@ window.PORTFOLIO = {
 
   // 첫 화면 인벤토리 칸. 확인 가능한 사실만.
   slots: [
-    { icon: "i-launch", label: "Steam 출시", sub: "Drilling, 2026.11" },
+    { icon: "steam", label: "Steam 출시", sub: "Drilling, 2026.11" },
     { icon: "i-intern", label: "기업 인턴", sub: "감바랩스, 2026.08" },
     { icon: "n-code", label: "PCCP Lv.2", sub: "Python3 551점" },
     { icon: "i-school", label: "부산대 재학", sub: "2025.03 –" }
@@ -40,7 +40,7 @@ window.PORTFOLIO = {
     title: "Drilling",
     oneLine: "땅속에서 깨어난 드릴이를 조종해 지상으로 파 올라가는 2D 픽셀 채굴 어드벤처",
     facts: [
-      { icon: "i-launch", term: "출시", desc: "2026.11.03 Steam 정식 출시" },
+      { icon: "steam", term: "출시", desc: "2026.11.03 Steam 정식 출시" },
       { icon: "i-intern", term: "팀", desc: "Studio. HONGS, 8명 (개발 5, 디자인 3)" },
       { icon: "n-pickaxe", term: "역할", desc: "메인 클라이언트 개발" },
       { icon: "k-game", term: "엔진", desc: "Unity, C#" },
@@ -58,7 +58,6 @@ window.PORTFOLIO = {
       { icon: "i-minigame", title: "미니게임과 보상", body: "무작위 미니게임 맵 로직, 성공 판정과 보상 지급" }
     ],
     image: { src: "img/drilling-play.webp", w: 1440, h: 810, alt: "Drilling 플레이 화면. 어두운 동굴 속에서 드릴이 바위를 뚫고, 하단에 광물 인벤토리 슬롯 세 칸이 보인다." },
-    codeNote: "팀 프로젝트라 코드는 비공개입니다."
   },
 
   projects: [
@@ -333,10 +332,10 @@ window.PORTFOLIO = {
 
   // 날짜 내림차순. kind: 출시 | 인턴 | 자격 | 수상 | 수료
   timeline: [
-    { date: "2026.11", kind: "출시", icon: "i-launch", title: "Drilling Steam 정식 출시", org: "Studio. HONGS", link: "#drilling" },
+    { date: "2026.11", kind: "출시", icon: "steam", title: "Drilling Steam 정식 출시", org: "Studio. HONGS", link: "#drilling" },
     { date: "2026.08", kind: "인턴", icon: "i-intern", title: "기업체험형 인턴십 수료", org: "감바랩스, 온디바이스 AI 음성인식", note: "2026.07.27 – 08.07", projectId: "gambalabs" },
     { date: "2026.05", kind: "자격", icon: "n-code", title: "PCCP Lv.2", org: "프로그래머스", note: "Python3, 551 / 1000점" },
-    { date: "2026.04", kind: "출시", icon: "i-launch", title: "Drilling Steam 데모 출시", org: "Studio. HONGS", link: "#drilling" },
+    { date: "2026.04", kind: "출시", icon: "steam", title: "Drilling Steam 데모 출시", org: "Studio. HONGS", link: "#drilling" },
     { date: "2026.02", kind: "수상", icon: "i-medal", title: "라이프 스타일 해커톤 우수상", org: "On-Life 스마트 미러", projectId: "on-life" },
     { date: "2026.02", kind: "수료", icon: "i-flag", title: "블레이버스 MVP 개발 해커톤", org: "기계 부품 3D 뷰어", projectId: "infotive" },
     { date: "2025.09", kind: "수료", icon: "i-flag", title: "테크위크 1일 게임 해커톤", org: "push --force", projectId: "push-force" }

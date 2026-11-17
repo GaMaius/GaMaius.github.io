@@ -162,7 +162,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 @keyframes blink { 50% { opacity: 0; } }
 .dialog-sub { margin-top: 8px; color: var(--stone-dim); }
 
-.hud { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 14px 18px; }
+.hud { margin-top: 26px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); max-width: 880px; gap: 14px 20px; }
 .hud li { display: grid; grid-template-columns: 76px auto; align-items: center; gap: 12px; }
 .slot { --pb: #b47a1e; --pf: #1a1e23; position: relative; width: 76px; height: 76px; display: grid; place-items: center; }
 .slot-count { position: absolute; right: 8px; bottom: 6px; font-family: var(--pixel); font-size: 11px; color: #fff; text-shadow: 1px 1px 0 #000; }
@@ -190,8 +190,9 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 }
 
 /* ---------- 2. Drilling mine ---------- */
-.mine { position: relative; background: var(--c1); padding: 72px 0 104px; }
+.mine { position: relative; background: var(--c1); padding: 72px 0 72px; }
 .mine-head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+.mine-head .badge-gold { position: relative; top: 4px; }
 .mine-title { font-size: 66px; line-height: 1.1; color: #fff; text-shadow: 5px 5px 0 #000; }
 .badge-gold { --pb: #7a5207; --pf: var(--gold); color: #2b1a00; font-weight: 800; font-size: 15px; padding: 8px 16px; }
 .mine-line { margin-top: 12px; font-size: 18px; color: var(--stone-dim); max-width: 44em; }
@@ -201,7 +202,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .screen img { width: 100%; }
 .screen figcaption { padding: 8px 4px 2px; font-size: 13px; color: var(--stone-dim); }
 .quest { --pb: var(--rock); padding: 12px 22px; display: grid; align-content: center; }
-.quest > div { display: grid; grid-template-columns: 36px 64px 1fr; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 2px dashed var(--c3); }
+.quest > div { display: grid; grid-template-columns: 32px 40px 1fr; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 2px dashed var(--c3); }
 .quest > div:last-child { border-bottom: 0; }
 .quest dt { font-size: 13px; font-weight: 700; color: var(--stone-dim); }
 .quest dd { font-weight: 800; color: #fff; }
@@ -213,7 +214,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .xp-fill { position: absolute; left: 0; top: 10px; height: 12px; width: 100%; background: repeating-linear-gradient(90deg, #0b0d10 0 3px, var(--ore) 3px 24px); box-shadow: inset 0 0 0 3px #0b0d10; transition: width 1.4s steps(16); }
 .xp.anim:not(.in) .xp-fill { width: 0; }
 .xp-track li { position: absolute; top: 0; transform: translateX(-50%); display: grid; justify-items: center; text-align: center; width: 140px; }
-.xp-track li:first-child { transform: none; justify-items: start; text-align: left; }
+.xp-track li:first-of-type { transform: none; justify-items: start; text-align: left; }
 .xp-track li:last-child { transform: translateX(-100%); justify-items: end; text-align: right; }
 .xp-node { width: 32px; height: 32px; background: var(--c2); box-shadow: inset 0 0 0 4px #0b0d10; position: relative; z-index: 1; }
 .xp-node::after { content: ""; position: absolute; inset: 10px; background: var(--gold); }
@@ -240,13 +241,13 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
   .systems { grid-template-columns: 1fr; }
   .systems li { grid-template-columns: 72px 1fr; align-items: center; }
   .systems .slot { width: 72px; height: 72px; grid-row: span 2; }
-  .quest > div { grid-template-columns: 32px 52px 1fr; }
+  .quest > div { grid-template-columns: 32px 36px 1fr; gap: 12px; }
   .xp-track li { width: 96px; }
   .xp-track span { font-size: 12px; }
 }
 
 /* ---------- 3. projects vein ---------- */
-.vein { background: #181c22; padding: 48px 0 96px; }
+.vein { background: #181c22; padding: 56px 0 96px; }
 .vein-head { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 16px; }
 .vein h2 { font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; color: #fff; }
 .filters { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -348,7 +349,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .skills { margin-top: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .sgroup { padding: 20px 22px 14px; }
 .sgroup h3 { display: flex; align-items: center; gap: 10px; font-size: 18px; font-weight: 800; padding-bottom: 12px; border-bottom: 3px solid var(--kl); }
-.srow { display: grid; grid-template-columns: minmax(0, 1.1fr) auto 44px; grid-template-areas: "name gauge lvl" "proof proof proof"; align-items: center; gap: 2px 14px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.srow { display: grid; grid-template-columns: minmax(0, 1.1fr) auto 44px; grid-template-areas: "name gauge lvl" "proof proof proof"; align-items: center; gap: 2px 14px; padding: 12px 0; min-height: 75px; align-content: center; border-bottom: 1px solid var(--line); }
 .srow:last-child { border-bottom: 0; }
 .sname { grid-area: name; font-weight: 800; }
 .gauge, .gauge-demo { grid-area: gauge; display: inline-flex; gap: 3px; }
@@ -440,7 +441,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
   .xp-track { height: auto; margin: 14px 0 0; display: grid; gap: 14px; padding-left: 4px; }
   .xp-track::before, .xp-fill { left: 14px; right: auto; top: 0; bottom: 0; width: 4px; height: auto; background: var(--ore); box-shadow: none; }
   .xp.anim:not(.in) .xp-fill { width: 4px; height: 0; }
-  .xp-track li, .xp-track li:first-child, .xp-track li:last-child {
+  .xp-track li, .xp-track li:first-of-type, .xp-track li:last-child {
     position: relative; left: auto !important; transform: none; width: auto;
     display: grid; grid-template-columns: 32px 64px 1fr; align-items: center; justify-items: start; text-align: left; gap: 12px;
   }
@@ -470,3 +471,6 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
   .hud .slot .sprite { width: 32px; height: 32px; }
 }
 .kind-tag .sprite, .more .sprite, .filters .sprite, .nav .sprite, .lg .sprite, .d-kind .sprite, .depth-marks .sprite { width: 16px; height: 16px; }
+@media (min-width: 761px) and (max-width: 1100px) {
+  .hud { grid-template-columns: repeat(2, minmax(0, 1fr)); max-width: 520px; }
+}
