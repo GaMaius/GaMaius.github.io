@@ -111,7 +111,6 @@
     ]);
   }
   fill("systems", F.systems.map((s) => h("li.px", null, h("div.px.slot", null, sprite(s.icon, 64)), h("h4", null, s.title), h("p", null, s.body))));
-  fill("also", F.alsoDid.map((t) => h("li.px", null, t)));
 
   // 썸네일이 처음 보일 때 저해상도 도트에서 원본으로 "렌더링"되는 연출
   const resolveIO = "IntersectionObserver" in window && !reduce

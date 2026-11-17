@@ -30,7 +30,7 @@ window.PORTFOLIO = {
 
   // 어떤 개발자인지: 짧은 한 줄 + 근거
   strengths: [
-    { icon: "i-launch", title: "끝까지 출시합니다", line: "8명 팀에서 17개월, 데모와 정식 출시를 모두 거쳤습니다.", proof: ["Drilling Steam 출시", "QA·빌드 최적화"] },
+    { icon: "i-launch", title: "끝까지 출시합니다", line: "8명 팀에서 17개월, 데모와 정식 출시를 모두 거쳤습니다.", proof: ["Drilling Steam 출시", "인벤토리·상점·업그레이드·보상"] },
     { icon: "k-tool", title: "기술을 엮어 문제를 풉니다", line: "게임 엔진, 비전 AI, 웹을 한 프로젝트 안에서 섞어 씁니다.", proof: ["Unity + MediaPipe 모션캡처", "웹 3D + LLM 해커톤"] },
     { icon: "k-web", title: "배포하고 운영합니다", line: "만든 서비스를 실제로 띄우고, 결제와 지표까지 붙입니다.", proof: ["Riot Report 구독 준비", "VisionLab 운영 중"] }
   ],
@@ -57,7 +57,6 @@ window.PORTFOLIO = {
       { icon: "i-upgrade", title: "모듈형 업그레이드", body: "드릴 크기·파워·범위·속도를 모듈 단위로 강화" },
       { icon: "i-minigame", title: "미니게임과 보상", body: "무작위 미니게임 맵 로직, 성공 판정과 보상 지급" }
     ],
-    alsoDid: ["Steam 연동", "클라이언트 빌드 최적화", "QA", "데모·정식 두 번의 출시"],
     image: { src: "img/drilling-play.webp", w: 1440, h: 810, alt: "Drilling 플레이 화면. 어두운 동굴 속에서 드릴이 바위를 뚫고, 하단에 광물 인벤토리 슬롯 세 칸이 보인다." },
     codeNote: "팀 프로젝트라 코드는 비공개입니다."
   },

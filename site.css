@@ -228,9 +228,6 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .systems .slot { --pb: #b47a1e; width: 96px; height: 96px; }
 .systems h4 { font-size: 17px; color: #fff; }
 .systems p { font-size: 14px; color: var(--stone-dim); }
-.also { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
-.also::before { content: "그 밖에 맡은 일"; font-size: 13px; font-weight: 700; color: var(--stone-dim); margin-right: 4px; }
-.also li { --p: 2px; --pb: var(--rock); --pf: var(--c2); padding: 4px 12px; font-size: 13px; font-weight: 700; }
 .mine-foot { margin-top: 28px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
 .note-dim { font-size: 14px; color: var(--stone-dim); }
 
