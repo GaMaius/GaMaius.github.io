@@ -24,15 +24,15 @@ window.PORTFOLIO = {
   slots: [
     { icon: "i-launch", label: "Steam 출시", sub: "Drilling, 2026.11" },
     { icon: "i-intern", label: "기업 인턴", sub: "감바랩스, 2026.08" },
-    { icon: "i-cert", label: "PCCP Lv.2", sub: "Python3 551점" },
+    { icon: "n-code", label: "PCCP Lv.2", sub: "Python3 551점" },
     { icon: "i-school", label: "부산대 재학", sub: "2025.03 –" }
   ],
 
   // 어떤 개발자인지: 짧은 한 줄 + 근거
   strengths: [
     { icon: "i-launch", title: "끝까지 출시합니다", line: "8명 팀에서 17개월, 데모와 정식 출시를 모두 거쳤습니다.", proof: ["Drilling Steam 출시", "QA·빌드 최적화"] },
-    { icon: "p-gear", title: "기술을 엮어 문제를 풉니다", line: "게임 엔진, 비전 AI, 웹을 한 프로젝트 안에서 섞어 씁니다.", proof: ["Unity + MediaPipe 모션캡처", "웹 3D + LLM 해커톤"] },
-    { icon: "p-coin", title: "배포하고 운영합니다", line: "만든 서비스를 실제로 띄우고, 결제와 지표까지 붙입니다.", proof: ["Riot Report 구독 준비", "VisionLab 운영 중"] }
+    { icon: "k-tool", title: "기술을 엮어 문제를 풉니다", line: "게임 엔진, 비전 AI, 웹을 한 프로젝트 안에서 섞어 씁니다.", proof: ["Unity + MediaPipe 모션캡처", "웹 3D + LLM 해커톤"] },
+    { icon: "k-web", title: "배포하고 운영합니다", line: "만든 서비스를 실제로 띄우고, 결제와 지표까지 붙입니다.", proof: ["Riot Report 구독 준비", "VisionLab 운영 중"] }
   ],
 
   featured: {
@@ -42,9 +42,9 @@ window.PORTFOLIO = {
     facts: [
       { icon: "i-launch", term: "출시", desc: "2026.11.03 Steam 정식 출시" },
       { icon: "i-intern", term: "팀", desc: "Studio. HONGS, 8명 (개발 5, 디자인 3)" },
-      { icon: "i-upgrade", term: "역할", desc: "메인 클라이언트 개발" },
-      { icon: "ore-cyan", term: "엔진", desc: "Unity, C#" },
-      { icon: "ore-gold", term: "지원", desc: "Windows, 8개 언어, 도전과제, 클라우드 저장" }
+      { icon: "n-pickaxe", term: "역할", desc: "메인 클라이언트 개발" },
+      { icon: "k-game", term: "엔진", desc: "Unity, C#" },
+      { icon: "k-web", term: "지원", desc: "Windows, 8개 언어, 도전과제, 클라우드 저장" }
     ],
     milestones: [
       { date: "2025.06", label: "개발 시작" },
@@ -336,16 +336,16 @@ window.PORTFOLIO = {
   timeline: [
     { date: "2026.11", kind: "출시", icon: "i-launch", title: "Drilling Steam 정식 출시", org: "Studio. HONGS", link: "#drilling" },
     { date: "2026.08", kind: "인턴", icon: "i-intern", title: "기업체험형 인턴십 수료", org: "감바랩스, 온디바이스 AI 음성인식", note: "2026.07.27 – 08.07", projectId: "gambalabs" },
-    { date: "2026.05", kind: "자격", icon: "i-cert", title: "PCCP Lv.2", org: "프로그래머스", note: "Python3, 551 / 1000점" },
+    { date: "2026.05", kind: "자격", icon: "n-code", title: "PCCP Lv.2", org: "프로그래머스", note: "Python3, 551 / 1000점" },
     { date: "2026.04", kind: "출시", icon: "i-launch", title: "Drilling Steam 데모 출시", org: "Studio. HONGS", link: "#drilling" },
-    { date: "2026.02", kind: "수상", icon: "i-minigame", title: "라이프 스타일 해커톤 우수상", org: "On-Life 스마트 미러", projectId: "on-life" },
-    { date: "2026.02", kind: "수료", icon: "ore-gold", title: "블레이버스 MVP 개발 해커톤", org: "기계 부품 3D 뷰어", projectId: "infotive" },
-    { date: "2025.09", kind: "수료", icon: "ore-gold", title: "테크위크 1일 게임 해커톤", org: "push --force", projectId: "push-force" }
+    { date: "2026.02", kind: "수상", icon: "i-medal", title: "라이프 스타일 해커톤 우수상", org: "On-Life 스마트 미러", projectId: "on-life" },
+    { date: "2026.02", kind: "수료", icon: "i-flag", title: "블레이버스 MVP 개발 해커톤", org: "기계 부품 3D 뷰어", projectId: "infotive" },
+    { date: "2025.09", kind: "수료", icon: "i-flag", title: "테크위크 1일 게임 해커톤", org: "push --force", projectId: "push-force" }
   ],
 
   education: [
     { icon: "i-school", school: "부산대학교", period: "2025.03 – 재학 중" },
-    { icon: "i-cert", school: "창원과학고등학교", period: "2022.03 – 2025.02 졸업" }
+    { icon: "i-school", school: "창원과학고등학교", period: "2022.03 – 2025.02 졸업" }
   ],
 
   // pct 는 본인 평가(이전 포트폴리오 값). level: 숙련 | 중급 | 입문

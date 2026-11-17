@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/variable/woff2/SUIT-Variable.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
-  <link rel="stylesheet" href="site.css?v=11">
-  <script src="data.js?v=11" defer></script>
-  <script src="site.js?v=11" defer></script>
+  <link rel="stylesheet" href="site.css?v=16">
+  <script src="data.js?v=16" defer></script>
+  <script src="site.js?v=16" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -26,26 +26,30 @@
       <a class="brand" href="#top"><span class="brand-ore" aria-hidden="true"></span>지우가람</a>
       <nav aria-label="주요 메뉴">
         <ul class="nav">
-          <li><a href="#drilling">Drilling</a></li>
-          <li><a href="#projects">프로젝트</a></li>
-          <li><a href="#about">강점·경력</a></li>
-          <li><a href="#skills">기술</a></li>
-          <li><a href="#contact">연락</a></li>
+          <li><a href="#drilling" data-sprite="drill" data-size="16">Drilling</a></li>
+          <li><a href="#projects" data-sprite="n-pickaxe" data-size="16">프로젝트</a></li>
+          <li><a href="#about" data-sprite="n-star" data-size="16">강점·경력</a></li>
+          <li><a href="#skills" data-sprite="k-tool" data-size="16">기술</a></li>
+          <li><a href="#contact" data-sprite="n-mail" data-size="16">연락</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- 스크롤 깊이계: 드릴이 페이지를 따라 파 내려간다 -->
-  <div class="depth" aria-hidden="true">
-    <div class="depth-shaft"><div class="depth-trail"></div><div class="depth-drill" data-sprite="drill"></div></div>
-    <div class="depth-read"><span class="depth-num">0</span>m</div>
-    <div class="depth-zone"></div>
-  </div>
+  <!-- 사이드 깊이계: 구간 표식을 누르면 이동하고, 드릴이 스크롤을 따라 내려간다 -->
+  <nav class="depth" aria-label="구간 이동">
+    <div class="depth-shaft">
+      <div class="depth-trail" aria-hidden="true"></div>
+      <ol class="depth-marks"></ol>
+      <div class="depth-drill" data-sprite="drill" data-size="32" aria-hidden="true"></div>
+    </div>
+    <div class="depth-read" aria-hidden="true"><span class="depth-num">0</span>m</div>
+    <div class="depth-zone" aria-hidden="true"></div>
+  </nav>
 
   <main id="main">
     <!-- 1. 동굴 입구: 도트 -->
-    <section id="top" class="cave lv-pixel" data-zone="동굴 입구" aria-labelledby="hero-name">
+    <section id="top" class="cave lv-pixel" data-zone="첫 화면" data-icon="ore-cyan" aria-labelledby="hero-name">
       <div class="cave-bg" aria-hidden="true"></div>
       <div class="sparkles" aria-hidden="true"></div>
       <div class="wrap hero">
@@ -56,23 +60,23 @@
         </div>
         <ul class="hud" data-slot="slots" aria-label="요약"></ul>
         <div class="hero-actions">
-          <a class="pbtn pbtn-ore" href="#drilling">Drilling 보기</a>
-          <a class="pbtn" href="#projects">프로젝트 9개</a>
+          <a class="pbtn pbtn-ore" href="#drilling" data-sprite="drill" data-size="16">Drilling 보기</a>
+          <a class="pbtn" href="#projects" data-sprite="n-pickaxe" data-size="16">프로젝트 9개</a>
         </div>
       </div>
       <a class="dig-hint" href="#drilling">
-        <span class="dig-drill" data-sprite="drill" aria-hidden="true"></span>
+        <span class="dig-drill" data-sprite="drill" data-size="48" aria-hidden="true"></span>
         <span>아래로 파고 내려가기</span>
       </a>
       <div class="rock-edge" aria-hidden="true"></div>
     </section>
 
     <!-- 2. 대표작: 게임 HUD -->
-    <section id="drilling" class="mine lv-pixel" data-zone="대표작 갱도" aria-labelledby="drilling-title">
+    <section id="drilling" class="mine lv-pixel" data-zone="Drilling" data-icon="drill" aria-labelledby="drilling-title">
       <div class="wrap">
         <div class="mine-head">
           <h2 id="drilling-title" class="pixel mine-title">Drilling</h2>
-          <span class="badge-gold px">Steam 정식 출시</span>
+          <span class="badge-gold px" data-sprite="i-launch" data-size="16">Steam 정식 출시</span>
         </div>
         <p class="mine-line" data-bind="featured.oneLine"></p>
 
@@ -89,12 +93,12 @@
           <ol class="xp-track" data-slot="milestones"></ol>
         </div>
 
-        <h3 class="pixel sub-title">내가 만든 시스템</h3>
+        <h3 class="pixel sub-title h-ico" data-sprite="i-inventory" data-size="32">내가 만든 시스템</h3>
         <ul class="systems" data-slot="systems"></ul>
         <ul class="also" data-slot="also" aria-label="그 밖에 맡은 일"></ul>
 
         <div class="mine-foot">
-          <a class="pbtn pbtn-gold" data-href="person.steam" target="_blank" rel="noopener">Steam 상점 페이지</a>
+          <a class="pbtn pbtn-gold" data-href="person.steam" target="_blank" rel="noopener" data-sprite="k-game" data-size="16">Steam 상점 페이지</a>
           <span class="note-dim" data-bind="featured.codeNote"></span>
         </div>
       </div>
@@ -102,10 +106,10 @@
     </section>
 
     <!-- 3. 프로젝트: 도트가 옅어진다 -->
-    <section id="projects" class="vein lv-half" data-zone="광맥" aria-labelledby="projects-title">
+    <section id="projects" class="vein lv-half" data-zone="프로젝트" data-icon="n-pickaxe" aria-labelledby="projects-title">
       <div class="wrap">
         <div class="vein-head">
-          <h2 id="projects-title">다른 프로젝트</h2>
+          <h2 id="projects-title" class="h-ico" data-sprite="n-pickaxe" data-size="32">다른 프로젝트</h2>
           <div class="filters" role="group" aria-label="분야로 거르기" data-slot="filters"></div>
         </div>
         <ul class="cards" data-slot="projects" aria-live="polite"></ul>
@@ -115,44 +119,44 @@
     <canvas class="dither" data-from="#181c22" data-to="#f3f5f7" aria-hidden="true"></canvas>
 
     <!-- 4. 지상: 일반 UI -->
-    <section id="about" class="surface lv-smooth" data-zone="지표면" aria-labelledby="about-title">
+    <section id="about" class="surface lv-smooth" data-zone="강점·경력" data-icon="n-star" aria-labelledby="about-title">
       <div class="wrap">
-        <h2 id="about-title">이런 개발자입니다</h2>
+        <h2 id="about-title" class="h-ico" data-sprite="n-star" data-size="32">이런 개발자입니다</h2>
         <ul class="strengths" data-slot="strengths"></ul>
 
         <div class="career">
           <div>
-            <h3 class="h3">경력과 자격</h3>
+            <h3 class="h3 h-ico" data-sprite="n-map" data-size="32">경력과 자격</h3>
             <ol class="timeline" data-slot="timeline"></ol>
           </div>
           <div>
-            <h3 class="h3">학력</h3>
+            <h3 class="h3 h-ico" data-sprite="i-school" data-size="32">학력</h3>
             <ul class="edu" data-slot="education"></ul>
             <div class="legend" aria-label="색 구분">
-              <span class="lg lg-출시">출시</span><span class="lg lg-인턴">인턴</span><span class="lg lg-자격">자격</span><span class="lg lg-수상">수상</span><span class="lg lg-수료">수료</span>
+              <span class="lg lg-출시" data-sprite="i-launch" data-size="16">출시</span><span class="lg lg-인턴" data-sprite="i-intern" data-size="16">인턴</span><span class="lg lg-자격" data-sprite="n-code" data-size="16">자격</span><span class="lg lg-수상" data-sprite="i-medal" data-size="16">수상</span><span class="lg lg-수료" data-sprite="i-flag" data-size="16">수료</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <section id="skills" class="surface surface-alt lv-smooth" data-zone="지표면" aria-labelledby="skills-title">
+    <section id="skills" class="surface surface-alt lv-smooth" data-zone="기술" data-icon="k-tool" aria-labelledby="skills-title">
       <div class="wrap">
         <div class="skills-head">
-          <h2 id="skills-title">기술</h2>
+          <h2 id="skills-title" class="h-ico" data-sprite="k-tool" data-size="32">기술</h2>
           <p class="scale-note"><span class="gauge-demo" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i><i></i><i></i></span> 한 칸 = 20%. 숙련은 실무 수준으로 혼자 완성할 수 있는 정도, 중급은 프로젝트에 써 본 정도, 입문은 기본을 다뤄 본 정도입니다.</p>
         </div>
         <div class="skills" data-slot="skills"></div>
       </div>
     </section>
 
-    <section id="contact" class="surface contact lv-smooth" data-zone="지상 도착" aria-labelledby="contact-title">
+    <section id="contact" class="surface contact lv-smooth" data-zone="연락" data-icon="n-mail" aria-labelledby="contact-title">
       <div class="wrap contact-inner">
-        <h2 id="contact-title">함께 게임을 만들고 싶습니다</h2>
+        <h2 id="contact-title" class="h-ico" data-sprite="n-mail" data-size="32">함께 게임을 만들고 싶습니다</h2>
         <a class="mail" data-mail></a>
         <div class="contact-links">
-          <a class="btn btn-ink" data-href="person.github" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn-line" data-href="person.steam" target="_blank" rel="noopener">Drilling Steam 페이지</a>
+          <a class="btn btn-ink" data-href="person.github" target="_blank" rel="noopener" data-sprite="n-code" data-size="16">GitHub</a>
+          <a class="btn btn-line" data-href="person.steam" target="_blank" rel="noopener" data-sprite="k-game" data-size="16">Drilling Steam 페이지</a>
         </div>
       </div>
       <canvas class="dither dither-sky" data-from="#f3f5f7" data-to="#0c183d" aria-hidden="true"></canvas>
