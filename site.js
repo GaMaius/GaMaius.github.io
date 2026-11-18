@@ -84,15 +84,36 @@
     }
   }
 
-  const sparkles = $(".sparkles");
-  if (sparkles) {
-    for (let i = 0; i < 18; i++) {
+  // 광물 입자: 동굴 안을 천천히 떠오른다 (도트처럼 칸 단위로 끊어서 움직임)
+  document.querySelectorAll(".sparkles").forEach((box) => {
+    const n = Number(box.dataset.count) || 22, left = Number(box.dataset.left) || 50;
+    for (let i = 0; i < n; i++) {
       const s = h("i");
-      s.style.left = `${58 + Math.random() * 40}%`;
-      s.style.top = `${6 + Math.random() * 84}%`;
-      s.style.animationDelay = `${(Math.random() * 2.4).toFixed(2)}s`;
-      sparkles.append(s);
+      s.style.left = `${left + Math.random() * (98 - left)}%`;
+      s.style.top = `${20 + Math.random() * 78}%`;
+      s.style.animationDuration = `${(6 + Math.random() * 7).toFixed(1)}s`;
+      s.style.animationDelay = `${(-Math.random() * 12).toFixed(1)}s`;
+      if (Math.random() < 0.35) s.className = "gold";
+      if (Math.random() < 0.25) s.classList.add("big");
+      box.append(s);
     }
+  });
+
+  // 랜턴: 첫 화면에서 마우스를 따라 동굴을 비춘다 (터치·움직임 줄이기 설정에서는 고정)
+  const cave = $(".cave");
+  if (cave && !reduce && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    let tx = 0, ty = 0, raf = 0;
+    cave.addEventListener("pointermove", (e) => {
+      const r = cave.getBoundingClientRect();
+      tx = e.clientX - r.left; ty = e.clientY - r.top;
+      if (!raf) raf = requestAnimationFrame(() => {
+        raf = 0;
+        // 도트 느낌이 나도록 8px 단위로 끊어서 움직인다
+        cave.style.setProperty("--mx", `${Math.round(tx / 8) * 8}px`);
+        cave.style.setProperty("--my", `${Math.round(ty / 8) * 8}px`);
+      });
+    });
+    cave.addEventListener("pointerleave", () => { cave.style.removeProperty("--mx"); cave.style.removeProperty("--my"); });
   }
 
   // ---------- 2. Drilling ----------
@@ -117,6 +138,37 @@
     ? new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { resolveIO.unobserve(e.target); pixelIn(e.target); } }), { threshold: 0.35 })
     : null;
   function watchResolve(img) { if (resolveIO) resolveIO.observe(img); }
+
+  // 큰 도트 아이콘(48px 이상)도 처음 보일 때 3칸 → 6칸 → 12칸 → 원본(24칸)으로 나타난다
+  const iconIO = "IntersectionObserver" in window && !reduce
+    ? new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { iconIO.unobserve(e.target); iconIn(e.target); } }), { threshold: 0.5 })
+    : null;
+  function watchIcons(root) {
+    if (!iconIO) return;
+    root.querySelectorAll("img.sprite").forEach((img) => { if (Number(img.getAttribute("width")) >= 48) iconIO.observe(img); });
+  }
+  function iconIn(img) {
+    const run = () => {
+      const S = Number(img.getAttribute("width")), N = img.naturalWidth || 24;
+      const c = document.createElement("canvas");
+      c.width = S; c.height = S; c.className = img.className; c.setAttribute("aria-hidden", "true");
+      c.style.width = c.style.height = `${S}px`;
+      const ctx = c.getContext("2d"), tmp = document.createElement("canvas"), t = tmp.getContext("2d");
+      img.replaceWith(c);
+      const steps = [3, 6, 12, N];
+      let i = 0;
+      const frame = () => {
+        if (i >= steps.length) { c.replaceWith(img); return; }
+        const n = steps[i++];
+        tmp.width = tmp.height = n;
+        t.clearRect(0, 0, n, n); t.imageSmoothingEnabled = true; t.drawImage(img, 0, 0, n, n);
+        ctx.clearRect(0, 0, S, S); ctx.imageSmoothingEnabled = false; ctx.drawImage(tmp, 0, 0, S, S);
+        setTimeout(frame, 80);
+      };
+      frame();
+    };
+    if (img.complete && img.naturalWidth) run(); else img.addEventListener("load", run, { once: true });
+  }
   function pixelIn(img) {
     const run = () => {
       const box = img.parentElement.getBoundingClientRect();
@@ -170,6 +222,7 @@
     const render = (kind) => {
       cards.replaceChildren(...D.projects.filter((p) => kind === "all" || p.kind === kind).map(card));
       cards.querySelectorAll("img[data-resolve]").forEach(watchResolve);
+      watchIcons(cards);
     };
     const opts = [["all", "전체"], ["game", "게임"], ["ai", "AI"], ["web", "웹"]];
     const buttons = opts.map(([k, label]) => {
@@ -218,6 +271,9 @@
     el.classList.add("anim");
     rvIO.observe(el);
   });
+
+  // 카드 밖의 큰 아이콘(첫 화면 HUD, 담당한 시스템, 강점, 경력, 제목)
+  [".cave", ".mine", "#about", "#skills", "#contact"].forEach((sel) => { const r = $(sel); if (r) watchIcons(r); });
 
   // ---------- 디더링 띠: 위 색 → 아래 색 (data-from / data-to) ----------
   // 동굴 → 지상(밝은 화면), 지상 → 밤하늘(마지막 달 그림) 두 군데에 쓴다.
@@ -277,6 +333,8 @@
       drill.style.transform = `translateY(${Math.round(t * H)}px)`;
       num.textContent = Math.round(t * 1200);
     }
+    const bg = $(".cave-bg");
+    if (bg && !reduce && scrollY < innerHeight * 1.2) bg.style.transform = `translate3d(0, ${Math.round(scrollY * 0.35)}px, 0)`;
     const probe = 70;
     let current = zones[0];
     for (const z of zones) if (z.getBoundingClientRect().top <= probe) current = z;

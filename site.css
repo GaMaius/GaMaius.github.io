@@ -4,7 +4,7 @@
  * 위(동굴)는 Drilling 같은 도트 UI, 아래(지상)는 일반 UI.
  *   lv-pixel  : 도트 단위 --p 4px (첫 화면, Drilling)
  *   lv-half   : --p 2px (프로젝트)
- *   lv-smooth : 카드(.rv)가 화면에 들어오면 도트 테두리 → 매끈한 카드로 단계적으로 바뀐다
+ *   lv-smooth : 일반 UI (매끈한 카드)
  *
  * 분야 색: 게임 주황, AI 보라, 웹 청록. 어두운 바탕용과 밝은 바탕용을 따로 둔다.
  * 픽셀 폰트(Galmuri11)는 11px 격자라 크기를 11의 배수로 맞춘다.
@@ -146,13 +146,20 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 
 /* ---------- 1. cave hero ---------- */
 .cave { position: relative; min-height: min(calc(100vh - 60px), 920px); display: grid; align-items: center; overflow: hidden; background: var(--c0); padding: 72px 0 140px; }
-.cave-bg { position: absolute; inset: 0; background: radial-gradient(120% 90% at 85% 40%, #1d262b 0%, var(--c0) 60%); }
+.cave-bg { position: absolute; inset: -12% 0 -4%; will-change: transform; background: radial-gradient(120% 90% at 85% 40%, #1d262b 0%, var(--c0) 60%); }
 .cave-bg.has-art { background-size: cover; background-position: center; image-rendering: pixelated; }
 .cave-bg.has-art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13, 15, 18, 0.92) 0%, rgba(13, 15, 18, 0.7) 45%, rgba(13, 15, 18, 0.15) 100%); }
 .sparkles { position: absolute; inset: 0; pointer-events: none; }
-.sparkles i { position: absolute; width: 4px; height: 4px; background: var(--ore); animation: twinkle 2.4s steps(2) infinite; }
-.sparkles i:nth-child(3n) { background: var(--gold); }
-@keyframes twinkle { 50% { opacity: 0.15; } }
+.sparkles i { position: absolute; width: 4px; height: 4px; background: var(--ore); box-shadow: 0 0 6px rgba(54, 208, 214, 0.6); opacity: 0; animation: drift 9s steps(36) infinite; }
+.sparkles i.gold { background: var(--gold); box-shadow: 0 0 6px rgba(233, 173, 60, 0.6); }
+.sparkles i.big { width: 6px; height: 6px; }
+@keyframes drift {
+  0% { transform: translate(0, 0); opacity: 0; }
+  15% { opacity: 0.9; }
+  50% { transform: translate(8px, -60px); }
+  85% { opacity: 0.7; }
+  100% { transform: translate(-4px, -132px); opacity: 0; }
+}
 
 .hero { position: relative; z-index: 1; width: 100%; }
 .hero-name { font-size: 88px; line-height: 1.05; color: #fff; text-shadow: 6px 6px 0 #000; }
@@ -291,14 +298,13 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .surface h2 { font-size: clamp(28px, 3.4vw, 38px); font-weight: 800; }
 .h3 { font-size: 20px; font-weight: 800; margin-bottom: 14px; }
 
-/* 해상도가 올라가는 카드 */
+/* 지상 구간 카드: 처음부터 매끈한 일반 UI */
 .rv {
-  --p: 6px; --pb: var(--ink); --pf: var(--surface);
-  border-radius: 0;
+  --p: 0px; --pb: transparent; --pf: var(--surface);
+  border-radius: 14px;
   outline: 1px solid var(--line); outline-offset: -1px;
-  transition: --p 0.6s steps(3, end), border-radius 0.6s steps(3, end);
+  box-shadow: 0 1px 0 rgba(20, 24, 29, 0.04), 0 8px 24px -16px rgba(20, 24, 29, 0.18);
 }
-.rv.in { --p: 0px; border-radius: 14px; }
 .rv:focus-visible { outline: 3px solid var(--web-l); outline-offset: 2px; }
 
 .strengths { margin-top: 24px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
@@ -481,3 +487,35 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 @media (min-width: 901px) and (max-width: 1180px) {
   .career { grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 40px; }
 }
+
+/* ---------- 몰입 연출 ---------- */
+/* 랜턴: 마우스 주변만 밝고 바깥은 단계적으로 어두워진다 (도트 게임 조명처럼 링 단위) */
+.lantern {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  --mx: 72%; --my: 42%;
+  background: radial-gradient(circle at var(--mx) var(--my),
+    transparent 0 170px, rgba(6, 7, 9, 0.28) 170px 230px, rgba(6, 7, 9, 0.5) 230px 300px, rgba(6, 7, 9, 0.68) 300px);
+}
+.cave { --mx: 72%; --my: 42%; }
+.cave .lantern { --mx: inherit; --my: inherit; }
+.cave .sparkles { z-index: 0; }
+.cave-bg.has-art::after { background: linear-gradient(90deg, rgba(13, 15, 18, 0.88) 0%, rgba(13, 15, 18, 0.55) 42%, rgba(13, 15, 18, 0) 75%); }
+
+/* Drilling 구간: 같은 동굴 그림을 아주 어둡게 깔아 첫 화면과 이어지게 */
+.mine-bg { position: absolute; inset: 0; background: url("img/px/cave.png") center 70% / cover; image-rendering: pixelated; opacity: 0.16; filter: saturate(0.7); pointer-events: none; }
+.mine-bg::after { content: ""; position: absolute; inset: 0; background: linear-gradient(var(--c1) 0%, transparent 18%, transparent 70%, var(--c1) 100%); }
+.mine > .wrap { position: relative; z-index: 1; }
+.mine .sparkles { opacity: 0.5; }
+
+/* 지상 구간: 은은한 도트 격자 무늬 */
+.surface:not(.surface-alt) {
+  background-color: var(--page);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' shape-rendering='crispEdges'%3E%3Crect width='2' height='2' fill='%23d9dfe5'/%3E%3C/svg%3E");
+}
+.strengths li, .timeline li, .edu li, .sgroup { transition: transform 0.15s steps(2), box-shadow 0.15s; }
+.strengths li:hover, .timeline li:hover, .edu li:hover { transform: translateY(-2px); box-shadow: 0 1px 0 rgba(20, 24, 29, 0.04), 0 14px 28px -16px rgba(20, 24, 29, 0.28); }
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkles i { opacity: 0.6; }
+}
+.rv { clip-path: none; }

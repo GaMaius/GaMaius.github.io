@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/variable/woff2/SUIT-Variable.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
-  <link rel="stylesheet" href="site.css?v=22">
-  <script src="data.js?v=22" defer></script>
-  <script src="site.js?v=22" defer></script>
+  <link rel="stylesheet" href="site.css?v=23">
+  <script src="data.js?v=23" defer></script>
+  <script src="site.js?v=23" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -51,7 +51,8 @@
     <!-- 1. 동굴 입구: 도트 -->
     <section id="top" class="cave lv-pixel" data-zone="첫 화면" data-icon="ore-cyan" aria-labelledby="hero-name">
       <div class="cave-bg" aria-hidden="true"></div>
-      <div class="sparkles" aria-hidden="true"></div>
+      <div class="lantern" aria-hidden="true"></div>
+      <div class="sparkles" data-count="24" data-left="45" aria-hidden="true"></div>
       <div class="wrap hero">
         <h1 id="hero-name" class="hero-name pixel" data-bind="person.name"></h1>
         <div class="dialog px">
@@ -73,6 +74,8 @@
 
     <!-- 2. 대표작: 게임 HUD -->
     <section id="drilling" class="mine lv-pixel" data-zone="Drilling" data-icon="drill" aria-labelledby="drilling-title">
+      <div class="mine-bg" aria-hidden="true"></div>
+      <div class="sparkles" data-count="14" data-left="2" aria-hidden="true"></div>
       <div class="wrap">
         <div class="mine-head">
           <h2 id="drilling-title" class="pixel mine-title">Drilling</h2>
