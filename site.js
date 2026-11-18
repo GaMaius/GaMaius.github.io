@@ -48,7 +48,7 @@
       return o;
     };
     if (!name) return fallback();
-    const img = h("img.sprite", { src: `img/px/${name}.png`, width: size, height: size, alt: "", "aria-hidden": "true", decoding: "async" });
+    const img = h("img.sprite", { src: `img/px/${name}.png?v=24`, width: size, height: size, alt: "", "aria-hidden": "true", decoding: "async" });
     img.addEventListener("error", () => img.replaceWith(fallback()), { once: true });
     return img;
   }
