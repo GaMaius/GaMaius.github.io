@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/variable/woff2/SUIT-Variable.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
-  <link rel="stylesheet" href="site.css?v=25">
-  <script src="data.js?v=25" defer></script>
-  <script src="site.js?v=25" defer></script>
+  <link rel="stylesheet" href="site.css?v=26">
+  <script src="data.js?v=26" defer></script>
+  <script src="site.js?v=26" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -26,11 +26,11 @@
       <a class="brand" href="#top"><span class="brand-ore" aria-hidden="true"></span>지우가람</a>
       <nav aria-label="주요 메뉴">
         <ul class="nav">
-          <li><a href="#drilling" data-sprite="drill" data-size="24">Drilling</a></li>
-          <li><a href="#projects" data-sprite="n-pickaxe" data-size="24">프로젝트</a></li>
-          <li><a href="#about" data-sprite="n-star" data-size="24">강점·경력</a></li>
-          <li><a href="#skills" data-sprite="i-upgrade" data-size="24">기술</a></li>
-          <li><a href="#contact" data-sprite="n-mail" data-size="24">연락</a></li>
+          <li><a href="#drilling">Drilling</a></li>
+          <li><a href="#projects">프로젝트</a></li>
+          <li><a href="#about">강점·경력</a></li>
+          <li><a href="#skills">기술</a></li>
+          <li><a href="#contact">연락</a></li>
         </ul>
       </nav>
     </div>
@@ -75,7 +75,7 @@
     <!-- 2. 대표작: 게임 HUD -->
     <section id="drilling" class="mine lv-pixel" data-zone="Drilling" data-icon="drill" aria-labelledby="drilling-title">
       <div class="mine-bg" aria-hidden="true"></div>
-      <div class="sparkles" data-count="14" data-left="2" aria-hidden="true"></div>
+      <div class="sparkles" data-count="8" data-left="2" aria-hidden="true"></div>
       <div class="wrap">
         <div class="mine-head">
           <h2 id="drilling-title" class="pixel mine-title">Drilling</h2>
@@ -115,9 +115,8 @@
         </div>
         <ul class="cards" data-slot="projects" aria-live="polite"></ul>
       </div>
+      <div class="rock-edge rock-edge-surface" aria-hidden="true"></div>
     </section>
-
-    <canvas class="dither" data-from="#181c22" data-to="#f3f5f7" aria-hidden="true"></canvas>
 
     <!-- 4. 지상: 일반 UI -->
     <section id="about" class="surface lv-smooth" data-zone="강점·경력" data-icon="n-star" aria-labelledby="about-title">
@@ -134,7 +133,7 @@
             <h3 class="h3 h-ico" data-sprite="i-school" data-size="24">학력</h3>
             <ul class="edu" data-slot="education"></ul>
             <div class="legend" aria-label="색 구분">
-              <span class="lg lg-출시" data-sprite="steam" data-size="24">출시</span><span class="lg lg-인턴" data-sprite="i-intern" data-size="24">인턴</span><span class="lg lg-자격" data-sprite="n-code" data-size="24">자격</span><span class="lg lg-수상" data-sprite="i-medal" data-size="24">수상</span><span class="lg lg-수료" data-sprite="i-flag" data-size="24">수료</span>
+              <span class="lg lg-출시">출시</span><span class="lg lg-인턴">인턴</span><span class="lg lg-자격">자격</span><span class="lg lg-수상">수상</span><span class="lg lg-수료">수료</span>
             </div>
           </div>
         </div>
