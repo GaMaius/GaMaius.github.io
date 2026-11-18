@@ -48,7 +48,7 @@
       return o;
     };
     if (!name) return fallback();
-    const img = h("img.sprite", { src: `img/px/${name}.png?v=26`, width: size, height: size, alt: "", "aria-hidden": "true", decoding: "async" });
+    const img = h("img.sprite", { src: `img/px/${name}.png?v=25`, width: size, height: size, alt: "", "aria-hidden": "true", decoding: "async" });
     img.addEventListener("error", () => img.replaceWith(fallback()), { once: true });
     return img;
   }
@@ -206,7 +206,7 @@
     const thumb = p.thumb
       ? h("div.thumb", null, h("img", { src: p.thumb, alt: "", loading: "lazy", decoding: "async", "data-resolve": "" }))
       : h("div.thumb.icon-only", null, sprite(p.icon, 96));
-    thumb.prepend(h("span.px.kind-tag", null, KIND[p.kind]));
+    thumb.prepend(h("span.px.kind-tag", null, sprite(ICON_KIND[p.kind], 24), KIND[p.kind]));
     return h("li", { "data-kind": p.kind },
       h("button.px.card", { type: "button", class: `px card k-${p.kind}`, "data-open": p.id, "aria-haspopup": "dialog" },
         thumb,
@@ -215,17 +215,12 @@
           h("p.line", null, p.oneLine),
           h("p.meta", null, h("span", null, h("b", null, "기간"), p.period), h("span", null, h("b", null, "구성"), p.team)),
           h("ul.chips", null, p.chips.map((c) => h("li", null, c)))),
-        h("span.more", null, "자세히 보기")));
+        h("span.more", null, sprite("n-magnify", 24), "자세히 보기")));
   }
   const cards = slot("projects");
-  let firstRender = true;
   if (cards) {
     const render = (kind) => {
-      const items = D.projects.filter((p) => kind === "all" || p.kind === kind).map(card);
-      // 처음에는 줄마다 왼쪽부터 차례로 드러나고, 분야를 바꿔 다시 그릴 때는 바로 보인다
-      items.forEach((li, i) => { li.classList.add("dig"); li.style.setProperty("--d", `${(i % 3) * 90}ms`); if (!firstRender) li.classList.add("dug"); });
-      firstRender = false;
-      cards.replaceChildren(...items);
+      cards.replaceChildren(...D.projects.filter((p) => kind === "all" || p.kind === kind).map(card));
       cards.querySelectorAll("img[data-resolve]").forEach(watchResolve);
       watchIcons(cards);
     };
@@ -234,7 +229,7 @@
       const n = k === "all" ? D.projects.length : D.projects.filter((p) => p.kind === k).length;
       return h("button.px", { type: "button", class: "px", "aria-pressed": String(k === "all"),
         onclick: (e) => { buttons.forEach((b) => b.setAttribute("aria-pressed", String(b === e.currentTarget))); render(k); } },
-        k !== "all" && h("span.dot", { class: `dot k-${k}`, "aria-hidden": "true" }), `${label} ${n}`);
+        sprite(k === "all" ? "ore-cyan" : ICON_KIND[k], 24), `${label} ${n}`);
     });
     fill("filters", buttons);
     render("all");
@@ -280,27 +275,6 @@
   // 카드 밖의 큰 아이콘(첫 화면 HUD, 담당한 시스템, 강점, 경력, 제목)
   [".cave", ".mine", "#about", "#skills", "#contact"].forEach((sel) => { const r = $(sel); if (r) watchIcons(r); });
 
-  // 구간 깊이 표시: 각 구간 제목 위에 사이드 깊이계와 같은 숫자(m)를 단다
-  const depthTags = [];
-  document.querySelectorAll("main > section[data-zone]").forEach((sec) => {
-    if (sec.id === "top") return;
-    const tag = h("p.depth-tag", { "aria-hidden": "true" });
-    sec.querySelector(".wrap").prepend(tag);
-    depthTags.push([sec, tag]);
-  });
-
-  // 파 들어가듯 드러나기: 구간의 덩어리들이 화면에 들어올 때 아래에서 끊어서 올라온다
-  const digIO = "IntersectionObserver" in window && !reduce
-    ? new IntersectionObserver((entries) => entries.forEach((e) => { if (e.isIntersecting) { digIO.unobserve(e.target); e.target.classList.add("dug"); } }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" })
-    : null;
-  if (digIO) {
-    document.documentElement.classList.add("js-dig");
-    document.querySelectorAll(".depth-tag, .mine-head, .mine-line, .mine-grid, .xp, .sub-title, .mine-foot, .vein-head, #about h2, .strengths, .career > div, .skills-head, .skills > .sgroup, .contact-inner")
-      .forEach((el) => el.classList.add("dig"));
-    document.querySelectorAll(".systems > li").forEach((el, i) => { el.classList.add("dig"); el.style.setProperty("--d", `${i * 90}ms`); });
-    document.querySelectorAll(".dig:not(.dug)").forEach((el) => digIO.observe(el));
-  } else document.querySelectorAll(".dig").forEach((el) => el.classList.add("dug"));
-
   // ---------- 디더링 띠: 위 색 → 아래 색 (data-from / data-to) ----------
   // 동굴 → 지상(밝은 화면), 지상 → 밤하늘(마지막 달 그림) 두 군데에 쓴다.
   const dithers = [...document.querySelectorAll(".dither")];
@@ -338,13 +312,8 @@
     });
   }
   function placeMarks() {
-    const max = document.documentElement.scrollHeight - innerHeight;
-    depthTags.forEach(([sec, tag]) => {
-      const t = max > 0 ? Math.min(1, Math.max(0, (sec.offsetTop - 60) / max)) : 0;
-      tag.textContent = `${Math.round(t * 1200)}m`;
-    });
     if (!marks || !shaft) return;
-    const H = shaft.clientHeight;
+    const max = document.documentElement.scrollHeight - innerHeight, H = shaft.clientHeight;
     marks.querySelectorAll("li").forEach((li) => {
       const z = document.getElementById(li.dataset.for);
       const t = max > 0 ? Math.min(1, Math.max(0, (z.offsetTop - 60) / max)) : 0;
