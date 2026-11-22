@@ -223,7 +223,8 @@ button { font: inherit; color: inherit; }
 .tl-title button:hover { text-decoration-color: currentColor; }
 .tl-title button:focus-visible { outline: 3px solid var(--model); outline-offset: 2px; }
 .tl-meta { font-size: 14px; color: var(--muted); }
-.tl-cert { margin-left: 10px; font-weight: 600; color: var(--ink); text-underline-offset: 3px; white-space: nowrap; }
+.tl-cert { margin-left: 10px; padding: 0; border: 0; background: none; font: inherit; font-weight: 600; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; cursor: pointer; }
+.tl-cert:focus-visible { outline: 3px solid var(--model); outline-offset: 2px; }
 .edu { margin-top: 24px; }
 .edu li { display: grid; padding: 14px 0; border-bottom: 1px solid var(--line-2); }
 .edu li:first-child { border-top: 1px solid var(--line-2); }
@@ -298,3 +299,11 @@ button { font: inherit; color: inherit; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 .feat-body:not(:has(.feat-shot)) { grid-template-columns: minmax(0, 1fr); max-width: 760px; }
+
+/* ---------- 상장·수료증 팝업 ---------- */
+.viewer { width: min(760px, calc(100vw - 24px)); }
+.viewer h2 { font-size: 20px; padding-right: 80px; }
+.v-org { margin-top: 2px; font-size: 14px; color: var(--muted); }
+.v-img { margin-top: 16px; width: 100%; height: auto; max-height: calc(100vh - 210px); object-fit: contain; background: var(--bg); border-radius: 8px; }
+.v-foot { margin-top: 12px; font-size: 14px; }
+.v-foot a { font-weight: 600; }

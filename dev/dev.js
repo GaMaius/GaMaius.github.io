@@ -136,7 +136,7 @@
       h("time", null, t.date),
       h("span", { class: `badge b-${t.kind}` }, t.kind),
       h("div", null, h("div.tl-title", null, title), h("div.tl-meta", null, [t.org, t.note].filter(Boolean).join(", "),
-        t.cert && h("a.tl-cert", { href: asset(t.cert), target: "_blank", rel: "noopener" }, t.kind === "수상" ? "상장 보기" : "수료증 보기"))));
+        t.cert && h("button.tl-cert", { type: "button", "data-cert": D.timeline.indexOf(t), "aria-haspopup": "dialog" }, t.kind === "수상" ? "상장 보기" : "수료증 보기"))));
   }));
   fill("education", D.education.map((e) => h("li", null, h("strong", null, e.school), h("span", null, e.period))));
 
@@ -164,6 +164,33 @@
   }
 
   // ---------- 상세 창 ----------
+
+  // ---------- 상장·수료증 팝업 (경력 항목과 프로젝트 상세 창에서 연다) ----------
+  const viewer = $("#viewer");
+  const certAsset = asset;
+  const certLabel = (t) => (t.kind === "수상" ? "상장 보기" : "수료증 보기");
+  const certsFor = (id) => D.timeline.map((t, i) => [i, t]).filter(([, t]) => t.projectId === id && t.cert);
+  function viewCert(i, from) {
+    const t = D.timeline[i];
+    if (!t?.cert || !viewer) return;
+    const c = t.cert, what = t.kind === "수상" ? "상장" : "수료증";
+    // 닫을 때 브라우저가 '열기 직전 포커스'로 되돌리므로, 여는 버튼에 먼저 포커스를 둔다.
+    if (from && document.activeElement !== from) from.focus({ preventScroll: true });
+    fill("viewer", [
+      h("h2", { id: "viewer-title" }, t.title),
+      h("p.v-org", null, [t.org, t.date].filter(Boolean).join(", ")),
+      h("img.v-img", { src: certAsset(c.img), width: c.w, height: c.h, alt: `${t.title} ${what}` }),
+      c.file && h("p.v-foot", null, h("a", { href: certAsset(c.file), download: "" }, "원본 PDF 내려받기"))
+    ]);
+    if (!viewer.open) viewer.showModal();
+    viewer.scrollTop = 0;
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-cert]");
+    if (b) { e.preventDefault(); viewCert(Number(b.dataset.cert), b); }
+  });
+  viewer?.addEventListener("click", (e) => { if (e.target === viewer || e.target.closest("[data-close]")) viewer.close(); });
+
   const dialog = $("#detail");
   let opener = null;
 
@@ -172,6 +199,7 @@
     const links = [];
     if (p.links?.demo) links.push(h("a.btn.btn-ink", { href: p.links.demo, target: "_blank", rel: "noopener" }, p.demoLabel || "배포된 사이트 열기"));
     if (p.links?.repo) links.push(h("a.btn.btn-line", { href: p.links.repo, target: "_blank", rel: "noopener" }, "GitHub 저장소"));
+    certsFor(p.id).forEach(([i, t]) => links.push(h("button.btn.btn-line", { type: "button", "data-cert": i, "aria-haspopup": "dialog" }, certLabel(t))));
     return h("div", { class: `k-${p.kind}` },
       h("span.kind", null, KIND[p.kind]),
       h("h2", { id: "detail-title" }, p.title),

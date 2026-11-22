@@ -323,7 +323,7 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .tl-title a:hover, .tl-title button:hover { text-decoration-color: currentColor; }
 .tl-title a:focus-visible, .tl-title button:focus-visible { outline: 3px solid var(--web-l); outline-offset: 2px; }
 .tl-meta { font-size: 13px; color: var(--muted); }
-.tl-cert { margin-left: 10px; font-weight: 800; color: var(--web-l); text-underline-offset: 3px; white-space: nowrap; }
+.tl-cert { margin-left: 10px; padding: 0; border: 0; background: none; font: inherit; font-weight: 800; color: var(--web-l); text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; cursor: pointer; }
 .tl-cert:hover { color: var(--ink); }
 .kbadge { font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; color: #fff; background: var(--kc); white-space: nowrap; }
 .kc-출시 { --kc: var(--gold-deep); }
@@ -472,7 +472,9 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .nav a { gap: 7px; }
 .kind-tag { gap: 6px; }
 .card .more { display: flex; }
-.lg { gap: 3px; padding: 2px 8px 2px 3px; font-size: 11.5px; white-space: nowrap; }
+.lg { gap: 3px; padding: 3px 7px 3px 6px; font-size: 11.5px; white-space: nowrap; }
+.legend { gap: 3px; padding-left: 4px; }
+@media (min-width: 901px) and (max-width: 1000px) { .legend { padding-left: 0; } }
 .sgroup h3 { gap: 12px; }
 @media (max-width: 760px) {
   .hud .slot .sprite { width: 48px; height: 48px; --o: 2px; }
@@ -530,3 +532,11 @@ body:not([data-tone="light"]) .topbar .sprite, body:not([data-tone="light"]) .de
   .sparkles i { opacity: 0.6; }
 }
 .rv { clip-path: none; }
+
+/* ---------- 상장·수료증 팝업 ---------- */
+.viewer { width: min(760px, calc(100vw - 24px)); }
+.viewer h2 { font-size: 20px; font-weight: 800; padding-right: 80px; }
+.v-org { margin-top: 4px; font-size: 13px; color: var(--muted); }
+.v-img { margin-top: 16px; width: 100%; height: auto; max-height: calc(100vh - 210px); object-fit: contain; background: #eef1f4; border-radius: 10px; }
+.v-foot { margin-top: 12px; font-size: 13px; }
+.v-foot a { color: var(--web-l); font-weight: 700; }

@@ -14,9 +14,9 @@
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sun-typeface/SUIT@2.0.5/fonts/variable/woff2/SUIT-Variable.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/galmuri@2.40.3/dist/galmuri.css">
-  <link rel="stylesheet" href="site.css?v=26">
-  <script src="data.js?v=28" defer></script>
-  <script src="site.js?v=27" defer></script>
+  <link rel="stylesheet" href="site.css?v=27">
+  <script src="data.js?v=29" defer></script>
+  <script src="site.js?v=28" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -171,6 +171,12 @@
     <div class="sheet-inner">
       <button class="sheet-close" type="button" data-close>닫기</button>
       <div data-slot="detail"></div>
+    </div>
+  </dialog>
+  <dialog class="sheet viewer" id="viewer" aria-labelledby="viewer-title">
+    <div class="sheet-inner viewer-inner">
+      <button class="sheet-close" type="button" data-close>닫기</button>
+      <div data-slot="viewer"></div>
     </div>
   </dialog>
 </body>
