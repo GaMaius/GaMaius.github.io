@@ -246,7 +246,7 @@
       h("time", null, t.date),
       h("span.tl-icon", null, sprite(t.icon, 48)),
       h("div", null, h("div.tl-title", null, title), h("div.tl-meta", null, [t.org, t.note].filter(Boolean).join(", "),
-        t.cert && h("a.tl-cert", { href: t.cert, target: "_blank", rel: "noopener" }, "수료증 보기"))),
+        t.cert && h("a.tl-cert", { href: t.cert, target: "_blank", rel: "noopener" }, t.kind === "수상" ? "상장 보기" : "수료증 보기"))),
       h("span.kbadge", { class: `kbadge kc-${t.kind}` }, t.kind));
   }));
   fill("education", D.education.map((e) => h("li.px.rv", null, sprite(e.icon, 48), h("div", null, h("strong", null, e.school), h("span", null, e.period)))));

@@ -193,9 +193,9 @@ window.PORTFOLIO = {
     {
       id: "on-life", kind: "web", icon: "p-onlife",
       title: "On-Life 스마트 미러",
-      period: "2026.02 (3일)", team: "3명, 라이프 스타일 해커톤", role: "풀스택 설계, LLM·음성 인식 연동",
+      period: "2026.02 (3일)", team: "3명, 라이프 스타일 스마트 기기 메이커톤", role: "풀스택 설계, LLM·음성 인식 연동",
       oneLine: "자세와 졸음을 감지하고 음성 비서·가상 펫으로 생활 습관을 돕는 웹앱",
-      chips: ["해커톤 우수상", "자세·졸음 실시간 감지", "음성 비서"],
+      chips: ["메이커톤 우수상", "자세·졸음 실시간 감지", "음성 비서"],
       thumb: "img/onlife-1.webp",
       images: [
         { src: "img/onlife-1.webp", w: 1600, h: 782, alt: "On-Life 대시보드" },
@@ -216,7 +216,7 @@ window.PORTFOLIO = {
           "퀘스트·레벨업·친밀도 성장 로직, 자세·활동 로그 통계 대시보드"
         ]}
       ],
-      result: "라이프 스타일 해커톤 우수상",
+      result: "라이프 스타일 스마트 기기 메이커톤 우수상",
       stack: ["Python", "Flask", "MediaPipe", "OpenCV", "LLM API"],
       links: { repo: "https://github.com/GaMaius/On-Life" }
     },
@@ -331,15 +331,16 @@ window.PORTFOLIO = {
   ],
 
   // 날짜 내림차순. kind: 출시 | 인턴 | 자격 | 수상 | 수료
-  // cert: 수료증 파일(루트 기준 경로). 생년월일·자격 번호가 적힌 증서는 올리지 않는다.
+  // cert: 수료증·상장 파일(루트 기준 경로). 생년월일·자격 번호가 적힌 증서는 올리지 않는다.
+  //       사진으로 찍은 증서는 촬영 위치(GPS) 정보를 지운 사본만 올린다.
   timeline: [
     { date: "2026.11", kind: "출시", icon: "steam", title: "Drilling Steam 정식 출시", org: "Studio. HONGS", link: "#drilling" },
     { date: "2026.11", kind: "수료", icon: "i-flag", title: "Spec-Driven Development with Kiro", org: "AWS Training and Certification", note: "2일 과정, 2026.11.19", cert: "docs/aws-kiro-certificate.pdf" },
     { date: "2026.08", kind: "인턴", icon: "i-intern", title: "기업체험형 인턴십 수료", org: "감바랩스, 온디바이스 AI 음성인식", note: "2026.07.27 – 08.07", projectId: "gambalabs" },
     { date: "2026.05", kind: "자격", icon: "n-code", title: "PCCP Lv.2", org: "프로그래머스", note: "Python3, 551 / 1000점" },
     { date: "2026.04", kind: "출시", icon: "steam", title: "Drilling Steam 데모 출시", org: "Studio. HONGS", link: "#drilling" },
-    { date: "2026.02", kind: "수상", icon: "i-medal", title: "라이프 스타일 해커톤 우수상", org: "On-Life 스마트 미러", projectId: "on-life" },
-    { date: "2026.02", kind: "수료", icon: "i-flag", title: "블레이버스 MVP 개발 해커톤", org: "기계 부품 3D 뷰어", projectId: "infotive" },
+    { date: "2026.02", kind: "수상", icon: "i-medal", title: "라이프 스타일 스마트 기기 메이커톤 우수상", org: "부산대학교 공학교육혁신센터", note: "On-Life 스마트 미러", projectId: "on-life", cert: "docs/lifestyle-maker-award.jpg" },
+    { date: "2026.02", kind: "수료", icon: "i-flag", title: "블레이버스 MVP 개발 해커톤", org: "기계 부품 3D 뷰어", projectId: "infotive", cert: "docs/blaybus-mvp-hackathon-certificate.pdf" },
     { date: "2025.09", kind: "수료", icon: "i-flag", title: "테크위크 1일 게임 해커톤", org: "push --force", projectId: "push-force" }
   ],
 
