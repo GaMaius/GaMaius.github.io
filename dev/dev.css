@@ -223,6 +223,7 @@ button { font: inherit; color: inherit; }
 .tl-title button:hover { text-decoration-color: currentColor; }
 .tl-title button:focus-visible { outline: 3px solid var(--model); outline-offset: 2px; }
 .tl-meta { font-size: 14px; color: var(--muted); }
+.tl-cert { margin-left: 10px; font-weight: 600; color: var(--ink); text-underline-offset: 3px; white-space: nowrap; }
 .edu { margin-top: 24px; }
 .edu li { display: grid; padding: 14px 0; border-bottom: 1px solid var(--line-2); }
 .edu li:first-child { border-top: 1px solid var(--line-2); }

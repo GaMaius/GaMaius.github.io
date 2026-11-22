@@ -323,6 +323,8 @@ body[data-tone="light"] .depth-read, body[data-tone="light"] .depth-zone { color
 .tl-title a:hover, .tl-title button:hover { text-decoration-color: currentColor; }
 .tl-title a:focus-visible, .tl-title button:focus-visible { outline: 3px solid var(--web-l); outline-offset: 2px; }
 .tl-meta { font-size: 13px; color: var(--muted); }
+.tl-cert { margin-left: 10px; font-weight: 800; color: var(--web-l); text-underline-offset: 3px; white-space: nowrap; }
+.tl-cert:hover { color: var(--ink); }
 .kbadge { font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 999px; color: #fff; background: var(--kc); white-space: nowrap; }
 .kc-출시 { --kc: var(--gold-deep); }
 .kc-인턴 { --kc: var(--ai-l); }
