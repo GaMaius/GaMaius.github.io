@@ -336,7 +336,7 @@ window.PORTFOLIO = {
   //       사진으로 찍은 증서는 촬영 위치(GPS) 정보를 지운 사본만 올린다.
   timeline: [
     { date: "2026.11", kind: "출시", icon: "steam", title: "Drilling Steam 정식 출시", org: "Studio. HONGS", link: "#drilling" },
-    { date: "2026.11", kind: "수상", icon: "i-medal", title: "AWS 마에스트로 AI 해커톤 최우수상", note: "2026.11.20 – 21" },
+    { date: "2026.11", kind: "수상", icon: "i-medal", title: "2026 AWS X PNU AI 마에스트로 해커톤 최우수상", org: "아마존웹서비스코리아 공공부문", note: "2026.11.20 – 21, 5명 팀", cert: { img: "docs/aws-pnu-ai-maestro-hackathon-award.webp", w: 1132, h: 1600, file: "docs/aws-pnu-ai-maestro-hackathon-award.pdf" } },
     { date: "2026.11", kind: "수료", icon: "i-flag", title: "Spec-Driven Development with Kiro", org: "AWS Training and Certification", note: "2일 과정, 2026.11.19", cert: { img: "docs/aws-kiro-certificate.webp", w: 1600, h: 1120, file: "docs/aws-kiro-certificate.pdf" } },
     { date: "2026.08", kind: "인턴", icon: "i-intern", title: "기업체험형 인턴십 수료", org: "감바랩스, 온디바이스 AI 음성인식", note: "2026.07.27 – 08.07", projectId: "gambalabs" },
     { date: "2026.05", kind: "자격", icon: "n-code", title: "PCCP Lv.2", org: "프로그래머스", note: "Python3, 551 / 1000점" },
@@ -347,7 +347,7 @@ window.PORTFOLIO = {
   ],
 
   education: [
-    { icon: "i-school", school: "부산대학교", period: "2025.03 – 재학 중" },
+    { icon: "i-school", school: "부산대학교", period: "정보컴퓨터공학부 인공지능전공, 2025.03 – 재학 중" },
     { icon: "i-school", school: "창원과학고등학교", period: "2022.03 – 2025.02 졸업" }
   ],
 
