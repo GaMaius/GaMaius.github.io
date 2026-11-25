@@ -14,6 +14,7 @@ window.DEV = {
 
   // 첫 화면 "지금 돌아가는 것". state: live(운영 중) | deployed(배포)
   live: [
+    { id: "maestro", state: "deployed", label: "데모", note: "GitHub Pages, AWS 해커톤 최우수상" },
     { id: "riot-report", state: "live", label: "운영 중", note: "Render, 구독 결제 Sandbox 검증 완료" },
     { id: "visionlab", state: "live", label: "운영 중", note: "Vercel, 브라우저 온디바이스 추론" },
     { id: "bithumb", state: "live", label: "실전 운영", note: "전략 봇 4종, 체결 알림" },
@@ -23,6 +24,21 @@ window.DEV = {
   // 대표 프로젝트: 데이터가 흐르는 길(pipeline)과 핵심 결정(points)
   // pipeline 의 model: true 는 AI 모델이 들어가는 자리
   featured: [
+    {
+      id: "maestro",
+      pipeline: [
+        { label: "서류 4종 업로드" },
+        { label: "Claude", sub: "분류·읽기, 구조화 출력", model: true },
+        { label: "서류끼리 대조", sub: "규칙 코드" },
+        { label: "HS 추천·확정", sub: "이력 → 서류 일치 → 후보 3개" },
+        { label: "신고서 초안 · WMS 등록", sub: "문제 있으면 사람 승인" }
+      ],
+      points: [
+        { q: "AI가 틀린 값을 그럴듯하게 지어내면", a: "판정은 모델이 아니라 규칙 코드가 하게 나눴습니다. 75세트 측정에서 지어낸 값은 0칸이었습니다." },
+        { q: "어디가 틀렸는지 사람이 바로 봐야 함", a: "오류를 누르면 서류 그림 위 그 칸에 박스를 띄우는 화면을 만들었습니다 (OCR 위치)." },
+        { q: "대회가 끝나면 AWS 배포가 사라짐", a: "GitHub Pages 데모로 항상 열리게 하고, 같은 코드를 SQLite·Groq로 로컬에서 돌리게 재구축했습니다." }
+      ]
+    },
     {
       id: "riot-report",
       pipeline: [
@@ -124,7 +140,7 @@ window.DEV = {
   strengths: [
     { title: "AI가 지어내지 못하게 설계합니다",
       line: "모델에게는 판단만 맡기고, 근거와 출력 형식은 코드로 묶습니다.",
-      proof: ["Riot Report: JSON 출력 강제, 표본 없는 지표는 null", "감바랩스: 결함을 돌려주는 자가 수정 루프"] },
+      proof: ["통관 서류 Agent: 판정은 규칙 코드, 지어낸 값 0칸", "Riot Report: JSON 출력 강제, 표본 없는 지표는 null", "감바랩스: 결함을 돌려주는 자가 수정 루프"] },
     { title: "좋은 결과부터 의심합니다",
       line: "수치가 좋게 나오면 먼저 검증 구조를 다시 봅니다.",
       proof: ["자동 매매: 미래 정보 누수를 찾아 +66% 결과 폐기", "VisionLab: 실제 VRM 파일로 손목 방향 검증"] },

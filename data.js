@@ -62,6 +62,45 @@ window.PORTFOLIO = {
 
   projects: [
     {
+      id: "maestro", kind: "ai", icon: "k-ai",
+      title: "통관 서류 검토 Agent",
+      period: "2026.11.20 – 21 (해커톤), 11.25 개인 재구축", team: "5명 팀, 2026 AWS X PNU AI 마에스트로 해커톤 6팀", role: "화면(웹 프론트엔드) 전체, 발표 영상, 대회 뒤 데모·로컬 실행 재구축",
+      oneLine: "부산항 수입 서류 4종을 입항 전에 서로 대조해, 틀린 칸을 서류 그림 위에 근거와 함께 짚는 AI 에이전트",
+      chips: ["해커톤 최우수상", "심은 오류 37/37 탐지", "오탐 0/30세트"],
+      thumb: "img/maestro-job.webp",
+      images: [
+        { src: "img/maestro-job.webp", w: 1440, h: 1250, alt: "작업 결과 화면: 상업송장과 포장명세서의 총중량이 달라 불일치로 표시되고, 서류 그림 위 그 칸에 빨간 박스와 확대 창이 뜬다" },
+        { src: "img/maestro-dashboard.webp", w: 1440, h: 950, alt: "대시보드: 지금 할 일 카드, 통관 단계별 화물 수, 서류 종류별 처리 막대" },
+        { src: "img/maestro-mobile.webp", w: 390, h: 844, alt: "모바일 대시보드: 아래 탭 메뉴와 카드 배치" }
+      ],
+      sections: [
+        { title: "무엇을 풀었나", items: [
+          "B/L·상업송장·포장명세서·원산지증명서에 따로 적힌 같은 값(총중량, 수량, 송장 번호, HS)을 사람이 눈으로 대조하던 일",
+          "서류를 올리면 분류 → 읽기 → 서류끼리 대조 → HS 추천·확정 → 신고서 초안 → 가상 WMS 등록, 현황은 AI chat으로 조회",
+          "설계 원칙 'AI는 읽기, 판정은 코드': 모델은 서류를 읽고 도구를 고르기만 하고, 맞다·틀리다 판정과 문서 채우기는 규칙 코드가 한다"
+        ]},
+        { title: "내가 만든 화면", items: [
+          "업로드 → 처리 단계 → 결과(오류·HS 선택·신고서 초안·WMS 승인), 작업 내역, 대시보드, AI chat (React 19 + Vite + TypeScript)",
+          "오류를 누르면 서류 그림 위 그 칸에 박스와 확대 창 (OCR 위치), 모바일·태블릿·PC 세 크기 배치",
+          "서버 없이 화면을 개발하는 가짜 응답 모드: API 약속 예시(JSON)를 그대로 읽어, 서버와 화면이 같은 약속을 보게 함",
+          "발표 영상: Blender로 부산항 장면을 만들고 Remotion으로 화면 UI를 얹음"
+        ]},
+        { title: "측정 (개발용 75세트 288장, 실제 판독으로 한 번)", items: [
+          "서류 분류 288/288, 심은 P0 오류 37/37, 오류 없는 30세트 오탐 0",
+          "핵심 칸 412/450 (틀린 칸은 모두 '칸 없음' 답, 지어낸 값 0), 틀린 HS 자동 확정 0",
+          "세트당 평균 18.5초, 약 0.18달러"
+        ]},
+        { title: "대회 뒤 재구축 (개인 포크)", items: [
+          "AWS 계정 없이도 항상 열리도록 GitHub Pages 데모: 서버 없이 실제 처리 결과를 재생",
+          "원래 코드는 그대로 두고 로컬 대체물로 실행: DynamoDB → SQLite, S3 → 폴더, Lambda → 스레드, Textract → PDF 글자층, Bedrock → Groq",
+          "재구축 중 pdfium을 여러 스레드에서 동시에 써 OCR이 빠지던 문제를 찾아 고침"
+        ]}
+      ],
+      result: "2026 AWS X PNU AI 마에스트로 해커톤 최우수상",
+      stack: ["React", "TypeScript", "Vite", "Python", "Strands Agents", "Amazon Bedrock", "Textract", "Lambda", "DynamoDB"],
+      links: { demo: "https://gamaius.github.io/aws.ai.maestro.6/", repo: "https://github.com/GaMaius/aws.ai.maestro.6" }
+    },
+    {
       id: "riot-report", kind: "web", icon: "p-riot",
       title: "LoL AI 코칭 리포트",
       period: "2026.03 – 진행 중", team: "1인 개발", role: "기획, 백엔드, 프론트엔드, 배포·운영",
@@ -336,7 +375,7 @@ window.PORTFOLIO = {
   //       사진으로 찍은 증서는 촬영 위치(GPS) 정보를 지운 사본만 올린다.
   timeline: [
     { date: "2026.11", kind: "출시", icon: "steam", title: "Drilling Steam 정식 출시", org: "Studio. HONGS", link: "#drilling" },
-    { date: "2026.11", kind: "수상", icon: "i-medal", title: "2026 AWS X PNU AI 마에스트로 해커톤 최우수상", org: "아마존웹서비스코리아 공공부문", note: "2026.11.20 – 21, 5명 팀", cert: { img: "docs/aws-pnu-ai-maestro-hackathon-award.webp", w: 1132, h: 1600, file: "docs/aws-pnu-ai-maestro-hackathon-award.pdf" } },
+    { date: "2026.11", kind: "수상", icon: "i-medal", title: "2026 AWS X PNU AI 마에스트로 해커톤 최우수상", org: "아마존웹서비스코리아 공공부문", note: "2026.11.20 – 21, 5명 팀", projectId: "maestro", cert: { img: "docs/aws-pnu-ai-maestro-hackathon-award.webp", w: 1132, h: 1600, file: "docs/aws-pnu-ai-maestro-hackathon-award.pdf" } },
     { date: "2026.11", kind: "수료", icon: "i-flag", title: "Spec-Driven Development with Kiro", org: "AWS Training and Certification", note: "2일 과정, 2026.11.19", cert: { img: "docs/aws-kiro-certificate.webp", w: 1600, h: 1120, file: "docs/aws-kiro-certificate.pdf" } },
     { date: "2026.08", kind: "인턴", icon: "i-intern", title: "기업체험형 인턴십 수료", org: "감바랩스, 온디바이스 AI 음성인식", note: "2026.07.27 – 08.07", projectId: "gambalabs" },
     { date: "2026.05", kind: "자격", icon: "n-code", title: "PCCP Lv.2", org: "프로그래머스", note: "Python3, 551 / 1000점" },
