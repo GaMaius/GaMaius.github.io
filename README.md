@@ -19,6 +19,21 @@ Unity 게임 클라이언트 개발자 지우가람의 포트폴리오 사이트
 | `img/` | WebP로 변환한 스크린샷 |
 | `img/px/` | Pixel Factory로 만든 도트 이미지(배경, 아이콘). 없는 아이콘은 광석 모양으로 대체됩니다 |
 
+## 범용 버전
+
+**https://gamaius.github.io/profile/**
+
+어느 직무에나 낼 수 있게 만든 버전입니다. 회색 바탕 위 흰 카드, 깊은 초록(#0b6b4f) 하나로 누를 것과 고른 것을 보이는 깔끔한 화면이고,
+디자인 규칙은 `profile/DESIGN.md`(AWS 해커톤 작품에서 쓴 디자인 시스템의 포트폴리오판)를 따릅니다.
+
+| 파일 | 역할 |
+|---|---|
+| `profile/data-profile.js` | 이 버전에서 무엇을 앞에 둘지: 지금 하는 일, 숫자 칸, 프로젝트 순서와 상태 배지 |
+| `profile/profile.js`, `profile/profile.css` | 화면과 스타일 |
+| `profile/DESIGN.md` | 색·글자·간격·구성요소 규칙. 화면을 고치기 전에 먼저 읽기 |
+
+프로젝트·경력·기술 내용은 루트의 `data.js`를 같이 씁니다.
+
 ## 게임 외 직무용 버전
 
 **https://gamaius.github.io/dev/**
