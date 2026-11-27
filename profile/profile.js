@@ -38,15 +38,15 @@
   const fill = (name, nodes) => { const s = slot(name); if (s) s.replaceChildren(...[nodes].flat(Infinity).filter((n) => n != null && n !== false && n !== "")); };
   // data.js 의 파일 경로는 루트 기준이라 이 폴더에서는 ../ 를 붙인다
   const asset = (p) => (!p || /^(https?:|\/|\.\.\/)/.test(p) ? p : `../${p}`);
+  const yearOf = (period) => (String(period).match(/\d{4}/) || [""])[0];
 
-  // ---------- 프로젝트 목록: data.js 프로젝트 + Drilling(대표작 정보로 만든 카드) ----------
+  // ---------- 프로젝트: data.js 프로젝트 + Drilling(대표작 정보로 만든 항목) ----------
   const F = D.featured;
   const fact = (term) => F.facts.find((f) => f.term === term)?.desc;
   const drilling = {
     id: "drilling", kind: "game", title: F.title,
     period: `${F.milestones[0].date} – ${F.milestones.at(-1).date}`,
-    team: fact("팀"), role: fact("역할"),
-    oneLine: F.oneLine,
+    team: fact("팀"), role: fact("역할"), oneLine: F.oneLine,
     thumb: F.image.src, images: [F.image],
     sections: [
       { title: "맡은 시스템", items: F.systems.map((s) => `${s.title}: ${s.body}`) },
@@ -54,154 +54,138 @@
     ],
     result: fact("출시"),
     stack: (fact("엔진") || "").split(/,\s*/).filter(Boolean),
-    links: { demo: D.person.steam }, demoLabel: "Steam 상점 페이지 열기"
+    links: { demo: D.person.steam }, demoLabel: "Steam 상점 페이지"
   };
   const all = [...D.projects, drilling];
   const byId = (id) => all.find((p) => p.id === id);
-  const projects = P.order.map(byId).filter(Boolean);
+  const ordered = P.order.map(byId).filter(Boolean);
 
   // ---------- 바인딩 ----------
   document.querySelectorAll("[data-bind]").forEach((el) => { const v = pick(D, el.dataset.bind); if (v) el.textContent = v; });
   document.querySelectorAll("[data-prof]").forEach((el) => { const v = pick(P, el.dataset.prof); if (v) el.textContent = v; else el.hidden = true; });
   document.querySelectorAll("[data-href]").forEach((el) => { const v = pick(D, el.dataset.href); if (v) el.href = v; else el.hidden = true; });
   document.querySelectorAll("[data-mail-link]").forEach((el) => { el.href = `mailto:${D.person.email}`; });
-  document.querySelectorAll("[data-mail-text]").forEach((el) => { el.textContent = D.person.email; });
+  document.querySelectorAll("[data-mail]").forEach((el) => { el.href = `mailto:${D.person.email}`; el.textContent = D.person.email; });
 
-  // ---------- 지금 하는 일 ----------
-  const nowP = byId(P.now.id);
-  fill("now", [
-    h("p.now-label", null, P.now.label),
-    h("p.now-text", null, P.now.text),
-    h("div.actions", null,
-      nowP?.links?.demo && h("a.btn-tint", { href: nowP.links.demo, target: "_blank", rel: "noopener" }, "사이트 열기"),
-      nowP && h("button.btn-gray", { type: "button", "data-open": nowP.id, "aria-haspopup": "dialog" }, "자세히 보기"))
-  ]);
+  // ---------- 첫 화면 ----------
+  fill("statement", P.statement.map((line) => h("span.line", null, line)));
+  fill("facts", P.facts.map((f) => h("li", null,
+    h("button.fact", { type: "button", "data-open": f.open, "aria-haspopup": "dialog" },
+      h("span.fact-label", null, f.label),
+      h("span.fact-text", null, f.text)))));
 
-  // ---------- 숫자 칸 → 누르면 거른 목록으로 ----------
-  const count = (tag) => (tag === "all" ? projects.length : (P.tags[tag] || []).filter(byId).length);
-  fill("tiles", P.tiles.map((t) => h("li", null,
-    h("button", { type: "button", class: `tile${t.strong ? " tile-strong" : ""}`, "data-filter": t.tag },
-      h("span.tile-label", null, t.label),
-      h("span.tile-num", null, String(count(t.tag)), h("span.tile-unit", null, t.unit)),
-      h("span.tile-note", null, t.note)))));
+  // ---------- 대표 작업 ----------
+  fill("featured", P.featured.map((f, i) => {
+    const p = byId(f.id);
+    if (!p) return null;
+    return h("article", { class: `feat${i % 2 ? " feat-flip" : ""}`, "aria-labelledby": `f-${p.id}` },
+      h("div.wrap.feat-grid", null,
+        h("button.feat-shot", { type: "button", "data-open": p.id, "aria-haspopup": "dialog", "aria-label": `${p.title} 자세히 보기` },
+          h("img", { src: asset(p.thumb), alt: "", loading: "lazy", decoding: "async" })),
+        h("div.feat-text", null,
+          h("p.kicker", null, h("span", null, KIND[p.kind]), h("span", null, yearOf(p.period))),
+          h("h3.feat-title", { id: `f-${p.id}` }, p.title),
+          h("p.feat-line", null, p.oneLine),
+          h("ul.feat-points", null, f.points.map((t) => h("li", null, t))),
+          h("dl.feat-meta", null,
+            h("div", null, h("dt", null, "역할"), h("dd", null, p.role)),
+            h("div", null, h("dt", null, "결과"), h("dd", null, p.result))),
+          h("p.feat-actions", null,
+            h("button.btn.btn-green", { type: "button", "data-open": p.id, "aria-haspopup": "dialog" }, "자세히 보기"),
+            p.links?.demo && h("a.btn.btn-line", { href: p.links.demo, target: "_blank", rel: "noopener" }, p.demoLabel || "사이트 열기")))));
+  }));
 
-  // ---------- 일하는 방식 ----------
-  fill("ways", D.strengths.map((s) => h("li.card", null,
-    h("h3", null, s.title),
-    h("p", null, s.line),
-    h("ul.proof", null, s.proof.map((t) => h("li.badge", null, t))))));
-
-  // ---------- 프로젝트 ----------
-  const FILTERS = [
-    ["all", "전체"], ["award", "수상"], ["live", "배포·운영"],
-    ["ai", "AI"], ["web", "웹"], ["game", "게임"]
-  ];
-  const match = (p, f) => f === "all" || (P.tags[f] ? P.tags[f].includes(p.id) : p.kind === f);
-  let current = "all";
-
-  function card(p) {
-    const [label, tone] = P.status[p.id] || [];
-    return h("li", null,
-      h("article.card.pcard", { "aria-labelledby": `p-${p.id}` },
-        p.thumb ? h("div.pthumb", null, h("img", { src: asset(p.thumb), alt: "", loading: "lazy", decoding: "async" })) : // 화면이 없는 프로젝트는 쓴 기술을 대신 보인다
-          h("div.pthumb.pthumb-empty", null, h("ul.d-stack", { "aria-label": "사용 기술" }, p.stack.map((t) => h("li.badge.badge-white", null, t)))),
-        h("div.phead", null,
-          h("h3", { id: `p-${p.id}` }, p.title),
-          label && h("span", { class: `badge${tone === "done" ? " badge-done" : ""}` }, label)),
-        h("p.pline", null, p.oneLine),
-        h("div.psum", null,
-          h("dl", null,
-            h("div", null, h("dt", null, "분야"), h("dd", null, KIND[p.kind])),
-            h("div", null, h("dt", null, "기간"), h("dd", null, p.period)),
-            h("div", null, h("dt", null, "구성"), h("dd", null, p.team))),
-          h("button.btn-tint", { type: "button", "data-open": p.id, "aria-haspopup": "dialog" }, "자세히 보기", h("span.visually-hidden", null, `: ${p.title}`)))));
+  // ---------- 전체 작업 목록 ----------
+  const TABS = [["all", "전체"], ["ai", "AI"], ["web", "웹"], ["game", "게임"]];
+  function renderIndex(k) {
+    const list = ordered.filter((p) => k === "all" || p.kind === k);
+    fill("index", list.map((p) => h("li", null,
+      h("button.row", { type: "button", "data-open": p.id, "data-peek": p.thumb ? asset(p.thumb) : null, "aria-haspopup": "dialog" },
+        h("span.row-year", null, yearOf(p.period)),
+        h("span.row-main", null, h("span.row-title", null, p.title), h("span.row-line", null, p.oneLine)),
+        h("span.row-kind", null, KIND[p.kind]),
+        h("span.row-result", null, p.result)))));
+    document.querySelectorAll("[data-tab]").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.tab === k)));
   }
-  function render(f) {
-    current = f;
-    const list = projects.filter((p) => match(p, f));
-    fill("projects", list.map(card));
-    const name = FILTERS.find(([k]) => k === f)?.[1] || "전체";
-    slot("count").textContent = f === "all" ? `프로젝트 ${list.length}개` : `${name} ${list.length}개`;
-    document.querySelectorAll("[data-chip]").forEach((c) => c.setAttribute("aria-pressed", String(c.dataset.chip === f)));
+  fill("tabs", TABS.map(([k, label]) => h("button.tab", { type: "button", "data-tab": k, "aria-pressed": String(k === "all"), onclick: () => renderIndex(k) }, label)));
+  renderIndex("all");
+
+  // 마우스를 올린 줄의 화면을 커서 옆에 띄운다 (마우스가 있는 기기만)
+  const peek = $(".peek"), peekImg = peek?.querySelector("img"), index = slot("index");
+  if (peek && index && matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    let raf = 0, x = 0, y = 0;
+    index.addEventListener("pointermove", (e) => {
+      const row = e.target.closest("[data-peek]");
+      if (!row) { peek.classList.remove("on"); return; }
+      if (peekImg.getAttribute("src") !== row.dataset.peek) peekImg.src = row.dataset.peek;
+      x = e.clientX; y = e.clientY;
+      peek.classList.add("on");
+      if (!raf) raf = requestAnimationFrame(() => { raf = 0; peek.style.transform = `translate(${Math.min(x + 28, innerWidth - 340)}px, ${y - 100}px)`; });
+    });
+    index.addEventListener("pointerleave", () => peek.classList.remove("on"));
   }
-  fill("chips", FILTERS.map(([k, label]) => h("button.chip", { type: "button", "data-chip": k, "aria-pressed": String(k === "all"), onclick: () => render(k) }, label)));
-  render("all");
 
-  document.addEventListener("click", (e) => {
-    const t = e.target.closest("[data-filter]");
-    if (!t) return;
-    render(t.dataset.filter);
-    $("#projects").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
-    // 고른 칩에 포커스를 옮겨 키보드로도 이어서 고를 수 있게
-    document.querySelector(`[data-chip="${t.dataset.filter}"]`)?.focus({ preventScroll: true });
-  });
-
-  // ---------- 이력 (표 → 모바일 카드) ----------
+  // ---------- 이력 ----------
   const certLabel = (t) => (t.kind === "수상" ? "상장 보기" : "수료증 보기");
   fill("timeline", D.timeline.map((t, i) => {
     const id = t.projectId || (t.link === "#drilling" ? "drilling" : null);
-    const title = id && byId(id)
-      ? h("button.btn-text", { type: "button", "data-open": id, "aria-haspopup": "dialog" }, t.title)
-      : h("span", null, t.title);
-    return h("tr", null,
-      h("td", { "data-label": "날짜", class: "num" }, t.date),
-      h("td", { "data-label": "구분" }, h("span", { class: `badge${t.kind === "수상" || t.kind === "출시" ? " badge-done" : ""}` }, t.kind)),
-      // 모바일 카드에서 칸 이름 옆 한 칸에 들어가도록 제목과 설명을 한 덩어리로 묶는다
-      h("td", { "data-label": "내용" }, h("div", null, h("div.tl-title", null, title), h("div.tl-meta", null, [t.org, t.note].filter(Boolean).join(", ")))),
-      h("td", { "data-label": "증서", class: t.cert ? null : "empty" },
-        t.cert && h("button.btn-tint", { type: "button", "data-cert": i, "aria-haspopup": "dialog" }, certLabel(t))));
+    return h("li", null,
+      h("span.tl-date", null, t.date),
+      h("div.tl-body", null,
+        h("p.tl-title", null,
+          id && byId(id) ? h("button.link", { type: "button", "data-open": id, "aria-haspopup": "dialog" }, t.title) : t.title),
+        h("p.tl-meta", null, [t.org, t.note].filter(Boolean).join(", ")),
+        t.cert && h("button.link.tl-cert", { type: "button", "data-cert": i, "aria-haspopup": "dialog" }, certLabel(t))),
+      h("span", { class: `tl-kind${t.kind === "수상" || t.kind === "출시" ? " tl-kind-strong" : ""}` }, t.kind));
   }));
-  fill("education", D.education.map((e) => h("li", null, h("strong", null, e.school), h("span", null, e.period))));
+  fill("education", D.education.map((e) => h("li", null,
+    h("span.tl-date", null, e.period.match(/\d{4}\.\d{2}/)?.[0] || ""),
+    h("div.tl-body", null, h("p.tl-title", null, e.school), h("p.tl-meta", null, e.period)))));
 
-  // ---------- 기술 (막대 목록) ----------
+  // ---------- 기술 ----------
   const groups = [...D.skills].sort((a, b) => P.skillOrder.indexOf(a.group) - P.skillOrder.indexOf(b.group));
-  fill("skills", groups.map((g) => h("section.card", { "aria-label": g.group },
+  fill("skills", groups.map((g) => h("section.sgroup", { "aria-label": g.group },
     h("h3", null, g.group),
-    h("ul.bars", null, g.items.map((s) => h("li", null,
-      h("span.bar-name", null, s.name),
-      h("span.bar-track", { role: "img", "aria-label": `${s.level}, ${s.pct}%` }, h("span.bar-fill", { style: `width:${Math.max(4, Math.min(100, s.pct))}%` })),
-      h("span.bar-level", null, s.level),
-      s.proof && h("span.bar-proof", null, s.proof)))))));
+    h("ul", null, g.items.map((s) => {
+      const on = Math.max(1, Math.min(5, Math.round(s.pct / 20)));
+      return h("li", null,
+        h("span.s-name", null, s.name),
+        h("span.s-dots", { role: "img", "aria-label": `5칸 중 ${on}칸, ${s.level}` }, Array.from({ length: 5 }, (_, i) => h("i", { class: i < on ? "on" : null }))),
+        h("span.s-level", null, s.level),
+        s.proof && h("span.s-proof", null, s.proof));
+    })))));
 
-  // ---------- 상세 창 (PC는 가운데, 모바일은 아래에서 올라오는 시트) ----------
+  // ---------- 상세 서랍, 증서 서랍 ----------
   const dialog = $("#detail"), viewer = $("#viewer");
   const certsFor = (id) => D.timeline.map((t, i) => [i, t]).filter(([, t]) => t.projectId === id && t.cert);
 
   function detail(p) {
-    const [label, tone] = P.status[p.id] || [];
-    const meta = [["기간", p.period], ["구성", p.team], ["역할", p.role]].filter(([, v]) => v);
-    // 채운 버튼은 화면마다 하나: 배포 사이트가 있으면 그것, 없으면 저장소
-    const main = p.links?.demo ? [p.links.demo, p.demoLabel || "배포된 사이트 열기"] : p.links?.repo ? [p.links.repo, "GitHub 저장소 열기"] : null;
-    const subs = [];
-    if (p.links?.demo && p.links?.repo) subs.push(h("a.btn-tint", { href: p.links.repo, target: "_blank", rel: "noopener" }, "GitHub 저장소"));
-    certsFor(p.id).forEach(([i, t]) => subs.push(h("button.btn-tint", { type: "button", "data-cert": i, "aria-haspopup": "dialog" }, certLabel(t))));
-    return h("div.detail", null,
-      h("div.d-head", null,
-        h("span.badge", null, KIND[p.kind]),
-        label && h("span", { class: `badge${tone === "done" ? " badge-done" : ""}` }, label)),
+    const meta = [["기간", p.period], ["구성", p.team], ["역할", p.role], ["결과", p.result]].filter(([, v]) => v);
+    const links = [];
+    if (p.links?.demo) links.push(h("a.btn.btn-green", { href: p.links.demo, target: "_blank", rel: "noopener" }, p.demoLabel || "배포된 사이트 열기"));
+    if (p.links?.repo) links.push(h("a.btn.btn-line", { href: p.links.repo, target: "_blank", rel: "noopener" }, "GitHub 저장소"));
+    certsFor(p.id).forEach(([i, t]) => links.push(h("button.btn.btn-line", { type: "button", "data-cert": i, "aria-haspopup": "dialog" }, certLabel(t))));
+    return [
+      h("p.kicker", null, h("span", null, KIND[p.kind]), h("span", null, yearOf(p.period))),
       h("h2", { id: "detail-title" }, p.title),
-      h("p.d-lead", null, p.oneLine),
-      p.result && h("div.d-result", null,
-        h("p.d-label", null, "결과"),
-        h("p.d-result-text", null, p.result),
-        (main || subs.length) && h("div.actions", null,
-          main && h("a.btn-primary", { href: main[0], target: "_blank", rel: "noopener" }, main[1]), subs)),
-      !p.result && (main || subs.length) && h("div.actions", null, main && h("a.btn-primary", { href: main[0], target: "_blank", rel: "noopener" }, main[1]), subs),
-      h("dl.d-meta", null, meta.map(([k, v]) => h("div", null, h("dt", null, k), h("dd", null, v)))),
+      h("p.d-line", null, p.oneLine),
+      links.length && h("p.d-actions", null, links),
       p.images?.length && h("div.d-gallery", null,
         h("div.d-shots", { tabindex: "0", "aria-label": "화면 모음, 옆으로 넘겨 보기" },
           p.images.map((im) => h("figure", null,
             h("img", { src: asset(im.src), width: im.w, height: im.h, alt: im.alt, loading: "lazy" }),
             h("figcaption", null, im.alt)))),
-        p.images.length > 1 && h("div.d-pager", null,
-          h("button.btn-gray", { type: "button", onclick: (e) => page(e, -1) }, "이전 화면"),
-          h("span.d-count", null, `화면 ${p.images.length}장`),
-          h("button.btn-gray", { type: "button", onclick: (e) => page(e, 1) }, "다음 화면"))),
-      h("div.d-sections", null, p.sections.map((s) => h("section.d-sec", null, h("h3", null, s.title), h("ul", null, s.items.map((t) => h("li", null, t)))))),
+        p.images.length > 1 && h("p.d-pager", null,
+          h("button.link", { type: "button", onclick: (e) => page(e, -1) }, "이전 화면"),
+          h("span", null, `화면 ${p.images.length}장`),
+          h("button.link", { type: "button", onclick: (e) => page(e, 1) }, "다음 화면"))),
+      h("dl.d-meta", null, meta.map(([k, v]) => h("div", null, h("dt", null, k), h("dd", null, v)))),
+      p.sections.map((s) => h("section.d-sec", null, h("h3", null, s.title), h("ul", null, s.items.map((t) => h("li", null, t))))),
       h("div.d-foot", null,
-        h("h3.visually-hidden", null, "사용 기술"),
-        h("ul.d-stack", { "aria-label": "사용 기술" }, p.stack.map((t) => h("li.badge", null, t))),
-        p.codeNote && h("p.d-note", null, p.codeNote)));
+        h("h3", null, "사용 기술"),
+        h("ul.d-stack", null, p.stack.map((t) => h("li", null, t))),
+        p.codeNote && h("p.d-note", null, p.codeNote))
+    ];
   }
   function page(e, dir) {
     const g = e.currentTarget.closest(".d-gallery").querySelector(".d-shots");
@@ -217,7 +201,7 @@
     if (opener && document.activeElement !== opener) opener.focus({ preventScroll: true });
     fill("detail", detail(p));
     if (!dialog.open) dialog.showModal();
-    dialog.scrollTop = 0;
+    dialog.querySelector(".drawer-body").scrollTop = 0;
     history.replaceState(null, "", `#${id}`);
   }
   function viewCert(i, from) {
@@ -226,17 +210,18 @@
     const c = t.cert;
     if (from && document.activeElement !== from) from.focus({ preventScroll: true });
     fill("viewer", [
+      h("p.kicker", null, h("span", null, t.kind), h("span", null, t.date)),
       h("h2", { id: "viewer-title" }, t.title),
-      h("p.d-lead", null, [t.org, t.date].filter(Boolean).join(", ")),
+      t.org && h("p.d-line", null, t.org),
       h("img.v-img", { src: asset(c.img), width: c.w, height: c.h, alt: `${t.title} ${t.kind === "수상" ? "상장" : "수료증"}` }),
-      c.file && h("p.v-foot", null, h("a.btn-text", { href: asset(c.file), download: "" }, "원본 PDF 내려받기"))
+      c.file && h("p.d-actions", null, h("a.btn.btn-line", { href: asset(c.file), download: "" }, "원본 PDF 내려받기"))
     ]);
     if (!viewer.open) viewer.showModal();
-    viewer.scrollTop = 0;
+    viewer.querySelector(".drawer-body").scrollTop = 0;
   }
   document.addEventListener("click", (e) => {
     const o = e.target.closest("[data-open]");
-    if (o) { e.preventDefault(); open(o.dataset.open, o); return; }
+    if (o) { e.preventDefault(); peek?.classList.remove("on"); open(o.dataset.open, o); return; }
     const c = e.target.closest("[data-cert]");
     if (c) { e.preventDefault(); viewCert(Number(c.dataset.cert), c); }
   });
@@ -246,18 +231,13 @@
   openFromHash();
   addEventListener("hashchange", openFromHash);
 
-  // ---------- 메뉴: 지금 보고 있는 구간 표시 ----------
-  const items = [...document.querySelectorAll(".menu-item")];
-  const secs = items.map((a) => document.getElementById(a.getAttribute("href").slice(1))).filter(Boolean);
-  function spy() {
-    const y = innerHeight * 0.3;
-    let cur = secs[0];
-    for (const s of secs) if (s.getBoundingClientRect().top <= y) cur = s;
-    // 맨 아래에 닿으면 마지막 구간
-    if (innerHeight + scrollY >= document.documentElement.scrollHeight - 2) cur = secs.at(-1);
-    items.forEach((a) => (a.getAttribute("href") === `#${cur.id}` ? a.setAttribute("aria-current", "page") : a.removeAttribute("aria-current")));
-  }
-  let tick = false;
-  addEventListener("scroll", () => { if (!tick) { tick = true; requestAnimationFrame(() => { tick = false; spy(); }); } }, { passive: true });
-  spy();
+  // 첫 화면(짙은 초록)을 지나면 위 막대를 밝은 색으로
+  const top = $(".top"), hero = $("#hero"), contact = $("#contact");
+  const tone = () => {
+    const y = 40;
+    const dark = hero.getBoundingClientRect().bottom > y || contact.getBoundingClientRect().top < y;
+    top.classList.toggle("light", !dark);
+  };
+  addEventListener("scroll", tone, { passive: true });
+  tone();
 })();

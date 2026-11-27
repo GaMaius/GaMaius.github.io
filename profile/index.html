@@ -2,109 +2,114 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>지우가람 | 개발자 포트폴리오</title>
-  <meta name="description" content="AI 서비스와 게임을 만들고 배포해서 실제로 쓰이게 하는 개발자 지우가람의 포트폴리오.">
-  <meta name="theme-color" content="#f2f4f6">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>지우가람 | 포트폴리오</title>
+  <meta name="description" content="AI 서비스와 게임을 만들고, 내놓고, 운영하는 개발자 지우가람의 포트폴리오.">
+  <meta name="theme-color" content="#0f3b2e">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="지우가람 | 개발자 포트폴리오">
-  <meta property="og:description" content="AWS 해커톤 최우수상, Steam 정식 출시, 운영 중인 AI 서비스. 만들고 내놓은 프로젝트들.">
+  <meta property="og:title" content="지우가람 | 포트폴리오">
+  <meta property="og:description" content="AWS 해커톤 최우수상 AI 에이전트, 운영 중인 웹 서비스, Steam 정식 출시 게임.">
   <meta property="og:url" content="https://gamaius.github.io/profile/">
   <meta property="og:image" content="https://gamaius.github.io/img/maestro-job.webp">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 rx=%224%22 fill=%22%230b6b4f%22/><rect x=%224%22 y=%224%22 width=%228%22 height=%228%22 rx=%222%22 fill=%22%23ffffff%22/></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 16 16%22><rect width=%2216%22 height=%2216%22 rx=%223%22 fill=%22%230f3b2e%22/><path d=%22M4 11.5 8 4l4 7.5%22 fill=%22none%22 stroke=%22%239fd3b6%22 stroke-width=%221.6%22/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;600;700&display=swap">
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-  <link rel="stylesheet" href="profile.css?v=1">
+  <link rel="stylesheet" href="profile.css?v=2">
   <script src="../data.js?v=32" defer></script>
-  <script src="data-profile.js?v=1" defer></script>
-  <script src="profile.js?v=1" defer></script>
+  <script src="data-profile.js?v=2" defer></script>
+  <script src="profile.js?v=2" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">본문으로 건너뛰기</a>
 
-  <header class="topbar">
-    <a class="brand" href="#top">지우가람</a>
-    <nav class="menu" aria-label="주요 메뉴">
-      <a class="menu-item" href="#top" aria-current="page">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11 12 4l8 7v8a1 1 0 0 1-1 1h-4v-6H9v6H5a1 1 0 0 1-1-1z"/></svg>소개</a>
-      <a class="menu-item" href="#projects">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></svg>프로젝트</a>
-      <a class="menu-item" href="#career">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="4.5" cy="6" r="1.2"/><circle cx="4.5" cy="12" r="1.2"/><circle cx="4.5" cy="18" r="1.2"/></svg>이력</a>
-      <a class="menu-item" href="#skills">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V12M12 20V5M19 20v-9"/></svg>기술</a>
-      <a class="menu-item" href="#contact">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="m4 7 8 6 8-6"/></svg>연락</a>
-    </nav>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="brand" href="#hero">지우가람</a>
+      <nav aria-label="주요 메뉴">
+        <ul class="nav">
+          <li><a href="#work">작업</a></li>
+          <li><a href="#career">이력</a></li>
+          <li><a href="#skills">기술</a></li>
+          <li><a href="#contact">연락</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main id="main" class="content">
-    <!-- 소개: 제목 → 지금 하는 일 → 숫자 칸 → 일하는 방식 -->
-    <section id="top" class="sec" aria-labelledby="name">
-      <div class="intro">
-        <h1 id="name"><span data-bind="person.name"></span><span class="badge" data-prof="badge"></span></h1>
-        <p class="lead" data-prof="lead"></p>
+  <main id="main">
+    <section id="hero" class="hero" aria-labelledby="hero-title">
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <p class="hero-who"><span data-bind="person.name"></span><span data-prof="school"></span></p>
+          <h1 id="hero-title" class="hero-title" data-slot="statement"></h1>
+          <p class="hero-intro" data-prof="intro"></p>
+          <p class="hero-links">
+            <a class="btn btn-light" data-mail-link>메일 보내기</a>
+            <a class="btn btn-ghost" data-href="person.github" target="_blank" rel="noopener">GitHub</a>
+          </p>
+        </div>
+        <ul class="facts" data-slot="facts" aria-label="이력 요약"></ul>
       </div>
-      <div class="card now" data-slot="now"></div>
-      <ul class="tiles" data-slot="tiles" aria-label="이력 요약. 누르면 해당 프로젝트로 거릅니다"></ul>
-
-      <h2 class="sec-title">일하는 방식</h2>
-      <ul class="ways" data-slot="ways"></ul>
     </section>
 
-    <!-- 프로젝트: 거르기 칩 → 목록 카드 -->
-    <section id="projects" class="sec" aria-labelledby="projects-title">
-      <h2 id="projects-title" class="sec-title">프로젝트</h2>
-      <div class="chips" role="group" aria-label="프로젝트 거르기" data-slot="chips"></div>
-      <p class="list-count" data-slot="count" aria-live="polite"></p>
-      <ul class="plist" data-slot="projects"></ul>
-    </section>
-
-    <!-- 이력: 표 (모바일은 줄마다 카드) -->
-    <section id="career" class="sec" aria-labelledby="career-title">
-      <h2 id="career-title" class="sec-title">이력</h2>
-      <div class="card card-flush">
-        <table class="cells cards">
-          <caption class="visually-hidden">수상, 출시, 인턴, 자격, 수료 이력</caption>
-          <thead><tr><th scope="col">날짜</th><th scope="col">구분</th><th scope="col">내용</th><th scope="col">증서</th></tr></thead>
-          <tbody data-slot="timeline"></tbody>
-        </table>
+    <section id="work" class="work" aria-labelledby="work-title">
+      <div class="wrap">
+        <h2 id="work-title" class="sec-title">대표 작업</h2>
       </div>
-      <h3 class="sub-title">학력</h3>
-      <ul class="card edu" data-slot="education"></ul>
+      <div data-slot="featured"></div>
+
+      <div class="wrap index-wrap">
+        <div class="index-head">
+          <h2 class="sec-title">전체 작업</h2>
+          <div class="tabs" role="group" aria-label="분야로 거르기" data-slot="tabs"></div>
+        </div>
+        <ol class="index" data-slot="index" aria-live="polite"></ol>
+      </div>
+      <div class="peek" aria-hidden="true"><img alt=""></div>
     </section>
 
-    <!-- 기술: 막대 목록 -->
-    <section id="skills" class="sec" aria-labelledby="skills-title">
-      <h2 id="skills-title" class="sec-title">기술</h2>
-      <p class="sec-note">막대는 스스로 평가한 수준입니다. 숙련은 혼자 실무 수준으로 완성할 수 있는 정도, 중급은 프로젝트에 써 본 정도, 입문은 기본을 다뤄 본 정도입니다.</p>
-      <div class="skills" data-slot="skills"></div>
-    </section>
-
-    <!-- 연락 -->
-    <section id="contact" class="sec" aria-labelledby="contact-title">
-      <h2 id="contact-title" class="sec-title">연락</h2>
-      <div class="card contact">
-        <p class="contact-line">함께 만들 일이 있다면 메일로 연락 주세요.</p>
-        <p class="mail" data-mail-text></p>
-        <div class="actions">
-          <a class="btn-primary" data-mail-link>메일 보내기</a>
-          <a class="btn-tint" data-href="person.github" target="_blank" rel="noopener">GitHub</a>
+    <section id="career" class="career" aria-labelledby="career-title">
+      <div class="wrap split">
+        <h2 id="career-title" class="sec-title">이력</h2>
+        <div>
+          <ol class="tl" data-slot="timeline"></ol>
+          <h3 class="sub-title">학력</h3>
+          <ul class="tl tl-edu" data-slot="education"></ul>
         </div>
       </div>
     </section>
 
-    <footer class="foot">지우가람, 2026</footer>
+    <section id="skills" class="skills-sec" aria-labelledby="skills-title">
+      <div class="wrap split">
+        <div>
+          <h2 id="skills-title" class="sec-title">기술</h2>
+          <p class="sec-note">점 다섯 개 중 채운 개수가 스스로 평가한 수준입니다. 숙련은 혼자 실무 수준으로 완성할 수 있는 정도, 중급은 프로젝트에 써 본 정도, 입문은 기본을 다뤄 본 정도입니다.</p>
+        </div>
+        <div class="skills" data-slot="skills"></div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 id="contact-title" class="contact-title">함께 만들 일이 있다면</h2>
+        <a class="mail" data-mail></a>
+        <p class="contact-links"><a data-href="person.github" target="_blank" rel="noopener">GitHub</a></p>
+      </div>
+      <div class="wrap foot-wrap"><p class="foot">지우가람, 2026</p></div>
+    </section>
   </main>
 
-  <dialog class="sheet" id="detail" aria-labelledby="detail-title" autofocus>
-    <button class="btn-gray sheet-close" type="button" data-close>닫기</button>
-    <div data-slot="detail"></div>
+  <dialog class="drawer" id="detail" aria-labelledby="detail-title">
+    <div class="drawer-bar"><button class="close" type="button" data-close>닫기</button></div>
+    <div class="drawer-body" data-slot="detail" tabindex="-1" autofocus></div>
   </dialog>
 
-  <dialog class="sheet sheet-narrow" id="viewer" aria-labelledby="viewer-title" autofocus>
-    <button class="btn-gray sheet-close" type="button" data-close>닫기</button>
-    <div data-slot="viewer"></div>
+  <dialog class="drawer drawer-cert" id="viewer" aria-labelledby="viewer-title">
+    <div class="drawer-bar"><button class="close" type="button" data-close>닫기</button></div>
+    <div class="drawer-body" data-slot="viewer" tabindex="-1" autofocus></div>
   </dialog>
 </body>
 </html>
